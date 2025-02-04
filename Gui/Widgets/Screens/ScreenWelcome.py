@@ -14,7 +14,8 @@ from PyQt5.QtCore import Qt
 from Gui.Widgets.Screens.Screen import Screen
 
 from Gui.Colors import COLOR_WHITE, COLOR_BLACK
-from Gui.Fonts import FONT
+from Gui.Colors import COLOR_VSC_PRIMARY, COLOR_BS_LIGHT
+from Gui.Fonts import FONT_GEOLOGICA_BLACK, FONT_COURIER_PRIME_REGULAR
 
 from Logger import log
 
@@ -28,17 +29,18 @@ class Welcome(QLabel):
 
     def initUI(self):
         self.setStyleSheet(f'''
-            padding-left: 32px;
-            padding-right: 32px;
-            padding-top: 32px;
-            padding-bottom: 32px;
-            color: {COLOR_WHITE};
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            color: {COLOR_BS_LIGHT};
         ''')
+        self.setWordWrap(True)
         self.setAlignment(Qt.AlignCenter)
-        self.setFont(QFont(str(FONT), 25))
+        self.setFont(QFont(str(FONT_COURIER_PRIME_REGULAR), 36))
     
     def updateUI(self, *args, **kwargs):
-        self.setText('Welcome!')
+        self.setText('X-Files')
 
 
 class Header(QWidget):
@@ -107,7 +109,7 @@ class ScreenWelcome(Screen):
 
     def initUI(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
-        self.setStyleSheet(f'''background-color: {COLOR_BLACK};''')
+        self.setStyleSheet(f'''background-color: {COLOR_VSC_PRIMARY};''')
 
         self.header = Header(self)
         self.body = Body(self)
@@ -130,4 +132,4 @@ class ScreenWelcome(Screen):
         self.body.updateUI(*args, **kwargs)
         self.footer.updateUI(*args, **kwargs)
         
-        app.gui.setWindowTitle('Welcome')
+        app.gui.setWindowTitle('X-Files')
