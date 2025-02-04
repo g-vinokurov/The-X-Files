@@ -132,4 +132,4 @@ class ScreenWelcome(Screen):
         self.body.updateUI(*args, **kwargs)
         self.footer.updateUI(*args, **kwargs)
         
-        app.gui.setWindowTitle('X-Files')
+        app.gui.setWindowTitle('The X-Files')
