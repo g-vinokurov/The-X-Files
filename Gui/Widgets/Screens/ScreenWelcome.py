@@ -15,7 +15,7 @@ from Gui.Widgets.Screens.Screen import Screen
 
 from Gui.Colors import COLOR_WHITE, COLOR_BLACK
 from Gui.Colors import COLOR_VSC_PRIMARY, COLOR_BS_LIGHT
-from Gui.Fonts import FONT_GEOLOGICA_BLACK
+from Gui.Fonts import FONT_GEOLOGICA_BLACK, FONT_COURIER_PRIME
 
 from Logger import log
 
@@ -37,10 +37,10 @@ class Welcome(QLabel):
         ''')
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignCenter)
-        self.setFont(QFont(str(FONT_GEOLOGICA_BLACK), 36))
+        self.setFont(QFont(str(FONT_COURIER_PRIME), 36))
     
     def updateUI(self, *args, **kwargs):
-        self.setText('X-Files')
+        self.setText('THE X-FILES')
 
 
 class Header(QWidget):

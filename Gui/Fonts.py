@@ -44,3 +44,5 @@ FONT_GEOLOGICA_MEDIUM = Font(os.path.join(FONTS_DIR, 'Geologica-Medium.ttf'))
 FONT_GEOLOGICA_REGULAR = Font(os.path.join(FONTS_DIR, 'Geologica-Regular.ttf'))
 FONT_GEOLOGICA_SEMI_BOLD = Font(os.path.join(FONTS_DIR, 'Geologica-SemiBold.ttf'))
 FONT_GEOLOGICA_THIN = Font(os.path.join(FONTS_DIR, 'Geologica-Thin.ttf'))
+
+FONT_COURIER_PRIME = Font(os.path.join(FONTS_DIR, 'CourierPrime-Regular.ttf'))
