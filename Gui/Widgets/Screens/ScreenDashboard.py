@@ -64,7 +64,7 @@ class Body(QWidget):
         self.setLayout(self._layout)
 
     def updateUI(self, *args, **kwargs):
-        self.logo.updateUI(*args, **kwargs)
+        pass
 
 
 class Footer(QWidget):
