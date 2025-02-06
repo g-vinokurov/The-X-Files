@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QGridLayout
 
 from Gui.Widgets.Screens.Screen import Screen
 from Gui.Widgets.Screens.ScreenWelcome import ScreenWelcome
+from Gui.Widgets.Screens.ScreenDashboard import ScreenDashboard
 
 
 class Navigator(QWidget):
@@ -22,8 +23,9 @@ class Navigator(QWidget):
         self.layout.addWidget(self.__current_screen)
 
         self.setLayout(self.layout)
-
-    def current(self):
+    
+    @property
+    def current_screen(self):
         return self.__current_screen
 
     def load(self, tag: str, *args, **kwargs):
@@ -52,3 +54,4 @@ class Navigator(QWidget):
 
 
 Navigator.register('welcome', ScreenWelcome)
+Navigator.register('dashboard', ScreenDashboard)

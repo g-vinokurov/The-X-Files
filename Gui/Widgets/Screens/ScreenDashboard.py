@@ -30,70 +30,90 @@ from Logger import log
 from App import app
 
 
-class Logo(QLabel):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+class Header(QWidget):
+    def __init__(self, parent, *args, **kwargs):
+        super().__init__(parent, *args, **kwargs)
         self.initUI()
 
     def initUI(self):
-        self.setStyleSheet(f'''
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-            padding-bottom: 0px;
-            color: {COLOR_BS_LIGHT};
-        ''')
-        self.setWordWrap(True)
-        self.setAlignment(Qt.AlignCenter)
-        self.setFont(QFont(str(FONT_COURIER_PRIME), 48))
-    
+        self.setAttribute(Qt.WA_StyledBackground, True)
+
+        self._layout = QHBoxLayout()
+        self._layout.setContentsMargins(0, 0, 0, 0)
+        self._layout.setSpacing(0)
+
+        self.setLayout(self._layout)
+
     def updateUI(self, *args, **kwargs):
-        self.setText('THE X-FILES')
+        pass
 
 
-class ClickToContinue(QLabel):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+class Body(QWidget):
+    def __init__(self, parent, *args, **kwargs):
+        super().__init__(parent, *args, **kwargs)
         self.initUI()
 
     def initUI(self):
-        self.setStyleSheet(f'''
-            background: none;
-            border: none;
-            outline: none;
-            color: {COLOR_BS_LIGHT};
-        ''')
-        self.setAlignment(Qt.AlignCenter)
-        self.setFont(QFont(str(FONT_COURIER_PRIME), 18))
-    
-    def updateUI(self):
-        self.setText('Click to continue')
+        self.setAttribute(Qt.WA_StyledBackground, True)
+        
+        self._layout = QHBoxLayout()
+        self._layout.setContentsMargins(0, 0, 0, 0)
+        self._layout.setSpacing(0)
+        self._layout.setAlignment(Qt.AlignCenter)
+        
+        self.setLayout(self._layout)
+
+    def updateUI(self, *args, **kwargs):
+        self.logo.updateUI(*args, **kwargs)
 
 
-class ScreenWelcome(Screen):
+class Footer(QWidget):
+    def __init__(self, parent, *args, **kwargs):
+        super().__init__(parent, *args, **kwargs)
+        self.initUI()
+
+    def initUI(self):
+        self.setAttribute(Qt.WA_StyledBackground, True)
+        
+        self._layout = QHBoxLayout()
+        self._layout.setContentsMargins(0, 0, 0, 0)
+        self._layout.setSpacing(0)
+
+        self.setLayout(self._layout)
+
+    def updateUI(self, *args, **kwargs):
+        pass
+
+
+class ScreenDashboard(Screen):
     def __init__(self, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
         self.initUI()
 
     def initUI(self):
         self.background = QPixmap(IMG_WELCOME)
-        self.logo = Logo(self)
-        self.click_to_continue = ClickToContinue(self)
+
+        self.header = Header(self)
+        self.body = Body(self)
+        self.footer = Footer(self)
         
         self._layout = QVBoxLayout()
         self._layout.setContentsMargins(0, 0, 0, 0)
         self._layout.setSpacing(0)
-        self._layout.setAlignment(Qt.AlignCenter)
 
-        self._layout.addWidget(self.logo)
-        self._layout.addWidget(self.click_to_continue)
+        self._layout.addWidget(self.header)
+        self._layout.addWidget(self.body)
+        self._layout.addWidget(self.footer)
+
+        self._layout.setStretch(1, 1)
         
         self.setLayout(self._layout)
 
     def updateUI(self, *args, **kwargs):
-        app.gui.setWindowTitle('The X-Files')
-        self.logo.updateUI(*args, **kwargs)
-        self.click_to_continue.updateUI(*args, **kwargs)
+        self.header.updateUI(*args, **kwargs)
+        self.body.updateUI(*args, **kwargs)
+        self.footer.updateUI(*args, **kwargs)
+        app.gui.setWindowTitle('The X-Files | Dashboard')
     
     def paintEvent(self, event):
         screen_size = self.size()
@@ -118,7 +138,3 @@ class ScreenWelcome(Screen):
             x = 0
             y = (h - screen_height) // -2
         painter.drawPixmap(x, y, w, h, self.background)
-    
-    def mousePressEvent(self, event):
-        log.info('Go to dashboard')
-        app.gui.navigator.goto('dashboard')
