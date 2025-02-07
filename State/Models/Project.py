@@ -25,7 +25,7 @@ class Project:
 
         if not project_dir.is_absolute():
             project_dir = pathlib.Path.cwd() / project_dir
-        log.info(f'Loading reports from {project_dir}')
+        log.debug(f'Load reports from {project_dir}')
         
         if not project_dir.exists():
             msg = f'Path {project_dir} not found'
@@ -35,4 +35,10 @@ class Project:
         for entity in project_dir.iterdir():
             if not entity.is_dir():
                 continue
-            log.info(f'Loading report: {entity.name}')
+            try:
+                report = Report(entity)
+            except Exception as err:
+                log.error(f'{err}')
+                continue
+            self._reports.append(report)
+        return

@@ -51,5 +51,5 @@ class Window(QMainWindow):
     
     def closeEvent(self, event):
         app.state.quit()
-        log.info('Close Window')
+        log.info('Close app')
         event.accept()

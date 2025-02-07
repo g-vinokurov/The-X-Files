@@ -141,5 +141,5 @@ class ScreenWelcome(Screen):
             log.critical('Impossible to load project')
             return app.exit()
         
-        log.info('Go to Dashboard')
+        log.debug('Go to Dashboard')
         app.gui.navigator.goto('dashboard')

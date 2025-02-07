@@ -17,4 +17,4 @@ class State:
         self._project = project
     
     def quit(self):
-        log.info('Quit State')
+        log.debug('Quit State')
