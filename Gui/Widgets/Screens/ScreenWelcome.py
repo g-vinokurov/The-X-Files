@@ -1,10 +1,13 @@
 
+import os
+
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtWidgets import QVBoxLayout
 from PyQt5.QtWidgets import QHBoxLayout
 from PyQt5.QtWidgets import QGridLayout
 from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtWidgets import QLabel
+from PyQt5.QtWidgets import QFileDialog
 
 from PyQt5.QtGui import QCursor
 from PyQt5.QtGui import QFont
@@ -24,6 +27,8 @@ from Gui.Fonts import FONT_GEOLOGICA_BLACK
 from Gui.Fonts import FONT_COURIER_PRIME
 
 from Gui.Images import IMG_WELCOME
+
+from State.Models.Project import Project
 
 from Logger import log
 
@@ -51,23 +56,24 @@ class Logo(QLabel):
         self.setText('THE X-FILES')
 
 
-class ClickToContinue(QLabel):
+class OpenProject(QPushButton):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.initUI()
 
     def initUI(self):
+        self.setCursor(QCursor(Qt.PointingHandCursor))
         self.setStyleSheet(f'''
             background: none;
             border: none;
             outline: none;
+            padding-top: 16px;
             color: {COLOR_BS_LIGHT};
         ''')
-        self.setAlignment(Qt.AlignCenter)
         self.setFont(QFont(str(FONT_COURIER_PRIME), 18))
-    
-    def updateUI(self):
-        self.setText('Click to continue')
+
+    def updateUI(self, *args, **kwargs):
+        self.setText('Open Project')
 
 
 class ScreenWelcome(Screen):
@@ -78,7 +84,9 @@ class ScreenWelcome(Screen):
     def initUI(self):
         self.background = QPixmap(IMG_WELCOME)
         self.logo = Logo(self)
-        self.click_to_continue = ClickToContinue(self)
+        self.btn_open_project = OpenProject(self)
+
+        self.btn_open_project.clicked.connect(self.on_btn_open_project_clicked)
         
         self._layout = QVBoxLayout()
         self._layout.setContentsMargins(0, 0, 0, 0)
@@ -86,14 +94,14 @@ class ScreenWelcome(Screen):
         self._layout.setAlignment(Qt.AlignCenter)
 
         self._layout.addWidget(self.logo)
-        self._layout.addWidget(self.click_to_continue)
+        self._layout.addWidget(self.btn_open_project)
         
         self.setLayout(self._layout)
 
     def updateUI(self, *args, **kwargs):
         app.gui.setWindowTitle('The X-Files')
         self.logo.updateUI(*args, **kwargs)
-        self.click_to_continue.updateUI(*args, **kwargs)
+        self.btn_open_project.updateUI(*args, **kwargs)
     
     def paintEvent(self, event):
         screen_size = self.size()
@@ -119,6 +127,13 @@ class ScreenWelcome(Screen):
             y = (h - screen_height) // -2
         painter.drawPixmap(x, y, w, h, self.background)
     
-    def mousePressEvent(self, event):
-        log.info('Go to dashboard')
+    def on_btn_open_project_clicked(self, event):
+        __title = 'Open folder with reports'
+        __path = os.getcwd()
+        dirname = str(QFileDialog.getExistingDirectory(self, __title, __path))
+        if not dirname:
+            return
+        app.state.project = Project(dirname)
+        log.info(f'Open Project: {dirname}')
+        log.info('Go to Dashboard')
         app.gui.navigator.goto('dashboard')
