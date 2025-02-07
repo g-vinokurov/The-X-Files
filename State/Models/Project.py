@@ -1,7 +1,7 @@
 
 import pathlib
 
-from State.Models.Report import Report
+from State.Models.Report.Report import Report
 
 from Logger import log
 
