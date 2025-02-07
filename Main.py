@@ -6,7 +6,6 @@ from PyQt5.QtWidgets import QApplication
 from Gui.Widgets.Window import Window
 from State.State import State
 
-from Storage.Database import db
 from App import app
 
 

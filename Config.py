@@ -10,6 +10,3 @@ IMAGES_DIR = os.path.join(PROJECT_DIR, 'Gui', 'Images')
 LOG_LVL = 'DEBUG'
 LOG_FILE = None
 LOG_FMT = '%(asctime)s %(levelname)s %(message)s'
-
-DB_URL = 'sqlite+pysqlite:///:memory:'
-DB_ECHO = LOG_LVL == 'DEBUG'
