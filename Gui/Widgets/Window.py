@@ -10,6 +10,9 @@ from PyQt5.QtCore import Qt
 
 from Gui.Widgets.Navigator import Navigator
 
+from Logger import log
+from App import app
+
 
 class Window(QMainWindow):
     def __init__(self, *args, **kwargs):
@@ -47,4 +50,6 @@ class Window(QMainWindow):
         self.showMaximized()
     
     def closeEvent(self, event):
+        app.state.quit()
+        log.info('Close Window')
         event.accept()

@@ -128,12 +128,18 @@ class ScreenWelcome(Screen):
         painter.drawPixmap(x, y, w, h, self.background)
     
     def on_btn_open_project_clicked(self, event):
-        __title = 'Open folder with reports'
+        __title = 'Open directory with reports'
         __path = os.getcwd()
-        dirname = str(QFileDialog.getExistingDirectory(self, __title, __path))
-        if not dirname:
+        dir = str(QFileDialog.getExistingDirectory(self, __title, __path))
+        if not dir:
             return
-        app.state.project = Project(dirname)
-        log.info(f'Open Project: {dirname}')
+        log.info(f'Open Project: {dir}')
+
+        try:
+            app.state.project = Project(dir)
+        except Exception:
+            log.critical('Impossible to load project')
+            return app.exit()
+        
         log.info('Go to Dashboard')
         app.gui.navigator.goto('dashboard')

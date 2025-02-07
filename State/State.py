@@ -1,6 +1,9 @@
 
 from State.Models.Project import Project
 
+from Logger import log
+
+
 class State:
     def __init__(self):
         self.project = None
@@ -12,3 +15,6 @@ class State:
     @project.setter
     def project(self, project: Project | None):
         self._project = project
+    
+    def quit(self):
+        log.info('Quit State')
