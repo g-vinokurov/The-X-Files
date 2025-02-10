@@ -1,5 +1,6 @@
 
 import os
+import traceback
 
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtWidgets import QVBoxLayout
@@ -28,7 +29,7 @@ from Gui.Fonts import FONT_COURIER_PRIME
 
 from Gui.Images import IMG_WELCOME
 
-from State.Models.Project import Project
+from State.Utils.ProjectLoader import ProjectLoader
 
 from Logger import log
 
@@ -50,7 +51,7 @@ class Logo(QLabel):
         ''')
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignCenter)
-        self.setFont(QFont(str(FONT_COURIER_PRIME), 48))
+        self.setFont(QFont(str(FONT_GEOLOGICA_BLACK), 48))
     
     def updateUI(self, *args, **kwargs):
         self.setText('THE X-FILES')
@@ -70,7 +71,7 @@ class OpenProject(QPushButton):
             padding-top: 16px;
             color: {COLOR_BS_LIGHT};
         ''')
-        self.setFont(QFont(str(FONT_COURIER_PRIME), 18))
+        self.setFont(QFont(str(FONT_GEOLOGICA_BLACK), 18))
 
     def updateUI(self, *args, **kwargs):
         self.setText('Open Project')
@@ -136,10 +137,11 @@ class ScreenWelcome(Screen):
         log.info(f'Open Project: {dir}')
 
         try:
-            app.state.project = Project(dir)
+            app.state.project = ProjectLoader.load(dir)
         except Exception:
-            log.critical('Impossible to load project')
-            return app.exit()
+            log.error('Could not load project')
+            log.debug(f'{traceback.format_exc()}')
+            return
         
         log.debug('Go to Dashboard')
         app.gui.navigator.goto('dashboard')
