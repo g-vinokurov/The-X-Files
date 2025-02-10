@@ -21,7 +21,6 @@ from Gui.Colors import COLOR_VSC_PRIMARY
 from Gui.Colors import COLOR_BS_LIGHT
 
 from Gui.Fonts import FONT_GEOLOGICA_BLACK
-from Gui.Fonts import FONT_COURIER_PRIME
 
 from Gui.Images import IMG_WELCOME
 
