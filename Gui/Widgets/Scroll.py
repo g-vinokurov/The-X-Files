@@ -16,9 +16,14 @@ class Scroll(QScrollArea):
     def initUI(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.setStyleSheet(f'''
-            QScrollArea {{
-                background-color: {COLOR_VSC_PRIMARY};
-                border-color: {COLOR_VSC_PRIMARY};
+            QScrollArea {{ 
+                background: transparent;
+                border: none;
+            }}
+                           
+            QScrollArea > QWidget > QWidget {{
+                background: transparent; 
+                border: none;
             }}
 
             QScrollBar:horizontal {{

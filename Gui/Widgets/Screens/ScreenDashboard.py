@@ -25,6 +25,8 @@ from Gui.Colors import COLOR_BS_DARK
 from Gui.Fonts import FONT_GEOLOGICA_BLACK
 from Gui.Fonts import FONT_GEOLOGICA_EXTRA_LIGHT
 
+from Gui.Images import IMG_WELCOME
+
 from State.Models.Project import Project
 from State.Models.Report.Report import Report
 
@@ -66,7 +68,7 @@ class ReportParameterEmoji(QLabel):
 
     def initUI(self):
         self.setStyleSheet(f'''
-            font-size: 9pt;
+            font-size: 10pt;
         ''')
         self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
     
@@ -86,7 +88,7 @@ class ReportParameter(QLabel):
         ''')
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
-        self.setFont(QFont(str(FONT_GEOLOGICA_BLACK), 9))
+        self.setFont(QFont(str(FONT_GEOLOGICA_BLACK), 10))
     
     def updateUI(self, text: str, *args, **kwargs):
         self.setText(text)
@@ -104,7 +106,7 @@ class ReportParameterValue(QLabel):
         ''')
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
-        self.setFont(QFont(str(FONT_GEOLOGICA_EXTRA_LIGHT), 9))
+        self.setFont(QFont(str(FONT_GEOLOGICA_EXTRA_LIGHT), 10))
     
     def updateUI(self, text: str, *args, **kwargs):
         self.setText(text)
@@ -193,10 +195,10 @@ class ReportsList(QWidget):
 
     def initUI(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
-        self.setStyleSheet(f'''
-            background-color: {COLOR_VSC_PRIMARY};
-            border: none;
-        ''')
+        # self.setStyleSheet(f'''
+        #     background-color: {COLOR_VSC_PRIMARY};
+        #     border: none;
+        # ''')
 
         self._layout = QVBoxLayout()
         self._layout.setContentsMargins(8, 8, 8, 8)
@@ -226,10 +228,10 @@ class ReportsListSection(QWidget):
 
     def initUI(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
-        self.setStyleSheet(f'''
-            background-color: {COLOR_VSC_PRIMARY};
-            border: none;
-        ''')
+        # self.setStyleSheet(f'''
+        #     background-color: {COLOR_VSC_PRIMARY};
+        #     border: none;
+        # ''')
 
         self._reports_list = ReportsList(self)
 
@@ -260,7 +262,7 @@ class Header(QWidget):
 
     def initUI(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
-        self.setStyleSheet(f'''background-color: {COLOR_VSC_PRIMARY}''')
+        # self.setStyleSheet(f'''background-color: {COLOR_VSC_PRIMARY}''')
 
         self._layout = QHBoxLayout()
         self._layout.setContentsMargins(32, 32, 32, 32)
@@ -279,7 +281,7 @@ class Body(QWidget):
 
     def initUI(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
-        self.setStyleSheet(f'''background-color: {COLOR_VSC_PRIMARY}''')
+        # self.setStyleSheet(f'''background-color: {COLOR_VSC_PRIMARY}''')
 
         self._reports_list_section = ReportsListSection(self)
         
@@ -303,7 +305,7 @@ class Footer(QWidget):
 
     def initUI(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
-        self.setStyleSheet(f'''background-color: {COLOR_VSC_PRIMARY}''')
+        # self.setStyleSheet(f'''background-color: {COLOR_VSC_PRIMARY}''')
         
         self._layout = QHBoxLayout()
         self._layout.setContentsMargins(32, 32, 32, 32)
@@ -321,8 +323,9 @@ class ScreenDashboard(Screen):
         self.initUI()
 
     def initUI(self):
-        self.setAttribute(Qt.WA_StyledBackground, True)
-        self.setStyleSheet(f'''background-color: {COLOR_VSC_PRIMARY}''')
+        # self.setAttribute(Qt.WA_StyledBackground, True)
+        # self.setStyleSheet(f'''background-color: {COLOR_VSC_PRIMARY}''')
+        self._background = QPixmap(IMG_WELCOME)
 
         self._header = Header(self)
         self._body = Body(self)
@@ -345,3 +348,27 @@ class ScreenDashboard(Screen):
         self._body.updateUI(*args, **kwargs)
         self._footer.updateUI(*args, **kwargs)
         app.gui.setWindowTitle('The X-Files | Dashboard')
+    
+    def paintEvent(self, event):
+        screen_size = self.size()
+        screen_width = screen_size.width()
+        screen_height = screen_size.height()
+        screen_ratio = screen_width / screen_height
+
+        image_width = self._background.width()
+        image_height = self._background.height()
+        image_ratio = image_width / image_height
+
+        painter = QPainter(self)
+
+        if image_ratio > screen_ratio:
+            w = int(screen_height * image_ratio)
+            h = screen_height
+            x = (w - screen_width) // -2
+            y = 0
+        else:
+            w = screen_width
+            h = int(screen_width / image_ratio)
+            x = 0
+            y = (h - screen_height) // -2
+        painter.drawPixmap(x, y, w, h, self._background)
