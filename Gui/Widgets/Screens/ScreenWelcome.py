@@ -82,26 +82,26 @@ class ScreenWelcome(Screen):
         self.initUI()
 
     def initUI(self):
-        self.background = QPixmap(IMG_WELCOME)
-        self.logo = Logo(self)
-        self.btn_open_project = OpenProject(self)
+        self._background = QPixmap(IMG_WELCOME)
+        self._logo = Logo(self)
+        self._btn_open_project = OpenProject(self)
 
-        self.btn_open_project.clicked.connect(self.on_btn_open_project_clicked)
+        self._btn_open_project.clicked.connect(self.on_btn_open_project_clicked)
         
         self._layout = QVBoxLayout()
         self._layout.setContentsMargins(0, 0, 0, 0)
         self._layout.setSpacing(0)
         self._layout.setAlignment(Qt.AlignCenter)
 
-        self._layout.addWidget(self.logo)
-        self._layout.addWidget(self.btn_open_project)
+        self._layout.addWidget(self._logo)
+        self._layout.addWidget(self._btn_open_project)
         
         self.setLayout(self._layout)
 
     def updateUI(self, *args, **kwargs):
         app.gui.setWindowTitle('The X-Files')
-        self.logo.updateUI(*args, **kwargs)
-        self.btn_open_project.updateUI(*args, **kwargs)
+        self._logo.updateUI(*args, **kwargs)
+        self._btn_open_project.updateUI(*args, **kwargs)
     
     def paintEvent(self, event):
         screen_size = self.size()
@@ -109,8 +109,8 @@ class ScreenWelcome(Screen):
         screen_height = screen_size.height()
         screen_ratio = screen_width / screen_height
 
-        image_width = self.background.width()
-        image_height = self.background.height()
+        image_width = self._background.width()
+        image_height = self._background.height()
         image_ratio = image_width / image_height
 
         painter = QPainter(self)
@@ -125,7 +125,7 @@ class ScreenWelcome(Screen):
             h = int(screen_width / image_ratio)
             x = 0
             y = (h - screen_height) // -2
-        painter.drawPixmap(x, y, w, h, self.background)
+        painter.drawPixmap(x, y, w, h, self._background)
     
     def on_btn_open_project_clicked(self, event):
         __title = 'Open directory with reports'
