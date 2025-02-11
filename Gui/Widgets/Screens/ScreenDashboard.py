@@ -125,7 +125,6 @@ class ReportParameterItem(QWidget):
             background: none;
             border: none;
         ''')
-        self.setCursor(QCursor(Qt.PointingHandCursor))
 
         self._emoji = ReportParameterEmoji(self.__emoji, self)
         self._parameter = ReportParameter(self.__name, self)
@@ -159,6 +158,7 @@ class ReportCard(QWidget):
             border-color: none;
             padding: 0px
         ''')
+        self.setCursor(QCursor(Qt.PointingHandCursor))
 
         self._report_title = ReportTitle(self)
 
