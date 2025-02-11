@@ -24,6 +24,7 @@ from Gui.Colors import COLOR_BS_DARK
 
 from Gui.Fonts import FONT_GEOLOGICA_BLACK
 from Gui.Fonts import FONT_GEOLOGICA_EXTRA_LIGHT
+from Gui.Fonts import FONT_NOTO_EMOJI_SEMI_BOLD
 
 from Gui.Images import IMG_WELCOME
 
@@ -67,13 +68,12 @@ class ReportParameterEmoji(QLabel):
         self.initUI()
 
     def initUI(self):
-        self.setStyleSheet(f'''
-            font-size: 10pt;
-        ''')
         self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
+        self.setFont(QFont(str(FONT_NOTO_EMOJI_SEMI_BOLD), 10))
     
-    def updateUI(self, emoji: str, *args, **kwargs):
+    def updateUI(self, emoji: str, color: str, *args, **kwargs):
         self.setText(emoji)
+        self.setStyleSheet(f'''padding: 2px; color: {color};''')
 
 
 class ReportParameter(QLabel):
@@ -113,9 +113,10 @@ class ReportParameterValue(QLabel):
 
 
 class ReportParameterItem(QWidget):
-    def __init__(self, emoji: str, name: str, parent, *args, **kwargs):
+    def __init__(self, emoji: str, emoji_color: str, name: str, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
         self.__emoji = emoji
+        self.__emoji_color = emoji_color
         self.__name = name
         self.initUI()
 
@@ -143,6 +144,7 @@ class ReportParameterItem(QWidget):
     
     def updateUI(self, value: str, *args, **kwargs):
         self._value.setText(value)
+        self._emoji.updateUI(emoji=self.__emoji, color=self.__emoji_color)
 
 
 class ReportCard(QWidget):
@@ -162,10 +164,10 @@ class ReportCard(QWidget):
 
         self._report_title = ReportTitle(self)
 
-        self._report_type = ReportParameterItem('🚩', 'Тип:', self)
-        self._report_level = ReportParameterItem('💎', 'Сложность:', self)
-        self._report_tags = ReportParameterItem('📌', 'Теги:', self)
-        self._report_date = ReportParameterItem('📅', 'Дата:', self)
+        self._report_type = ReportParameterItem('🚩', 'red', 'Тип:', self)
+        self._report_level = ReportParameterItem('☢️', 'orange', 'Сложность:', self)
+        self._report_tags = ReportParameterItem('🌵', 'green', 'Теги:', self)
+        self._report_date = ReportParameterItem('☄️', 'blue', 'Дата:', self)
         
         self._layout = QVBoxLayout()
         self._layout.setContentsMargins(16, 16, 16, 16)
