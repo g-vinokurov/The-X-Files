@@ -1,11 +1,14 @@
 
 from PyQt5.QtWidgets import QScrollArea
 
+from PyQt5.QtGui import QCursor
+
 from PyQt5.QtCore import Qt
 
 from Gui.Colors import COLOR_VSC_PRIMARY
 from Gui.Colors import COLOR_VSC_SECONDARY
 from Gui.Colors import COLOR_VSC_TERTIARY
+from Gui.Colors import COLOR_BS_LIGHT
 
 
 class Scroll(QScrollArea):
@@ -15,6 +18,7 @@ class Scroll(QScrollArea):
     
     def initUI(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
+        self.setCursor(QCursor(Qt.PointingHandCursor))
         self.setStyleSheet(f'''
             QScrollArea {{ 
                 background: transparent;
@@ -29,13 +33,13 @@ class Scroll(QScrollArea):
             QScrollBar:horizontal {{
                 height: 15px;
                 margin: 3px 15px 3px 15px;
-                border: 1px transparent {COLOR_VSC_SECONDARY};
+                border: 1px transparent {COLOR_BS_LIGHT};
                 border-radius: 4px;
-                background-color: {COLOR_VSC_SECONDARY};
+                background-color: transparent;
             }}
 
             QScrollBar::handle:horizontal {{
-                background-color: {COLOR_VSC_TERTIARY};
+                background-color: {COLOR_BS_LIGHT};
                 min-width: 5px;
                 border-radius: 4px;
             }}
@@ -65,15 +69,15 @@ class Scroll(QScrollArea):
             }}
 
             QScrollBar:vertical {{
-                background-color: {COLOR_VSC_SECONDARY};
+                background-color: transparent;
                 width: 15px;
                 margin: 15px 3px 15px 3px;
-                border: 1px transparent {COLOR_VSC_SECONDARY};
+                border: 1px transparent {COLOR_BS_LIGHT};
                 border-radius: 4px;
             }}
 
             QScrollBar::handle:vertical {{
-                background-color: {COLOR_VSC_TERTIARY};
+                background-color: {COLOR_BS_LIGHT};
                 min-height: 5px;
                 border-radius: 4px;
             }}
