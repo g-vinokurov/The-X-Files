@@ -149,8 +149,9 @@ class ReportParameterItem(QWidget):
 
 
 class ReportCard(QWidget):
-    def __init__(self, parent, *args, **kwargs):
+    def __init__(self, report: Report, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
+        self.__report = report
         self.initUI()
 
     def initUI(self):
@@ -183,13 +184,23 @@ class ReportCard(QWidget):
 
         self.setLayout(self._layout)
 
-    def updateUI(self, report: Report, *args, **kwargs):
-        self._report_title.updateUI(report=report)
-        self._report_type.updateUI(value=str(report.type))
-        self._report_level.updateUI(value=str(report.level))
-        self._report_tags.updateUI(value=', '.join([str(tag) for tag in report.tags]))
-        self._report_date.updateUI(value=str(report.date))
+    def updateUI(self, *args, **kwargs):
+        report = self.__report
+        report_type = str(report.type) if report.type is not None else 'Undefined'
+        report_level = str(report.level) if report.level is not None else 'Undefined'
+        report_tags = [str(tag) for tag in report.tags]
+        report_tags = ', '.join(report_tags) if report_tags else 'No tags'
+        report_date = str(report.date) if report.date is not None else 'Undefined'
 
+        self._report_title.updateUI(report=report)
+        self._report_type.updateUI(value=report_type)
+        self._report_level.updateUI(value=report_level)
+        self._report_tags.updateUI(value=report_tags)
+        self._report_date.updateUI(value=report_date)
+    
+    def mousePressEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            print(self.__report.alt_name)
 
 class ReportsList(QWidget):
     def __init__(self, parent, *args, **kwargs):
@@ -198,10 +209,6 @@ class ReportsList(QWidget):
 
     def initUI(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
-        # self.setStyleSheet(f'''
-        #     background-color: {COLOR_VSC_PRIMARY};
-        #     border: none;
-        # ''')
 
         self._layout = QVBoxLayout()
         self._layout.setContentsMargins(8, 8, 8, 8)
@@ -217,11 +224,9 @@ class ReportsList(QWidget):
                 continue
             widget.setParent(None)
         for report in reports:
-            report_card = ReportCard(self)
-            report_card.hide()
-            report_card.updateUI(report=report)
+            report_card = ReportCard(report, self)
+            report_card.updateUI()
             self._layout.addWidget(report_card)
-            report_card.show()
 
 
 class ReportsListSection(QWidget):
@@ -231,10 +236,6 @@ class ReportsListSection(QWidget):
 
     def initUI(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
-        # self.setStyleSheet(f'''
-        #     background-color: {COLOR_VSC_PRIMARY};
-        #     border: none;
-        # ''')
 
         self._reports_list = ReportsList(self)
 
@@ -265,7 +266,6 @@ class Header(QWidget):
 
     def initUI(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
-        # self.setStyleSheet(f'''background-color: {COLOR_VSC_PRIMARY}''')
 
         self._layout = QHBoxLayout()
         self._layout.setContentsMargins(32, 32, 32, 32)
@@ -284,7 +284,6 @@ class Body(QWidget):
 
     def initUI(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
-        # self.setStyleSheet(f'''background-color: {COLOR_VSC_PRIMARY}''')
 
         self._reports_list_section = ReportsListSection(self)
         
@@ -308,7 +307,6 @@ class Footer(QWidget):
 
     def initUI(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
-        # self.setStyleSheet(f'''background-color: {COLOR_VSC_PRIMARY}''')
         
         self._layout = QHBoxLayout()
         self._layout.setContentsMargins(32, 32, 32, 32)
@@ -326,8 +324,6 @@ class ScreenDashboard(Screen):
         self.initUI()
 
     def initUI(self):
-        # self.setAttribute(Qt.WA_StyledBackground, True)
-        # self.setStyleSheet(f'''background-color: {COLOR_VSC_PRIMARY}''')
         self._background = QPixmap(IMG_WELCOME)
 
         self._header = Header(self)
