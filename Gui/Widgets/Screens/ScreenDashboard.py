@@ -21,6 +21,7 @@ from Gui.Colors import COLOR_VSC_SECONDARY
 from Gui.Colors import COLOR_VSC_TERTIARY
 from Gui.Colors import COLOR_BS_LIGHT
 from Gui.Colors import COLOR_BS_DARK
+from Gui.Colors import COLOR_BS_SECONDARY
 
 from Gui.Fonts import FONT_GEOLOGICA_BLACK
 from Gui.Fonts import FONT_GEOLOGICA_EXTRA_LIGHT
@@ -148,6 +149,30 @@ class ReportCardParameterValue(QLabel):
         self.setText(text)
 
 
+class ReportWidgetAltName(QLabel):
+    def __init__(self, report: Report, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.__report = report
+        self.initUI()
+
+    def initUI(self):
+        self.setStyleSheet(f'''
+            padding: 0px;
+            color: {COLOR_BS_SECONDARY};
+        ''')
+        self.setContentsMargins(0, 0, 0, 0)
+        self.setWordWrap(False)
+        self.setAlignment(Qt.AlignCenter)
+        self.setFont(QFont(str(FONT_GEOLOGICA_EXTRA_LIGHT), 9))
+        self.setTextInteractionFlags(Qt.TextSelectableByMouse)
+        self.setCursor(QCursor(Qt.IBeamCursor))
+
+        self.setText(str(self.__report.alt_name))
+    
+    def updateUI(self, *args, **kwargs):
+        pass
+
+
 class ReportCardParameters(QWidget):
     def __init__(self, report: Report, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
@@ -215,6 +240,20 @@ class ReportCardParameters(QWidget):
         self._report_level_value.updateUI(report_level)
         self._report_tags_value.updateUI(report_tags)
         self._report_date_value.updateUI(report_date)
+
+
+class ReportWidgetParameters(ReportCardParameters):
+    def __init__(self, report, parent, *args, **kwargs):
+        super().__init__(report, parent, *args, **kwargs)
+        self._report_type_value.setTextInteractionFlags(Qt.TextSelectableByMouse)
+        self._report_level_value.setTextInteractionFlags(Qt.TextSelectableByMouse)
+        self._report_tags_value.setTextInteractionFlags(Qt.TextSelectableByMouse)
+        self._report_date_value.setTextInteractionFlags(Qt.TextSelectableByMouse)
+
+        self._report_type_value.setCursor(QCursor(Qt.IBeamCursor))
+        self._report_level_value.setCursor(QCursor(Qt.IBeamCursor))
+        self._report_tags_value.setCursor(QCursor(Qt.IBeamCursor))
+        self._report_date_value.setCursor(QCursor(Qt.IBeamCursor))
 
 
 class ReportCard(QWidget):
@@ -331,18 +370,24 @@ class ReportWidgetContent(QWidget):
         self.setCursor(QCursor(Qt.ArrowCursor))
 
         self._report_title = ReportWidgetTitle(self.__report, self)
+        self._report_alt_name = ReportWidgetAltName(self.__report, self)
+        self._report_parameters = ReportWidgetParameters(self.__report, self)
 
         self._layout = QVBoxLayout()
-        self._layout.setContentsMargins(32, 32, 32, 32)
+        self._layout.setContentsMargins(64, 32, 64, 32)
         self._layout.setSpacing(0)
         self._layout.setAlignment(Qt.AlignTop)
 
         self._layout.addWidget(self._report_title)
+        self._layout.addWidget(self._report_alt_name)
+        self._layout.addWidget(self._report_parameters)
 
         self.setLayout(self._layout)
     
     def updateUI(self, *args, **kwargs):
         self._report_title.updateUI(*args, **kwargs)
+        self._report_alt_name.updateUI(*args, **kwargs)
+        self._report_parameters.updateUI(*args, **kwargs)
 
 
 class ReportWidget(QWidget):
