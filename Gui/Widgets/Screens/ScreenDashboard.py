@@ -37,9 +37,10 @@ from Logger import log
 from App import app
 
 
-class ReportTitle(QLabel):
-    def __init__(self, *args, **kwargs):
+class ReportCardTitle(QLabel):
+    def __init__(self, report: Report, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.__report = report
         self.initUI()
     
     def initUI(self):
@@ -51,7 +52,8 @@ class ReportTitle(QLabel):
         self.setAlignment(Qt.AlignLeft)
         self.setFont(QFont(str(FONT_GEOLOGICA_BLACK), 11))
     
-    def updateUI(self, report: Report, *args, **kwargs):
+    def updateUI(self, *args, **kwargs):
+        report = self.__report
         if report.provider is not None and report.provider.name:
             text = f'{report.provider.name}. '
         else:
@@ -63,14 +65,14 @@ class ReportTitle(QLabel):
         self.setText(text)
 
 
-class ReportParameterEmoji(QLabel):
+class ReportCardParameterEmoji(QLabel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.initUI()
 
     def initUI(self):
-        self.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
-        font = QFont(str(FONT_SEGOE_UI_EMOJI), 10)
+        self.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
+        font = QFont(str(FONT_SEGOE_UI_EMOJI), 12)
         font.setHintingPreference(QFont.HintingPreference.PreferNoHinting)
         self.setFont(font)
     
@@ -78,7 +80,7 @@ class ReportParameterEmoji(QLabel):
         self.setText(emoji)
 
 
-class ReportParameter(QLabel):
+class ReportCardParameter(QLabel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.initUI()
@@ -88,6 +90,7 @@ class ReportParameter(QLabel):
             padding: 0px;
             color: {COLOR_BS_DARK};
         ''')
+        self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
         self.setFont(QFont(str(FONT_GEOLOGICA_BLACK), 10))
@@ -96,7 +99,7 @@ class ReportParameter(QLabel):
         self.setText(text)
 
 
-class ReportParameterValue(QLabel):
+class ReportCardParameterValue(QLabel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.initUI()
@@ -106,6 +109,7 @@ class ReportParameterValue(QLabel):
             padding: 0px;
             color: {COLOR_BS_DARK};
         ''')
+        self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
         self.setFont(QFont(str(FONT_GEOLOGICA_EXTRA_LIGHT), 10))
@@ -114,13 +118,12 @@ class ReportParameterValue(QLabel):
         self.setText(text)
 
 
-class ReportParameterItem(QWidget):
-    def __init__(self, emoji: str, name: str, parent, *args, **kwargs):
+class ReportCardParameters(QWidget):
+    def __init__(self, report: Report, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
-        self.__emoji = emoji
-        self.__name = name
+        self.__report = report
         self.initUI()
-
+    
     def initUI(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.setStyleSheet(f'''
@@ -128,24 +131,60 @@ class ReportParameterItem(QWidget):
             border: none;
         ''')
 
-        self._emoji = ReportParameterEmoji(self.__emoji, self)
-        self._parameter = ReportParameter(self.__name, self)
-        self._value = ReportParameterValue(self)
-
-        self._layout = QHBoxLayout()
+        self._layout = QGridLayout()
         self._layout.setContentsMargins(0, 0, 0, 0)
-        self._layout.setSpacing(8)
+        self._layout.setSpacing(4)
         self._layout.setAlignment(Qt.AlignTop)
-        self._layout.addWidget(self._emoji)
-        self._layout.addWidget(self._parameter)
-        self._layout.addWidget(self._value)
-        self._layout.setStretch(2, 1)
+
+        self._report_type_emoji = ReportCardParameterEmoji('🚩', self)
+        self._report_type = ReportCardParameter('Тип:', self)
+        self._report_type_value = ReportCardParameterValue(self)
+
+        self._report_level_emoji = ReportCardParameterEmoji('☢️', self)
+        self._report_level = ReportCardParameter('Уровень:', self)
+        self._report_level_value = ReportCardParameterValue(self)
+
+        self._report_tags_emoji = ReportCardParameterEmoji('🌵', self)
+        self._report_tags = ReportCardParameter('Теги:', self)
+        self._report_tags_value = ReportCardParameterValue(self)
+
+        self._report_date_emoji = ReportCardParameterEmoji('☄️', self)
+        self._report_date = ReportCardParameter('Дата:', self)
+        self._report_date_value = ReportCardParameterValue(self)
+
+        self._layout.addWidget(self._report_type_emoji, 0, 0)
+        self._layout.addWidget(self._report_type, 0, 1)
+        self._layout.addWidget(self._report_type_value, 0, 2)
+
+        self._layout.addWidget(self._report_level_emoji, 1, 0)
+        self._layout.addWidget(self._report_level, 1, 1)
+        self._layout.addWidget(self._report_level_value, 1, 2)
+
+        self._layout.addWidget(self._report_tags_emoji, 2, 0)
+        self._layout.addWidget(self._report_tags, 2, 1)
+        self._layout.addWidget(self._report_tags_value, 2, 2)
+
+        self._layout.addWidget(self._report_date_emoji, 3, 0)
+        self._layout.addWidget(self._report_date, 3, 1)
+        self._layout.addWidget(self._report_date_value, 3, 2)
+
+        self._layout.setColumnStretch(2, 1)
 
         self.setLayout(self._layout)
     
-    def updateUI(self, value: str, *args, **kwargs):
-        self._value.setText(value)
-        self._emoji.updateUI(emoji=self.__emoji)
+    def updateUI(self, *args, **kwargs):
+        report = self.__report
+
+        report_type = str(report.type) if report.type is not None else 'Undefined'
+        report_level = str(report.level) if report.level is not None else 'Undefined'
+        report_tags = [str(tag) for tag in report.tags]
+        report_tags = ', '.join(report_tags) if report_tags else 'No tags'
+        report_date = str(report.date) if report.date is not None else 'Undefined'
+
+        self._report_type_value.updateUI(report_type)
+        self._report_level_value.updateUI(report_level)
+        self._report_tags_value.updateUI(report_tags)
+        self._report_date_value.updateUI(report_date)
 
 
 class ReportCard(QWidget):
@@ -164,12 +203,8 @@ class ReportCard(QWidget):
         ''')
         self.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self._report_title = ReportTitle(self)
-
-        self._report_type = ReportParameterItem('🚩', 'Тип:', self)
-        self._report_level = ReportParameterItem('☢️', 'Уровень:', self)
-        self._report_tags = ReportParameterItem('🌵', 'Теги:', self)
-        self._report_date = ReportParameterItem('☄️', 'Дата:', self)
+        self._report_title = ReportCardTitle(self.__report, self)
+        self._report_parameters = ReportCardParameters(self.__report, self)
         
         self._layout = QVBoxLayout()
         self._layout.setContentsMargins(16, 16, 16, 16)
@@ -177,26 +212,13 @@ class ReportCard(QWidget):
         self._layout.setAlignment(Qt.AlignTop)
 
         self._layout.addWidget(self._report_title)
-        self._layout.addWidget(self._report_type)
-        self._layout.addWidget(self._report_level)
-        self._layout.addWidget(self._report_tags)
-        self._layout.addWidget(self._report_date)
+        self._layout.addWidget(self._report_parameters)
 
         self.setLayout(self._layout)
 
     def updateUI(self, *args, **kwargs):
-        report = self.__report
-        report_type = str(report.type) if report.type is not None else 'Undefined'
-        report_level = str(report.level) if report.level is not None else 'Undefined'
-        report_tags = [str(tag) for tag in report.tags]
-        report_tags = ', '.join(report_tags) if report_tags else 'No tags'
-        report_date = str(report.date) if report.date is not None else 'Undefined'
-
-        self._report_title.updateUI(report=report)
-        self._report_type.updateUI(value=report_type)
-        self._report_level.updateUI(value=report_level)
-        self._report_tags.updateUI(value=report_tags)
-        self._report_date.updateUI(value=report_date)
+        self._report_title.updateUI(*args, **kwargs)
+        self._report_parameters.updateUI(*args, **kwargs)
     
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
