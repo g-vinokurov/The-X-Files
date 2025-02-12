@@ -52,3 +52,12 @@ FONT_NOTO_EMOJI_REGULAR = Font(os.path.join(FONTS_DIR, 'NotoEmoji-Regular.ttf'))
 FONT_NOTO_EMOJI_SEMI_BOLD = Font(os.path.join(FONTS_DIR, 'NotoEmoji-SemiBold.ttf'))
 
 FONT_SEGOE_UI_EMOJI = Font(os.path.join(FONTS_DIR, 'Segoe-UI-Emoji.ttf'))
+
+FONT_JET_BRAINS_MONO_NL_BOLD = Font(os.path.join(FONTS_DIR, 'JetBrainsMonoNL-Bold.ttf'))
+FONT_JET_BRAINS_MONO_NL_EXTRA_BOLD = Font(os.path.join(FONTS_DIR, 'JetBrainsMonoNL-ExtraBold.ttf'))
+FONT_JET_BRAINS_MONO_NL_EXTRA_LIGHT = Font(os.path.join(FONTS_DIR, 'JetBrainsMonoNL-ExtraLight.ttf'))
+FONT_JET_BRAINS_MONO_NL_LIGHT = Font(os.path.join(FONTS_DIR, 'JetBrainsMonoNL-Light.ttf'))
+FONT_JET_BRAINS_MONO_NL_MEDIUM = Font(os.path.join(FONTS_DIR, 'JetBrainsMonoNL-Medium.ttf'))
+FONT_JET_BRAINS_MONO_NL_REGULAR = Font(os.path.join(FONTS_DIR, 'JetBrainsMonoNL-Regular.ttf'))
+FONT_JET_BRAINS_MONO_NL_SEMI_BOLD = Font(os.path.join(FONTS_DIR, 'JetBrainsMonoNL-SemiBold.ttf'))
+FONT_JET_BRAINS_MONO_NL_THIN = Font(os.path.join(FONTS_DIR, 'JetBrainsMonoNL-Thin.ttf'))

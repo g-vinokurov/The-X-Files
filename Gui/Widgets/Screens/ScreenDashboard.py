@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QHBoxLayout
 from PyQt5.QtWidgets import QGridLayout
 from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtWidgets import QLabel
+from PyQt5.QtWidgets import QAbstractScrollArea
 
 from PyQt5.QtGui import QCursor
 from PyQt5.QtGui import QFont
@@ -14,7 +15,7 @@ from PyQt5.QtGui import QPainter
 from PyQt5.QtCore import Qt
 
 from Gui.Widgets.Screens.Screen import Screen
-from Gui.Widgets.Scroll import Scroll
+from Gui.Widgets.Scroll import Scroll, ScrollSecondary
 
 from Gui.Colors import COLOR_VSC_PRIMARY
 from Gui.Colors import COLOR_VSC_SECONDARY
@@ -22,20 +23,233 @@ from Gui.Colors import COLOR_VSC_TERTIARY
 from Gui.Colors import COLOR_BS_LIGHT
 from Gui.Colors import COLOR_BS_DARK
 from Gui.Colors import COLOR_BS_SECONDARY
+from Gui.Colors import COLOR_BS_GRAY_200
 
 from Gui.Fonts import FONT_GEOLOGICA_BLACK
 from Gui.Fonts import FONT_GEOLOGICA_EXTRA_LIGHT
-from Gui.Fonts import FONT_NOTO_EMOJI_SEMI_BOLD
+from Gui.Fonts import FONT_JET_BRAINS_MONO_NL_REGULAR
 from Gui.Fonts import FONT_SEGOE_UI_EMOJI
 
 from Gui.Images import IMG_WELCOME
 
 from State.Models.Project import Project
 from State.Models.Report.Report import Report
+from State.Models.Report.Solution import Solution
+from State.Models.Report.Task import Task
+
+from State.Models.Content.Content import Content
+from State.Models.Content.File import File
+from State.Models.Content.Img import Img
+from State.Models.Content.P import P
+from State.Models.Content.Pre import Pre
 
 from Logger import log
 
 from App import app
+
+
+class ReportParagraph(QLabel):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.initUI()
+
+    def initUI(self):
+        self.setStyleSheet(f'''
+            padding: 0px;
+            color: {COLOR_BS_DARK};
+        ''')
+        self.setContentsMargins(0, 0, 0, 0)
+        self.setWordWrap(True)
+        self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
+        self.setFont(QFont(str(FONT_GEOLOGICA_EXTRA_LIGHT), 10))
+        self.setTextInteractionFlags(Qt.TextSelectableByMouse)
+        self.setCursor(QCursor(Qt.IBeamCursor))
+    
+    def updateUI(self, *args, **kwargs):
+        pass
+
+
+class ReportPreformattedWidgetContent(QLabel):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.initUI()
+    
+    def initUI(self):
+        self.setStyleSheet(f'''
+            padding: 16px;
+            background-color: {COLOR_BS_GRAY_200};
+            border-radius: 16px;
+            border-color: none;
+            color: {COLOR_BS_DARK};
+        ''')
+        self.setContentsMargins(8, 8, 8, 8)
+        self.setWordWrap(False)
+        self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
+        self.setFont(QFont(str(FONT_JET_BRAINS_MONO_NL_REGULAR), 9))
+        self.setTextInteractionFlags(Qt.TextSelectableByMouse)
+        self.setCursor(QCursor(Qt.IBeamCursor))
+    
+    def updateUI(self, *args, **kwargs):
+        pass
+
+
+class ReportPreformattedWidget(QWidget):
+    def __init__(self, text: str, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.__text = text
+        self.initUI()
+    
+    def initUI(self):
+        self.setAttribute(Qt.WA_StyledBackground, True)
+
+        self._content = ReportPreformattedWidgetContent(self.__text, self)
+
+        self._layout = QVBoxLayout()
+        self._layout.setContentsMargins(8, 8, 8, 8)
+        self._layout.setSpacing(0)
+
+        self._layout.addWidget(self._content)
+
+        self.setLayout(self._layout)
+    
+    def updateUI(self, *args, **kwargs):
+        self._content.updateUI(*args, **kwargs)
+
+
+class ReportPreformatted(QWidget):
+    def __init__(self, text: str, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.__text = text
+        self.initUI()
+
+    def initUI(self):
+        self.setAttribute(Qt.WA_StyledBackground, True)
+        self.setCursor(QCursor(Qt.IBeamCursor))
+
+        self._widget = ReportPreformattedWidget(self.__text, self)
+
+        self._scroll = ScrollSecondary(self)
+        self._scroll.setWidgetResizable(True)
+        self._scroll.setWidget(self._widget)
+
+        self._layout = QHBoxLayout()
+        self._layout.setContentsMargins(0, 0, 0, 0)
+        self._layout.setSpacing(0)
+        
+        self._layout.addWidget(self._scroll)
+
+        self.setLayout(self._layout)
+    
+    def updateUI(self, *args, **kwargs):
+        self._widget.updateUI(*args, **kwargs)
+
+
+class ReportWidgetInnerContent(QWidget):
+    def __init__(self, content: Content, parent, *args, **kwargs):
+        super().__init__(parent, *args, **kwargs)
+        self.__content = content
+        self.initUI()
+    
+    def initUI(self):
+        self.setAttribute(Qt.WA_StyledBackground, True)
+        self.setStyleSheet(f'''
+            background: none;
+            border: none;
+        ''')
+
+        self._layout = QVBoxLayout()
+        self._layout.setContentsMargins(0, 0, 0, 0)
+        self._layout.setSpacing(4)
+        self._layout.setAlignment(Qt.AlignTop)
+
+        for item in self.__content.items:
+            if isinstance(item, P):
+                self._layout.addWidget(ReportParagraph(item.text, self))
+                continue
+        
+            if isinstance(item, Pre):
+                self._layout.addWidget(ReportPreformatted(item.text, self))
+                continue
+
+        self.setLayout(self._layout)
+    
+    def updateUI(self, *args, **kwargs):
+        pass
+
+
+class ReportWidgetSolution(QWidget):
+    def __init__(self, solution: Solution, parent, *args, **kwargs):
+        super().__init__(parent, *args, **kwargs)
+        self.__solution = solution
+        self.initUI()
+    
+    def initUI(self):
+        self.setAttribute(Qt.WA_StyledBackground, True)
+        self.setStyleSheet(f'''
+            background: none;
+            border: none;
+        ''')
+
+        self._content = ReportWidgetInnerContent(self.__solution.content, self)
+
+        self._layout = QVBoxLayout()
+        self._layout.setContentsMargins(0, 0, 0, 0)
+        self._layout.setSpacing(4)
+        self._layout.setAlignment(Qt.AlignTop)
+
+        self._layout.addWidget(self._content)
+
+        self.setLayout(self._layout)
+    
+    def updateUI(self, *args, **kwargs):
+        self._content.updateUI(*args, **kwargs)
+
+
+class ReportWidgetTask(QWidget):
+    def __init__(self, task: Task, parent, *args, **kwargs):
+        super().__init__(parent, *args, **kwargs)
+        self.__task = task
+        self.initUI()
+    
+    def initUI(self):
+        self.setAttribute(Qt.WA_StyledBackground, True)
+        self.setStyleSheet(f'''
+            background: none;
+            border: none;
+        ''')
+
+        self._content = ReportWidgetInnerContent(self.__task.content, self)
+
+        self._layout = QVBoxLayout()
+        self._layout.setContentsMargins(0, 0, 0, 0)
+        self._layout.setSpacing(4)
+        self._layout.setAlignment(Qt.AlignTop)
+
+        self._layout.addWidget(self._content)
+
+        self.setLayout(self._layout)
+    
+    def updateUI(self, *args, **kwargs):
+        self._content.updateUI(*args, **kwargs)
+
+
+class ReportWidgetSubtitle(QLabel):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.initUI()
+
+    def initUI(self):
+        self.setStyleSheet(f'''
+            padding: 0px;
+            color: {COLOR_BS_DARK};
+        ''')
+        self.setContentsMargins(0, 16, 0, 8)
+        self.setWordWrap(True)
+        self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
+        self.setFont(QFont(str(FONT_GEOLOGICA_BLACK), 10))
+    
+    def updateUI(self, *args, **kwargs):
+        pass
 
 
 class ReportCardTitle(QLabel):
@@ -373,6 +587,14 @@ class ReportWidgetContent(QWidget):
         self._report_alt_name = ReportWidgetAltName(self.__report, self)
         self._report_parameters = ReportWidgetParameters(self.__report, self)
 
+        if self.__report.task is not None:
+            self._report_task_title = ReportWidgetSubtitle('Задача', self)
+            self._report_task = ReportWidgetTask(self.__report.task, self)
+
+        if self.__report.solution is not None:
+            self._report_solution_title = ReportWidgetSubtitle('Решение', self)
+            self._report_solution = ReportWidgetSolution(self.__report.solution, self)
+
         self._layout = QVBoxLayout()
         self._layout.setContentsMargins(64, 32, 64, 32)
         self._layout.setSpacing(0)
@@ -382,12 +604,28 @@ class ReportWidgetContent(QWidget):
         self._layout.addWidget(self._report_alt_name)
         self._layout.addWidget(self._report_parameters)
 
+        if self.__report.task is not None:
+            self._layout.addWidget(self._report_task_title)
+            self._layout.addWidget(self._report_task)
+
+        if self.__report.solution is not None:
+            self._layout.addWidget(self._report_solution_title)
+            self._layout.addWidget(self._report_solution)
+
         self.setLayout(self._layout)
     
     def updateUI(self, *args, **kwargs):
         self._report_title.updateUI(*args, **kwargs)
         self._report_alt_name.updateUI(*args, **kwargs)
         self._report_parameters.updateUI(*args, **kwargs)
+
+        if self.__report.task is not None:
+            self._report_task_title.updateUI(*args, **kwargs)
+            self._report_task.updateUI(*args, **kwargs)
+
+        if self.__report.solution is not None:
+            self._report_solution_title.updateUI(*args, **kwargs)
+            self._report_solution.updateUI(*args, **kwargs)
 
 
 class ReportWidget(QWidget):

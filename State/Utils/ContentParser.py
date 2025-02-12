@@ -26,9 +26,8 @@ class ContentParser:
                 continue
 
             if child.name == 'pre':
-                text = str(child.text)
+                text = str(child.text).strip()
                 items.append(Pre(text))
-                print(text)
                 continue
 
             if child.name == 'img':
