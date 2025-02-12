@@ -10,6 +10,8 @@ from State.Models.Report.Tag import Tag
 from State.Models.Report.Task import Task
 from State.Models.Report.Solution import Solution
 
+from State.Utils.ContentParser import ContentParser
+
 from Logger import log
 
 
@@ -125,7 +127,7 @@ class ReportLoader:
         if task is None:
             log.warning('Report Task not found')
             return None
-        return Task()
+        return Task(ContentParser.parse(task))
     
     @classmethod
     def __parse_report_solution(cls, report_body: bs4.Tag) -> Solution | None:
@@ -133,4 +135,4 @@ class ReportLoader:
         if solution is None:
             log.warning('Report Solution not found')
             return None
-        return Task()
+        return Solution(ContentParser.parse(solution))
