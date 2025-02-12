@@ -166,7 +166,7 @@ class ReportCard(QWidget):
         self._report_title = ReportTitle(self)
 
         self._report_type = ReportParameterItem('🚩', 'Тип:', self)
-        self._report_level = ReportParameterItem('☢️', 'Сложность:', self)
+        self._report_level = ReportParameterItem('☢️', 'Уровень:', self)
         self._report_tags = ReportParameterItem('🌵', 'Теги:', self)
         self._report_date = ReportParameterItem('☄️', 'Дата:', self)
         
