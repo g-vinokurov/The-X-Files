@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QHBoxLayout
 from PyQt5.QtWidgets import QGridLayout
 from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtWidgets import QLabel
-from PyQt5.QtWidgets import QAbstractScrollArea
+
 
 from PyQt5.QtGui import QCursor
 from PyQt5.QtGui import QFont
@@ -58,7 +58,7 @@ class ReportParagraph(QLabel):
             padding: 0px;
             color: {COLOR_BS_DARK};
         ''')
-        self.setContentsMargins(0, 0, 0, 0)
+        self.setContentsMargins(0, 0, 0, 8)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
         self.setFont(QFont(str(FONT_GEOLOGICA_EXTRA_LIGHT), 10))
