@@ -195,6 +195,7 @@ class ReportPreformattedWidget(QWidget):
         self._layout = QVBoxLayout()
         self._layout.setContentsMargins(8, 8, 8, 8)
         self._layout.setSpacing(0)
+        self._layout.setAlignment(Qt.AlignTop)
 
         self._layout.addWidget(self._content)
 
@@ -745,6 +746,7 @@ class ReportWidget(QWidget):
         self._layout = QVBoxLayout()
         self._layout.setContentsMargins(8, 8, 8, 8)
         self._layout.setSpacing(0)
+        self._layout.setAlignment(Qt.AlignTop)
 
         self._layout.addWidget(self._report_content)
 
