@@ -50,3 +50,5 @@ FONT_NOTO_EMOJI_LIGHT = Font(os.path.join(FONTS_DIR, 'NotoEmoji-Light.ttf'))
 FONT_NOTO_EMOJI_MEDIUM = Font(os.path.join(FONTS_DIR, 'NotoEmoji-Medium.ttf'))
 FONT_NOTO_EMOJI_REGULAR = Font(os.path.join(FONTS_DIR, 'NotoEmoji-Regular.ttf'))
 FONT_NOTO_EMOJI_SEMI_BOLD = Font(os.path.join(FONTS_DIR, 'NotoEmoji-SemiBold.ttf'))
+
+FONT_SEGOE_UI_EMOJI = Font(os.path.join(FONTS_DIR, 'Segoe-UI-Emoji.ttf'))
