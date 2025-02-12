@@ -221,9 +221,10 @@ class ReportPreformatted(QWidget):
         self._scroll.setWidgetResizable(True)
         self._scroll.setWidget(self._widget)
 
-        self._layout = QHBoxLayout()
+        self._layout = QVBoxLayout()
         self._layout.setContentsMargins(0, 0, 0, 0)
         self._layout.setSpacing(0)
+        self._layout.setAlignment(Qt.AlignTop)
         
         self._layout.addWidget(self._scroll)
 
@@ -699,7 +700,7 @@ class ReportWidgetContent(QWidget):
             self._report_solution = ReportWidgetSolution(self.__report, self.__report.solution, self)
 
         self._layout = QVBoxLayout()
-        self._layout.setContentsMargins(64, 32, 64, 32)
+        self._layout.setContentsMargins(64, 64, 64, 64)
         self._layout.setSpacing(0)
         self._layout.setAlignment(Qt.AlignTop)
 
@@ -770,9 +771,10 @@ class ReportSection(QWidget):
         self._scroll.setWidgetResizable(True)
         self._scroll.setWidget(None)
 
-        self._layout = QHBoxLayout()
+        self._layout = QVBoxLayout()
         self._layout.setContentsMargins(0, 0, 0, 0)
         self._layout.setSpacing(0)
+        self._layout.setAlignment(Qt.AlignTop)
         
         self._layout.addWidget(self._scroll)
 
