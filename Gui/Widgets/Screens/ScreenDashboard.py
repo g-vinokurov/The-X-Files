@@ -65,6 +65,36 @@ class ReportCardTitle(QLabel):
         self.setText(text)
 
 
+class ReportWidgetTitle(QLabel):
+    def __init__(self, report: Report, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.__report = report
+        self.initUI()
+    
+    def initUI(self):
+        self.setStyleSheet(f'''
+            padding: 0px;
+            color: {COLOR_BS_DARK};
+        ''')
+        self.setWordWrap(True)
+        self.setAlignment(Qt.AlignCenter)
+        self.setFont(QFont(str(FONT_GEOLOGICA_BLACK), 12))
+        self.setTextInteractionFlags(Qt.TextSelectableByMouse)
+        self.setCursor(QCursor(Qt.IBeamCursor))
+    
+    def updateUI(self, *args, **kwargs):
+        report = self.__report
+        if report.provider is not None and report.provider.name:
+            text = f'{report.provider.name}. '
+        else:
+            text = ''
+        if report.name:
+            text = text + f'{report.name}'
+        else:
+            text = f'{report.alt_name}'
+        self.setText(text)
+
+
 class ReportCardParameterEmoji(QLabel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -222,7 +252,8 @@ class ReportCard(QWidget):
     
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
-            print(self.__report.alt_name)
+            app.gui.navigator.update('dashboard', current_report=self.__report)
+
 
 class ReportsList(QWidget):
     def __init__(self, parent, *args, **kwargs):
@@ -231,6 +262,7 @@ class ReportsList(QWidget):
 
     def initUI(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
+        self.setCursor(QCursor(Qt.ArrowCursor))
 
         self._layout = QVBoxLayout()
         self._layout.setContentsMargins(8, 8, 8, 8)
@@ -258,6 +290,7 @@ class ReportsListSection(QWidget):
 
     def initUI(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
+        self.setCursor(QCursor(Qt.ArrowCursor))
 
         self._reports_list = ReportsList(self)
 
@@ -279,6 +312,93 @@ class ReportsListSection(QWidget):
             log.error(f'Project is not defined')
             return
         self._reports_list.updateUI(reports=project.reports)
+
+
+class ReportWidgetContent(QWidget):
+    def __init__(self, report: Report, parent, *args, **kwargs):
+        super().__init__(parent, *args, **kwargs)
+        self.__report = report
+        self.initUI()
+
+    def initUI(self):
+        self.setAttribute(Qt.WA_StyledBackground, True)
+        self.setStyleSheet(f'''
+            border-radius: 16px;
+            background-color: {COLOR_BS_LIGHT};
+            border-color: none;
+            padding: 0px
+        ''')
+        self.setCursor(QCursor(Qt.ArrowCursor))
+
+        self._report_title = ReportWidgetTitle(self.__report, self)
+
+        self._layout = QVBoxLayout()
+        self._layout.setContentsMargins(32, 32, 32, 32)
+        self._layout.setSpacing(0)
+        self._layout.setAlignment(Qt.AlignTop)
+
+        self._layout.addWidget(self._report_title)
+
+        self.setLayout(self._layout)
+    
+    def updateUI(self, *args, **kwargs):
+        self._report_title.updateUI(*args, **kwargs)
+
+
+class ReportWidget(QWidget):
+    def __init__(self, report: Report, parent, *args, **kwargs):
+        super().__init__(parent, *args, **kwargs)
+        self.__report = report
+        self.initUI()
+
+    def initUI(self):
+        self.setAttribute(Qt.WA_StyledBackground, True)
+        self.setCursor(QCursor(Qt.ArrowCursor))
+
+        self._report_content = ReportWidgetContent(self.__report, self)
+
+        self._layout = QVBoxLayout()
+        self._layout.setContentsMargins(8, 8, 8, 8)
+        self._layout.setSpacing(0)
+
+        self._layout.addWidget(self._report_content)
+
+        self.setLayout(self._layout)
+    
+    def updateUI(self, *args, **kwargs):
+        self._report_content.updateUI(*args, **kwargs)
+
+
+class ReportSection(QWidget):
+    def __init__(self, parent, *args, **kwargs):
+        super().__init__(parent, *args, **kwargs)
+        self.initUI()
+
+    def initUI(self):
+        self.setAttribute(Qt.WA_StyledBackground, True)
+
+        self._report_widget = None
+
+        self._scroll = Scroll(self)
+        self._scroll.setWidgetResizable(True)
+        self._scroll.setWidget(None)
+
+        self._layout = QHBoxLayout()
+        self._layout.setContentsMargins(0, 0, 0, 0)
+        self._layout.setSpacing(0)
+        
+        self._layout.addWidget(self._scroll)
+
+        self.setLayout(self._layout)
+
+    def updateUI(self, *args, report: Report | None = None, **kwargs):
+        if report is None:
+            self._scroll.setWidget(None)
+            self._report_widget = None
+            return
+        self._report_widget = ReportWidget(report, self)
+        self._report_widget.updateUI(*args, **kwargs)
+        self._scroll.setWidget(self._report_widget)
 
 
 class Header(QWidget):
@@ -308,18 +428,21 @@ class Body(QWidget):
         self.setAttribute(Qt.WA_StyledBackground, True)
 
         self._reports_list_section = ReportsListSection(self)
+        self._report_section = ReportSection(self)
         
         self._layout = QHBoxLayout()
         self._layout.setContentsMargins(0, 0, 0, 0)
         self._layout.setSpacing(0)
 
         self._layout.addWidget(self._reports_list_section, stretch=34)
-        self._layout.addStretch(55)
-        
+        self._layout.addWidget(self._report_section, stretch=55)
+
         self.setLayout(self._layout)
 
     def updateUI(self, *args, **kwargs):
+        current_report = kwargs.pop('current_report', None)
         self._reports_list_section.updateUI(*args, **kwargs)
+        self._report_section.updateUI(*args, report=current_report, **kwargs)
 
 
 class Footer(QWidget):
@@ -331,7 +454,7 @@ class Footer(QWidget):
         self.setAttribute(Qt.WA_StyledBackground, True)
         
         self._layout = QHBoxLayout()
-        self._layout.setContentsMargins(32, 32, 32, 32)
+        self._layout.setContentsMargins(0, 0, 0, 0)
         self._layout.setSpacing(0)
 
         self.setLayout(self._layout)
@@ -364,7 +487,8 @@ class ScreenDashboard(Screen):
         
         self.setLayout(self._layout)
 
-    def updateUI(self, *args, **kwargs):
+    def updateUI(self, *args, current_report: Report | None = None, **kwargs):
+        kwargs['current_report'] = current_report
         self._header.updateUI(*args, **kwargs)
         self._body.updateUI(*args, **kwargs)
         self._footer.updateUI(*args, **kwargs)
