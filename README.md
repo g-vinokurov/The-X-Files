@@ -2,7 +2,7 @@
 ## Welcome Page
 ![Welcome](./Docs/Welcome.png "Welcome")
 ## Dashboard Page
-![Dashboard](./Docs/Dashboard.png "Dashbord")
-![Report](./Docs/Report.png "Report")
-![Report-2](./Docs/Report-2.png "Report-2")
-![Report-3](./Docs/Report-3.png "Report-3")
+![Dashboard-0](./Docs/Dashboard-0.png "Dashboard-0")
+![Dashboard-1](./Docs/Dashboard-1.png "Dashboard-1")
+![Dashboard-2](./Docs/Dashboard-2.png "Dashboard-2")
+![Dashboard-3](./Docs/Dashboard-3.png "Dashboard-3")

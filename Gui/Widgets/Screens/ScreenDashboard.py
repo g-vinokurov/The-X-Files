@@ -367,6 +367,7 @@ class ReportCardTitle(QLabel):
             padding: 0px;
             color: {COLOR_BS_DARK};
         ''')
+        self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignLeft)
         self.setFont(QFont(str(FONT_GEOLOGICA_BLACK), 11))
@@ -412,6 +413,28 @@ class ReportWidgetTitle(QLabel):
         else:
             text = f'{report.alt_name}'
         self.setText(text)
+
+
+class ReportCardAltName(QLabel):
+    def __init__(self, report: Report, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.__report = report
+        self.initUI()
+
+    def initUI(self):
+        self.setStyleSheet(f'''
+            padding: 0px;
+            color: {COLOR_BS_SECONDARY};
+        ''')
+        self.setContentsMargins(0, 0, 0, 8)
+        self.setWordWrap(True)
+        self.setAlignment(Qt.AlignLeft)
+        self.setFont(QFont(str(FONT_GEOLOGICA_EXTRA_LIGHT), 9))
+
+        self.setText(str(self.__report.alt_name))
+    
+    def updateUI(self, *args, **kwargs):
+        pass
 
 
 class ReportCardParameterEmoji(QLabel):
@@ -591,6 +614,7 @@ class ReportCard(QWidget):
         self.setCursor(QCursor(Qt.PointingHandCursor))
 
         self._report_title = ReportCardTitle(self.__report, self)
+        self._report_alt_name = ReportCardAltName(self.__report, self)
         self._report_parameters = ReportCardParameters(self.__report, self)
         
         self._layout = QVBoxLayout()
@@ -599,12 +623,14 @@ class ReportCard(QWidget):
         self._layout.setAlignment(Qt.AlignTop)
 
         self._layout.addWidget(self._report_title)
+        self._layout.addWidget(self._report_alt_name)
         self._layout.addWidget(self._report_parameters)
 
         self.setLayout(self._layout)
 
     def updateUI(self, *args, **kwargs):
         self._report_title.updateUI(*args, **kwargs)
+        self._report_alt_name.updateUI(*args, **kwargs)
         self._report_parameters.updateUI(*args, **kwargs)
     
     def mousePressEvent(self, event):
@@ -634,7 +660,7 @@ class ReportsList(QWidget):
             if widget is None:
                 continue
             widget.setParent(None)
-        for report in reports:
+        for report in reversed(sorted(reports, key=lambda r: r.alt_name)):
             report_card = ReportCard(report, self)
             report_card.updateUI()
             self._layout.addWidget(report_card)
