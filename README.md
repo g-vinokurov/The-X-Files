@@ -6,3 +6,4 @@
 ![Dashboard-1](./Docs/Dashboard-1.png "Dashboard-1")
 ![Dashboard-2](./Docs/Dashboard-2.png "Dashboard-2")
 ![Dashboard-3](./Docs/Dashboard-3.png "Dashboard-3")
+![Dashboard-4](./Docs/Dashboard-4.png "Dashboard-4")

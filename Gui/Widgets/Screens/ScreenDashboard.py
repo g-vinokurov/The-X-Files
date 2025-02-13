@@ -52,6 +52,41 @@ from Logger import log
 from App import app
 
 
+class ReportFileWidget(QWidget):
+    def __init__(self, dir: str, file: File, parent, *args, **kwargs):
+        super().__init__(parent, *args, **kwargs)
+        self.__dir = dir
+        self.__file = file
+        self.initUI()
+    
+    def initUI(self):
+        self.setAttribute(Qt.WA_StyledBackground, True)
+        self.setStyleSheet(f'''
+            background: none;
+            border: none;
+        ''')
+
+        self._layout = QHBoxLayout()
+        self._layout.setContentsMargins(0, 0, 0, 8)
+        self._layout.setSpacing(4)
+        self._layout.setAlignment(Qt.AlignLeft)
+
+        self._report_file_emoji = ReportParameterEmoji('📌', self)
+        self._report_file = ReportParameter(f'{self.__file.name}:', self)
+        self._report_file_value = ReportLinkValue(f'{self.__file.src}', self)
+
+        self._layout.addWidget(self._report_file_emoji)
+        self._layout.addWidget(self._report_file)
+        self._layout.addWidget(self._report_file_value)
+
+        self._layout.setStretch(2, 1)
+
+        self.setLayout(self._layout)
+    
+    def updateUI(self, *args, **kwargs):
+        self._report_file_value.updateUI(self.__file.src)
+
+
 class ReportImageContent(QWidget):
     def __init__(self, path: str, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -268,6 +303,11 @@ class ReportWidgetInnerContent(QWidget):
                 widget = ReportImageWidget(self.__report.dir, item, self)
                 self._layout.addWidget(widget)
                 continue
+            
+            if isinstance(item, File):
+                widget = ReportFileWidget(self.__report.dir, item, self)
+                self._layout.addWidget(widget)
+                continue
 
         self.setLayout(self._layout)
     
@@ -437,7 +477,7 @@ class ReportCardAltName(QLabel):
         pass
 
 
-class ReportCardParameterEmoji(QLabel):
+class ReportParameterEmoji(QLabel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.initUI()
@@ -452,7 +492,7 @@ class ReportCardParameterEmoji(QLabel):
         self.setText(emoji)
 
 
-class ReportCardParameter(QLabel):
+class ReportParameter(QLabel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.initUI()
@@ -471,7 +511,7 @@ class ReportCardParameter(QLabel):
         self.setText(text)
 
 
-class ReportCardParameterValue(QLabel):
+class ReportParameterValue(QLabel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.initUI()
@@ -485,6 +525,27 @@ class ReportCardParameterValue(QLabel):
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
         self.setFont(QFont(str(FONT_GEOLOGICA_EXTRA_LIGHT), 10))
+    
+    def updateUI(self, text: str, *args, **kwargs):
+        self.setText(text)
+
+
+class ReportLinkValue(QLabel):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.initUI()
+
+    def initUI(self):
+        self.setStyleSheet(f'''
+            padding: 0px;
+            color: {COLOR_BS_DARK};
+        ''')
+        self.setContentsMargins(0, 0, 0, 0)
+        self.setWordWrap(True)
+        self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
+        font = QFont(str(FONT_GEOLOGICA_EXTRA_LIGHT), 10)
+        font.setUnderline(True)
+        self.setFont(font)
     
     def updateUI(self, text: str, *args, **kwargs):
         self.setText(text)
@@ -532,21 +593,21 @@ class ReportCardParameters(QWidget):
         self._layout.setSpacing(4)
         self._layout.setAlignment(Qt.AlignTop)
 
-        self._report_type_emoji = ReportCardParameterEmoji('🚩', self)
-        self._report_type = ReportCardParameter('Тип:', self)
-        self._report_type_value = ReportCardParameterValue(self)
+        self._report_type_emoji = ReportParameterEmoji('🚩', self)
+        self._report_type = ReportParameter('Тип:', self)
+        self._report_type_value = ReportParameterValue(self)
 
-        self._report_level_emoji = ReportCardParameterEmoji('☢️', self)
-        self._report_level = ReportCardParameter('Уровень:', self)
-        self._report_level_value = ReportCardParameterValue(self)
+        self._report_level_emoji = ReportParameterEmoji('☢️', self)
+        self._report_level = ReportParameter('Уровень:', self)
+        self._report_level_value = ReportParameterValue(self)
 
-        self._report_tags_emoji = ReportCardParameterEmoji('🌵', self)
-        self._report_tags = ReportCardParameter('Теги:', self)
-        self._report_tags_value = ReportCardParameterValue(self)
+        self._report_tags_emoji = ReportParameterEmoji('🌵', self)
+        self._report_tags = ReportParameter('Теги:', self)
+        self._report_tags_value = ReportParameterValue(self)
 
-        self._report_date_emoji = ReportCardParameterEmoji('☄️', self)
-        self._report_date = ReportCardParameter('Дата:', self)
-        self._report_date_value = ReportCardParameterValue(self)
+        self._report_date_emoji = ReportParameterEmoji('☄️', self)
+        self._report_date = ReportParameter('Дата:', self)
+        self._report_date_value = ReportParameterValue(self)
 
         self._layout.addWidget(self._report_type_emoji, 0, 0)
         self._layout.addWidget(self._report_type, 0, 1)
