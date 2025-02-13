@@ -203,13 +203,6 @@ class ReportPreformattedWidgetContent(QLabel):
         self.initUI()
     
     def initUI(self):
-        self.setStyleSheet(f'''
-            padding: 16px;
-            background-color: {COLOR_BS_GRAY_200};
-            border-radius: 16px;
-            border-color: none;
-            color: {COLOR_BS_DARK};
-        ''')
         self.setContentsMargins(8, 8, 8, 8)
         self.setWordWrap(False)
         self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
@@ -232,12 +225,16 @@ class ReportPreformattedWidget(QWidget):
 
         self._content = ReportPreformattedWidgetContent(self.__text, self)
 
+        self._scroll = ScrollSecondary(self)
+        self._scroll.setWidgetResizable(True)
+        self._scroll.setWidget(self._content)
+
         self._layout = QVBoxLayout()
-        self._layout.setContentsMargins(8, 8, 8, 8)
+        self._layout.setContentsMargins(16, 16, 16, 16)
         self._layout.setSpacing(0)
         self._layout.setAlignment(Qt.AlignTop)
 
-        self._layout.addWidget(self._content)
+        self._layout.addWidget(self._scroll)
 
         self.setLayout(self._layout)
     
@@ -254,19 +251,22 @@ class ReportPreformatted(QWidget):
     def initUI(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.setCursor(QCursor(Qt.IBeamCursor))
+        self.setStyleSheet(f'''
+            padding: 0px;
+            background-color: {COLOR_BS_GRAY_200};
+            border-radius: 16px;
+            border-color: none;
+            color: {COLOR_BS_DARK};
+        ''')
 
         self._widget = ReportPreformattedWidget(self.__text, self)
-
-        self._scroll = ScrollSecondary(self)
-        self._scroll.setWidgetResizable(True)
-        self._scroll.setWidget(self._widget)
 
         self._layout = QVBoxLayout()
         self._layout.setContentsMargins(0, 0, 0, 0)
         self._layout.setSpacing(0)
         self._layout.setAlignment(Qt.AlignTop)
         
-        self._layout.addWidget(self._scroll)
+        self._layout.addWidget(self._widget)
 
         self.setLayout(self._layout)
     
