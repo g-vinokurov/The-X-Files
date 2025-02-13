@@ -525,6 +525,19 @@ class ReportParameterValue(QLabel):
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
         self.setFont(QFont(str(FONT_GEOLOGICA_EXTRA_LIGHT), 10))
+        self.adjustHeight()
+    
+    def adjustHeight(self):
+        font_metrics = self.fontMetrics()
+        width = self.width()
+        text = self.text()
+        text_rect = font_metrics.boundingRect(0, 0, width, 0, Qt.TextWordWrap, text)
+        required_height = text_rect.height()
+        self.setMinimumHeight(required_height)
+
+    def resizeEvent(self, event):
+        super().resizeEvent(event)
+        self.adjustHeight()
     
     def updateUI(self, text: str, *args, **kwargs):
         self.setText(text)
