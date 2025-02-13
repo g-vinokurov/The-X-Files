@@ -528,6 +528,7 @@ class ReportParameterValue(QLabel):
         self.adjustHeight()
     
     def adjustHeight(self):
+        # Without this method after word-wrapping QLabel will hide last content rows
         font_metrics = self.fontMetrics()
         width = self.width()
         text = self.text()
