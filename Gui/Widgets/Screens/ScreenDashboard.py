@@ -98,9 +98,13 @@ class ReportImageContent(QWidget):
 
         self._pixmap = QPixmap.fromImage(QImage(str(self.__path)))
         
+        # This code allows show image via QLabel in layout
+        # If image is too large it will fit to layout size
+        # Usage: if we need scale image to full layout width
         self._image = QLabel("", self)
         self._image.setMinimumSize(1, 1)
         self._image.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        self._image.setAlignment(Qt.AlignCenter)
 
         self._layout = QHBoxLayout()
         self._layout.setContentsMargins(8, 8, 8, 8)
@@ -160,6 +164,7 @@ class ReportImageWidget(QWidget):
         self._layout = QVBoxLayout()
         self._layout.setContentsMargins(8, 8, 8, 8)
         self._layout.setSpacing(4)
+        self._layout.setAlignment(Qt.AlignCenter)
 
         self._layout.addWidget(self._image)
         self._layout.addWidget(self._image_title)
