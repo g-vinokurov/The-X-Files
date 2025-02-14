@@ -29,12 +29,18 @@
     </head>
     <body>
         <task>
-            <p>Самый простой CrackMe, который можно придумать: вам дан исходный код, да и сам он не слишком сложный. Найдите корректный ключ и сдайте его как флаг.</p>
+            <p>Самый простой CrackMe, который можно придумать: 
+            вам дан исходный код, да и сам он не слишком сложный. 
+            Найдите корректный ключ и сдайте его как флаг.
+            </p>
+            <!-- The folder "files" must exist -->
             <file src="files/main.c">Исходный код</file>
         </task>
         <solution>
             <p>Смотрим в код, видим флаг</p>
+            <!-- The folder "img" must exist -->
             <img src="img/img-00.png"></img>
+            <!-- Preformatted text with escaped HTML-characters -->
             <pre>
 #include &#60;stdio.h&#62;
 #include &#60;stdlib.h&#62;
