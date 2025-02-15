@@ -508,7 +508,7 @@ class ReportParameter(QLabel):
             color: {COLOR_BS_DARK};
         ''')
         self.setContentsMargins(0, 0, 0, 0)
-        self.setWordWrap(True)
+        self.setWordWrap(False)
         self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
         self.setFont(QFont(str(FONT_GEOLOGICA_BLACK), 10))
     
