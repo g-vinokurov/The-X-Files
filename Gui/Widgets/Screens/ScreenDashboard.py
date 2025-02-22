@@ -487,8 +487,9 @@ class ReportParameterEmoji(QLabel):
         self.initUI()
 
     def initUI(self):
+        self.setStyleSheet('''padding: 0px''')
         self.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
-        font = QFont(str(FONT_SEGOE_UI_EMOJI), 12)
+        font = QFont(str(FONT_SEGOE_UI_EMOJI), 10)
         font.setHintingPreference(QFont.HintingPreference.PreferNoHinting)
         self.setFont(font)
     
