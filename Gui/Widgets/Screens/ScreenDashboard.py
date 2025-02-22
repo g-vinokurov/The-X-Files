@@ -131,7 +131,7 @@ class ReportImageTitle(QLabel):
     def initUI(self):
         self.setStyleSheet(f'''
             padding: 0px;
-            color: {COLOR_BS_DARK};
+            color: {COLOR_BS_LIGHT};
         ''')
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
@@ -183,7 +183,7 @@ class ReportParagraph(QLabel):
     def initUI(self):
         self.setStyleSheet(f'''
             padding: 0px;
-            color: {COLOR_BS_DARK};
+            color: {COLOR_BS_LIGHT};
         ''')
         self.setContentsMargins(0, 0, 0, 8)
         self.setWordWrap(True)
@@ -252,10 +252,10 @@ class ReportPreformatted(QWidget):
         self.setCursor(QCursor(Qt.IBeamCursor))
         self.setStyleSheet(f'''
             padding: 0px;
-            background-color: {COLOR_BS_GRAY_200};
+            background-color: {COLOR_BS_DARK};
             border-radius: 16px;
             border-color: none;
-            color: {COLOR_BS_DARK};
+            color: {COLOR_BS_LIGHT};
         ''')
 
         self._widget = ReportPreformattedWidget(self.__text, self)
@@ -389,7 +389,7 @@ class ReportWidgetSubtitle(QLabel):
     def initUI(self):
         self.setStyleSheet(f'''
             padding: 0px;
-            color: {COLOR_BS_DARK};
+            color: {COLOR_BS_LIGHT};
         ''')
         self.setContentsMargins(0, 16, 0, 8)
         self.setWordWrap(True)
@@ -409,7 +409,7 @@ class ReportCardTitle(QLabel):
     def initUI(self):
         self.setStyleSheet(f'''
             padding: 0px;
-            color: {COLOR_BS_DARK};
+            color: {COLOR_BS_LIGHT};
         ''')
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
@@ -438,7 +438,7 @@ class ReportWidgetTitle(QLabel):
     def initUI(self):
         self.setStyleSheet(f'''
             padding: 0px;
-            color: {COLOR_BS_DARK};
+            color: {COLOR_BS_LIGHT};
         ''')
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignCenter)
@@ -468,7 +468,7 @@ class ReportCardAltName(QLabel):
     def initUI(self):
         self.setStyleSheet(f'''
             padding: 0px;
-            color: {COLOR_BS_SECONDARY};
+            color: {COLOR_BS_LIGHT};
         ''')
         self.setContentsMargins(0, 0, 0, 8)
         self.setWordWrap(True)
@@ -504,7 +504,7 @@ class ReportParameter(QLabel):
     def initUI(self):
         self.setStyleSheet(f'''
             padding: 0px;
-            color: {COLOR_BS_DARK};
+            color: {COLOR_BS_LIGHT};
         ''')
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(False)
@@ -523,7 +523,7 @@ class ReportParameterValue(QLabel):
     def initUI(self):
         self.setStyleSheet(f'''
             padding: 0px;
-            color: {COLOR_BS_DARK};
+            color: {COLOR_BS_LIGHT};
         ''')
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
@@ -556,7 +556,7 @@ class ReportLinkValue(QLabel):
     def initUI(self):
         self.setStyleSheet(f'''
             padding: 0px;
-            color: {COLOR_BS_DARK};
+            color: {COLOR_BS_LIGHT};
         ''')
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
@@ -578,7 +578,7 @@ class ReportWidgetAltName(QLabel):
     def initUI(self):
         self.setStyleSheet(f'''
             padding: 0px;
-            color: {COLOR_BS_SECONDARY};
+            color: {COLOR_BS_LIGHT};
         ''')
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(False)
@@ -686,7 +686,7 @@ class ReportCard(QWidget):
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.setStyleSheet(f'''
             border-radius: 16px;
-            background-color: {COLOR_BS_LIGHT};
+            background-color: transparent;
             border-color: none;
             padding: 0px
         ''')
@@ -786,7 +786,7 @@ class ReportWidgetContent(QWidget):
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.setStyleSheet(f'''
             border-radius: 16px;
-            background-color: {COLOR_BS_LIGHT};
+            background-color: transparent;
             border-color: none;
             padding: 0px
         ''')
