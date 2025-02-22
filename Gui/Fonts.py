@@ -35,22 +35,6 @@ class Font:
         return str(self.__family)
 
 
-FONT_GEOLOGICA_BLACK = Font(os.path.join(FONTS_DIR, 'Geologica-Black.ttf'))
-FONT_GEOLOGICA_BOLD = Font(os.path.join(FONTS_DIR, 'Geologica-Bold.ttf'))
-FONT_GEOLOGICA_EXTRA_BOLD = Font(os.path.join(FONTS_DIR, 'Geologica-ExtraBold.ttf'))
-FONT_GEOLOGICA_EXTRA_LIGHT = Font(os.path.join(FONTS_DIR, 'Geologica-ExtraLight.ttf'))
-FONT_GEOLOGICA_LIGHT = Font(os.path.join(FONTS_DIR, 'Geologica-Light.ttf'))
-FONT_GEOLOGICA_MEDIUM = Font(os.path.join(FONTS_DIR, 'Geologica-Medium.ttf'))
-FONT_GEOLOGICA_REGULAR = Font(os.path.join(FONTS_DIR, 'Geologica-Regular.ttf'))
-FONT_GEOLOGICA_SEMI_BOLD = Font(os.path.join(FONTS_DIR, 'Geologica-SemiBold.ttf'))
-FONT_GEOLOGICA_THIN = Font(os.path.join(FONTS_DIR, 'Geologica-Thin.ttf'))
-
-FONT_NOTO_EMOJI_BOLD = Font(os.path.join(FONTS_DIR, 'NotoEmoji-Bold.ttf'))
-FONT_NOTO_EMOJI_LIGHT = Font(os.path.join(FONTS_DIR, 'NotoEmoji-Light.ttf'))
-FONT_NOTO_EMOJI_MEDIUM = Font(os.path.join(FONTS_DIR, 'NotoEmoji-Medium.ttf'))
-FONT_NOTO_EMOJI_REGULAR = Font(os.path.join(FONTS_DIR, 'NotoEmoji-Regular.ttf'))
-FONT_NOTO_EMOJI_SEMI_BOLD = Font(os.path.join(FONTS_DIR, 'NotoEmoji-SemiBold.ttf'))
-
 FONT_SEGOE_UI_EMOJI = Font(os.path.join(FONTS_DIR, 'Segoe-UI-Emoji.ttf'))
 
 FONT_JET_BRAINS_MONO_NL_BOLD = Font(os.path.join(FONTS_DIR, 'JetBrainsMonoNL-Bold.ttf'))

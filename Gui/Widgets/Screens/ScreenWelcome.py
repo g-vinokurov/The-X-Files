@@ -24,7 +24,7 @@ from Gui.Colors import COLOR_BLACK
 from Gui.Colors import COLOR_VSC_PRIMARY
 from Gui.Colors import COLOR_BS_LIGHT
 
-from Gui.Fonts import FONT_GEOLOGICA_BLACK
+from Gui.Fonts import FONT_JET_BRAINS_MONO_NL_EXTRA_BOLD
 
 from Gui.Images import IMG_WELCOME
 
@@ -50,7 +50,7 @@ class Logo(QLabel):
         ''')
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignCenter)
-        self.setFont(QFont(str(FONT_GEOLOGICA_BLACK), 48))
+        self.setFont(QFont(str(FONT_JET_BRAINS_MONO_NL_EXTRA_BOLD), 48))
     
     def updateUI(self, *args, **kwargs):
         self.setText('THE X-FILES')
@@ -70,7 +70,7 @@ class OpenProject(QPushButton):
             padding-top: 16px;
             color: {COLOR_BS_LIGHT};
         ''')
-        self.setFont(QFont(str(FONT_GEOLOGICA_BLACK), 18))
+        self.setFont(QFont(str(FONT_JET_BRAINS_MONO_NL_EXTRA_BOLD), 18))
 
     def updateUI(self, *args, **kwargs):
         self.setText('Open Project')
