@@ -120,7 +120,7 @@ class ReportImageContent(QWidget):
         pass
 
     def resizeEvent(self, event):
-        self._image.setPixmap(self._pixmap.scaledToWidth(self._image.width()))
+        self._image.setPixmap(self._pixmap.scaledToWidth(self._image.width(), Qt.TransformationMode.SmoothTransformation))
 
 
 class ReportImageTitle(QLabel):
