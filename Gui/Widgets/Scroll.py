@@ -32,17 +32,15 @@ class Scroll(QScrollArea):
             }}
 
             QScrollBar:horizontal {{
-                height: 15px;
-                margin: 3px 15px 3px 15px;
+                height: 16px;
+                margin: 0px 16px 0px 16px;
                 border: 1px transparent {COLOR_BS_LIGHT};
-                border-radius: 4px;
                 background-color: transparent;
             }}
 
             QScrollBar::handle:horizontal {{
                 background-color: {COLOR_BS_LIGHT};
-                min-width: 5px;
-                border-radius: 4px;
+                min-width: 8px;
             }}
 
             QScrollBar::add-line:horizontal {{
@@ -71,16 +69,14 @@ class Scroll(QScrollArea):
 
             QScrollBar:vertical {{
                 background-color: transparent;
-                width: 15px;
-                margin: 15px 3px 15px 3px;
+                width: 16px;
+                margin: 16px 0px 16px 0px;
                 border: 1px transparent {COLOR_BS_LIGHT};
-                border-radius: 4px;
             }}
 
             QScrollBar::handle:vertical {{
                 background-color: {COLOR_BS_LIGHT};
-                min-height: 5px;
-                border-radius: 4px;
+                min-height: 8px;
             }}
 
             QScrollBar::add-line:vertical {{
