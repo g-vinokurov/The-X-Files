@@ -29,8 +29,8 @@ from Gui.Colors import COLOR_BS_DARK
 from Gui.Colors import COLOR_BS_SECONDARY
 from Gui.Colors import COLOR_BS_GRAY_200
 
-from Gui.Fonts import FONT_GEOLOGICA_BLACK
-from Gui.Fonts import FONT_GEOLOGICA_EXTRA_LIGHT
+from Gui.Fonts import FONT_JET_BRAINS_MONO_NL_BOLD
+from Gui.Fonts import FONT_JET_BRAINS_MONO_NL_REGULAR
 from Gui.Fonts import FONT_JET_BRAINS_MONO_NL_REGULAR
 from Gui.Fonts import FONT_SEGOE_UI_EMOJI
 
@@ -120,8 +120,7 @@ class ReportImageContent(QWidget):
         pass
 
     def resizeEvent(self, event):
-        # super().resizeEvent(event)
-        self._image.setPixmap(self._pixmap.scaled(self._image.size(), Qt.KeepAspectRatio))
+        self._image.setPixmap(self._pixmap.scaledToWidth(self._image.width()))
 
 
 class ReportImageTitle(QLabel):
@@ -137,7 +136,7 @@ class ReportImageTitle(QLabel):
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignCenter)
-        self.setFont(QFont(str(FONT_GEOLOGICA_EXTRA_LIGHT), 10))
+        self.setFont(QFont(str(FONT_JET_BRAINS_MONO_NL_REGULAR), 10))
         self.setTextInteractionFlags(Qt.TextSelectableByMouse)
         self.setCursor(QCursor(Qt.IBeamCursor))
     
@@ -189,7 +188,7 @@ class ReportParagraph(QLabel):
         self.setContentsMargins(0, 0, 0, 8)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
-        self.setFont(QFont(str(FONT_GEOLOGICA_EXTRA_LIGHT), 10))
+        self.setFont(QFont(str(FONT_JET_BRAINS_MONO_NL_REGULAR), 10))
         self.setTextInteractionFlags(Qt.TextSelectableByMouse)
         self.setCursor(QCursor(Qt.IBeamCursor))
     
@@ -395,7 +394,7 @@ class ReportWidgetSubtitle(QLabel):
         self.setContentsMargins(0, 16, 0, 8)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
-        self.setFont(QFont(str(FONT_GEOLOGICA_BLACK), 10))
+        self.setFont(QFont(str(FONT_JET_BRAINS_MONO_NL_BOLD), 10))
     
     def updateUI(self, *args, **kwargs):
         pass
@@ -415,7 +414,7 @@ class ReportCardTitle(QLabel):
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignLeft)
-        self.setFont(QFont(str(FONT_GEOLOGICA_BLACK), 11))
+        self.setFont(QFont(str(FONT_JET_BRAINS_MONO_NL_BOLD), 11))
     
     def updateUI(self, *args, **kwargs):
         report = self.__report
@@ -443,7 +442,7 @@ class ReportWidgetTitle(QLabel):
         ''')
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignCenter)
-        self.setFont(QFont(str(FONT_GEOLOGICA_BLACK), 12))
+        self.setFont(QFont(str(FONT_JET_BRAINS_MONO_NL_BOLD), 12))
         self.setTextInteractionFlags(Qt.TextSelectableByMouse)
         self.setCursor(QCursor(Qt.IBeamCursor))
     
@@ -474,7 +473,7 @@ class ReportCardAltName(QLabel):
         self.setContentsMargins(0, 0, 0, 8)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignLeft)
-        self.setFont(QFont(str(FONT_GEOLOGICA_EXTRA_LIGHT), 9))
+        self.setFont(QFont(str(FONT_JET_BRAINS_MONO_NL_REGULAR), 9))
 
         self.setText(str(self.__report.alt_name))
     
@@ -510,7 +509,7 @@ class ReportParameter(QLabel):
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(False)
         self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
-        self.setFont(QFont(str(FONT_GEOLOGICA_BLACK), 10))
+        self.setFont(QFont(str(FONT_JET_BRAINS_MONO_NL_BOLD), 10))
     
     def updateUI(self, text: str, *args, **kwargs):
         self.setText(text)
@@ -529,7 +528,7 @@ class ReportParameterValue(QLabel):
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
-        self.setFont(QFont(str(FONT_GEOLOGICA_EXTRA_LIGHT), 10))
+        self.setFont(QFont(str(FONT_JET_BRAINS_MONO_NL_REGULAR), 10))
         self.adjustHeight()
     
     def adjustHeight(self):
@@ -562,7 +561,7 @@ class ReportLinkValue(QLabel):
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
-        font = QFont(str(FONT_GEOLOGICA_EXTRA_LIGHT), 10)
+        font = QFont(str(FONT_JET_BRAINS_MONO_NL_REGULAR), 10)
         font.setUnderline(True)
         self.setFont(font)
     
@@ -584,7 +583,7 @@ class ReportWidgetAltName(QLabel):
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(False)
         self.setAlignment(Qt.AlignCenter)
-        self.setFont(QFont(str(FONT_GEOLOGICA_EXTRA_LIGHT), 9))
+        self.setFont(QFont(str(FONT_JET_BRAINS_MONO_NL_REGULAR), 9))
         self.setTextInteractionFlags(Qt.TextSelectableByMouse)
         self.setCursor(QCursor(Qt.IBeamCursor))
 
