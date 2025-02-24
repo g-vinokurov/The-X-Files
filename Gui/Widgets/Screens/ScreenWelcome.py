@@ -50,7 +50,9 @@ class Logo(QLabel):
         ''')
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignCenter)
-        self.setFont(QFont(str(FONT_JET_BRAINS_MONO_NL_EXTRA_BOLD), 48))
+        font = QFont(str(FONT_JET_BRAINS_MONO_NL_EXTRA_BOLD), 48)
+        font.setWeight(QFont.ExtraBold)
+        self.setFont(font)
     
     def updateUI(self, *args, **kwargs):
         self.setText('THE X-FILES')

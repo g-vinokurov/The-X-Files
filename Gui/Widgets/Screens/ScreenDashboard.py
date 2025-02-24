@@ -414,7 +414,9 @@ class ReportCardTitle(QLabel):
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignLeft)
-        self.setFont(QFont(str(FONT_JET_BRAINS_MONO_NL_BOLD), 11))
+        font = QFont(str(FONT_JET_BRAINS_MONO_NL_BOLD), 10)
+        font.setWeight(QFont.ExtraBold)
+        self.setFont(font)
     
     def updateUI(self, *args, **kwargs):
         report = self.__report
@@ -473,7 +475,9 @@ class ReportCardAltName(QLabel):
         self.setContentsMargins(0, 0, 0, 8)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignLeft)
-        self.setFont(QFont(str(FONT_JET_BRAINS_MONO_NL_REGULAR), 9))
+        font = QFont(str(FONT_JET_BRAINS_MONO_NL_REGULAR), 9)
+        font.setWeight(QFont.ExtraLight)
+        self.setFont(font)
 
         self.setText(str(self.__report.alt_name))
     
@@ -510,7 +514,9 @@ class ReportParameter(QLabel):
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(False)
         self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
-        self.setFont(QFont(str(FONT_JET_BRAINS_MONO_NL_BOLD), 10))
+        font = QFont(str(FONT_JET_BRAINS_MONO_NL_REGULAR), 10)
+        font.setWeight(QFont.ExtraLight)
+        self.setFont(font)
     
     def updateUI(self, text: str, *args, **kwargs):
         self.setText(text)
@@ -529,7 +535,9 @@ class ReportParameterValue(QLabel):
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
-        self.setFont(QFont(str(FONT_JET_BRAINS_MONO_NL_REGULAR), 10))
+        font = QFont(str(FONT_JET_BRAINS_MONO_NL_REGULAR), 10)
+        font.setWeight(QFont.ExtraLight)
+        self.setFont(font)
         self.adjustHeight()
     
     def adjustHeight(self):
@@ -686,9 +694,10 @@ class ReportCard(QWidget):
     def initUI(self):
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.setStyleSheet(f'''
-            border-radius: 16px;
-            background-color: transparent;
+            background-color: {COLOR_VSC_PRIMARY};
+            /* background-color: transparent;*/
             border-color: none;
+            border-bottom: 1px solid {COLOR_BS_LIGHT};
             padding: 0px
         ''')
         self.setCursor(QCursor(Qt.PointingHandCursor))
