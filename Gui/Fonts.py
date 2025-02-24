@@ -2,56 +2,81 @@
 import pathlib
 
 from PyQt5.QtWidgets import QApplication
+
 from PyQt5.QtGui import QFontDatabase
+from PyQt5.QtGui import QFont
 
 from Config import FONTS_DIR
 
 from Logger import log
 
 
-class Font:
-    def __init__(self, filepath: str | pathlib.Path):
-        self.__filepath = str(filepath)
-        self.__family = None
+class Font(QFont):
+    __loaded_fonts = {}
+    
+    def __init__(self, path: str | pathlib.Path):
+        path = str(path)
+        if path not in self.__loaded_fonts:
+            self.__load(path)
+        super().__init__(self.__loaded_fonts.get(path))
+    
+    @classmethod
+    def __load(cls, path: str):
 
-    def __str__(self):
-        if self.__family is not None:
-            return str(self.__family)
-        
         if QApplication.instance() is None:
             log.warning('QApplication not started - impossible to load font')
-            return str()
+            return
         
-        font_id = QFontDatabase.addApplicationFont(self.__filepath)
+        font_id = QFontDatabase.addApplicationFont(path)
         if font_id == -1:
-            log.warning(f'Could not load font {self.__filepath}')
-            return str()
+            log.warning(f'Could not load font {path}')
+            return
 
         families = QFontDatabase.applicationFontFamilies(font_id)
         if not families:
-            return str()
+            return
 
-        self.__family = families[0]
-        return str(self.__family)
+        cls.__loaded_fonts[path] = families[0]
+        log.info(f'Font {families[0]} loaded')
 
 
-FONT_SEGOE_UI_EMOJI = Font(FONTS_DIR / 'Segoe-UI-Emoji.ttf')
+FONT_SEGOE_UI_EMOJI = FONTS_DIR / 'Segoe-UI-Emoji.ttf'
 
-FONT_GEOLOGICA_BLACK = Font(FONTS_DIR / 'Geologica-Black.ttf')
-FONT_GEOLOGICA_BOLD = Font(FONTS_DIR / 'Geologica-Bold.ttf')
-FONT_GEOLOGICA_EXTRA_BOLD = Font(FONTS_DIR / 'Geologica-ExtraBold.ttf')
-FONT_GEOLOGICA_EXTRA_LIGHT = Font(FONTS_DIR / 'Geologica-ExtraLight.ttf')
-FONT_GEOLOGICA_LIGHT = Font(FONTS_DIR / 'Geologica-Light.ttf')
-FONT_GEOLOGICA_MEDIUM = Font(FONTS_DIR / 'Geologica-Medium.ttf')
-FONT_GEOLOGICA_REGULAR = Font(FONTS_DIR / 'Geologica-Regular.ttf')
-FONT_GEOLOGICA_SEMI_BOLD = Font(FONTS_DIR / 'Geologica-SemiBold.ttf')
-FONT_GEOLOGICA_THIN = Font(FONTS_DIR / 'Geologica-Thin.ttf')
+FONT_GEOLOGICA_BLACK       = FONTS_DIR / 'Geologica-Black.ttf'
+FONT_GEOLOGICA_BOLD        = FONTS_DIR / 'Geologica-Bold.ttf'
+FONT_GEOLOGICA_EXTRA_BOLD  = FONTS_DIR / 'Geologica-ExtraBold.ttf'
+FONT_GEOLOGICA_EXTRA_LIGHT = FONTS_DIR / 'Geologica-ExtraLight.ttf'
+FONT_GEOLOGICA_LIGHT       = FONTS_DIR / 'Geologica-Light.ttf'
+FONT_GEOLOGICA_MEDIUM      = FONTS_DIR / 'Geologica-Medium.ttf'
+FONT_GEOLOGICA_REGULAR     = FONTS_DIR / 'Geologica-Regular.ttf'
+FONT_GEOLOGICA_SEMI_BOLD   = FONTS_DIR / 'Geologica-SemiBold.ttf'
+FONT_GEOLOGICA_THIN        = FONTS_DIR / 'Geologica-Thin.ttf'
 
-FONT_JET_BRAINS_MONO_NL_BOLD = Font(FONTS_DIR / 'JetBrainsMonoNL-Bold.ttf')
-FONT_JET_BRAINS_MONO_NL_EXTRA_BOLD = Font(FONTS_DIR / 'JetBrainsMonoNL-ExtraBold.ttf')
-FONT_JET_BRAINS_MONO_NL_EXTRA_LIGHT = Font(FONTS_DIR / 'JetBrainsMonoNL-ExtraLight.ttf')
-FONT_JET_BRAINS_MONO_NL_LIGHT = Font(FONTS_DIR / 'JetBrainsMonoNL-Light.ttf')
-FONT_JET_BRAINS_MONO_NL_MEDIUM = Font(FONTS_DIR / 'JetBrainsMonoNL-Medium.ttf')
-FONT_JET_BRAINS_MONO_NL_REGULAR = Font(FONTS_DIR / 'JetBrainsMonoNL-Regular.ttf')
-FONT_JET_BRAINS_MONO_NL_SEMI_BOLD = Font(FONTS_DIR / 'JetBrainsMonoNL-SemiBold.ttf')
-FONT_JET_BRAINS_MONO_NL_THIN = Font(FONTS_DIR / 'JetBrainsMonoNL-Thin.ttf')
+FONT_JET_BRAINS_MONO_NL_BOLD        = FONTS_DIR / 'JetBrainsMonoNL-Bold.ttf'
+FONT_JET_BRAINS_MONO_NL_EXTRA_BOLD  = FONTS_DIR / 'JetBrainsMonoNL-ExtraBold.ttf'
+FONT_JET_BRAINS_MONO_NL_EXTRA_LIGHT = FONTS_DIR / 'JetBrainsMonoNL-ExtraLight.ttf'
+FONT_JET_BRAINS_MONO_NL_LIGHT       = FONTS_DIR / 'JetBrainsMonoNL-Light.ttf'
+FONT_JET_BRAINS_MONO_NL_MEDIUM      = FONTS_DIR / 'JetBrainsMonoNL-Medium.ttf'
+FONT_JET_BRAINS_MONO_NL_REGULAR     = FONTS_DIR / 'JetBrainsMonoNL-Regular.ttf'
+FONT_JET_BRAINS_MONO_NL_SEMI_BOLD   = FONTS_DIR / 'JetBrainsMonoNL-SemiBold.ttf'
+FONT_JET_BRAINS_MONO_NL_THIN        = FONTS_DIR / 'JetBrainsMonoNL-Thin.ttf'
+
+FONT_JOST_BLACK       = FONTS_DIR / 'Jost-Black.ttf'
+FONT_JOST_BOLD        = FONTS_DIR / 'Jost-Bold.ttf'
+FONT_JOST_EXTRA_BOLD  = FONTS_DIR / 'Jost-ExtraBold.ttf'
+FONT_JOST_EXTRA_LIGHT = FONTS_DIR / 'Jost-ExtraLight.ttf'
+FONT_JOST_LIGHT       = FONTS_DIR / 'Jost-Light.ttf'
+FONT_JOST_MEDIUM      = FONTS_DIR / 'Jost-Medium.ttf'
+FONT_JOST_REGULAR     = FONTS_DIR / 'Jost-Regular.ttf'
+FONT_JOST_SEMI_BOLD   = FONTS_DIR / 'Jost-SemiBold.ttf'
+FONT_JOST_THIN        = FONTS_DIR / 'Jost-Thin.ttf'
+
+FONT_MONTSERRAT_BLACK       = FONTS_DIR / 'Montserrat-Black.ttf'
+FONT_MONTSERRAT_BOLD        = FONTS_DIR / 'Montserrat-Bold.ttf'
+FONT_MONTSERRAT_EXTRA_BOLD  = FONTS_DIR / 'Montserrat-ExtraBold.ttf'
+FONT_MONTSERRAT_EXTRA_LIGHT = FONTS_DIR / 'Montserrat-ExtraLight.ttf'
+FONT_MONTSERRAT_LIGHT       = FONTS_DIR / 'Montserrat-Light.ttf'
+FONT_MONTSERRAT_MEDIUM      = FONTS_DIR / 'Montserrat-Medium.ttf'
+FONT_MONTSERRAT_REGULAR     = FONTS_DIR / 'Montserrat-Regular.ttf'
+FONT_MONTSERRAT_SEMI_BOLD   = FONTS_DIR / 'Montserrat-SemiBold.ttf'
+FONT_MONTSERRAT_THIN        = FONTS_DIR / 'Montserrat-Thin.ttf'

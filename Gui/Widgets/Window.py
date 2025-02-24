@@ -6,8 +6,6 @@ from PyQt5.QtWidgets import QSizePolicy
 from PyQt5.QtWidgets import QDesktopWidget
 from PyQt5.QtWidgets import QGridLayout
 
-from PyQt5.QtCore import Qt
-
 from Gui.Widgets.Navigator import Navigator
 
 from Logger import log

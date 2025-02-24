@@ -25,7 +25,7 @@ class Navigator(QWidget):
         self.setLayout(self.layout)
     
     @property
-    def current_screen(self):
+    def screen(self):
         return self.__current_screen
 
     def load(self, tag: str, *args, **kwargs):
