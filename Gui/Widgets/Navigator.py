@@ -2,7 +2,7 @@
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtWidgets import QGridLayout
 
-from Gui.Widgets.Screens.Screen import Screen
+from Gui.Widgets.Screen import Screen
 
 
 class Navigator(QWidget):
