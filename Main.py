@@ -1,8 +1,8 @@
 
 import sys
 
-from Gui.Widgets.Screens.Welcome.Screen import ScreenWelcome
-from Gui.Widgets.Screens.Dashboard.Screen import ScreenDashboard
+from Gui.Widgets.Screens.ScreenWelcome import ScreenWelcome
+from Gui.Widgets.Screens.ScreenDashboard import ScreenDashboard
 
 from App import app
 
