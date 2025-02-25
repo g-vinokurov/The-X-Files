@@ -14,4 +14,4 @@ class Content:
         return self._items
     
     def __str__(self):
-        return str([str(item) for item in self._items])
+        return str(list(map(str, self._items)))

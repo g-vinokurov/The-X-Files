@@ -13,4 +13,4 @@ class Img:
         return self._name
     
     def __str__(self):
-        return f'{self.__class__.__name__}(src="{self._src}",name="{self._name}")'
+        return f'{self.__class__.__name__}'

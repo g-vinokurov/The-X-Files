@@ -12,7 +12,7 @@ from State.Models.Report.Solution import Solution
 
 from State.Utils.ContentParser import ContentParser
 
-from Logger import log
+from Log import log
 
 
 class ReportLoader:

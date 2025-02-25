@@ -8,4 +8,4 @@ class Pre:
         return self._text
     
     def __str__(self):
-        return f'{self.__class__.__name__}(text="{self._text}")'
+        return f'{self.__class__.__name__}'

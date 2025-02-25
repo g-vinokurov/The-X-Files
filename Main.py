@@ -1,21 +1,15 @@
 
 import sys
 
-from PyQt5.QtWidgets import QApplication
-
-from Gui.Widgets.Window import Window
-from State.State import State
+from Gui.Widgets.Screens.ScreenWelcome import ScreenWelcome
+from Gui.Widgets.Screens.ScreenDashboard import ScreenDashboard
 
 from App import app
 
 
 if __name__ == '__main__':
-    application = QApplication([])
-    
-    app.state = State()
-    
-    app.gui = Window()
+    app.gui.navigator.register('welcome', ScreenWelcome)
+    app.gui.navigator.register('dashboard', ScreenDashboard)
     app.gui.navigator.goto('welcome')
     app.gui.show()
-    
-    sys.exit(application.exec())
+    sys.exit(app.exec())

@@ -1,7 +1,7 @@
 
 from Gui.Widgets.Screens.Screen import Screen
 
-from Logger import log
+from Log import log
 from App import app
 
 

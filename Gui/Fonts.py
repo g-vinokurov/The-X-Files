@@ -8,23 +8,23 @@ from PyQt5.QtGui import QFont
 
 from Config import FONTS_DIR
 
-from Logger import log
+from Log import log
 
 
 class Font(QFont):
-    __loaded_fonts = {}
+    _fonts = {}
     
     def __init__(self, path: str | pathlib.Path):
         path = str(path)
-        if path not in self.__loaded_fonts:
-            self.__load(path)
-        super().__init__(self.__loaded_fonts.get(path))
+        if path not in self._fonts:
+            self._load(path)
+        super().__init__(self._fonts.get(path))
     
     @classmethod
-    def __load(cls, path: str):
+    def _load(cls, path: str):
 
         if QApplication.instance() is None:
-            log.warning('QApplication not started - impossible to load font')
+            log.warning('App not started - could not load fonts')
             return
         
         font_id = QFontDatabase.addApplicationFont(path)
@@ -36,8 +36,8 @@ class Font(QFont):
         if not families:
             return
 
-        cls.__loaded_fonts[path] = families[0]
-        log.info(f'Font {families[0]} loaded')
+        cls._fonts[path] = font = families[0]
+        log.info(f'Font {font} loaded')
 
 
 FONT_SEGOE_UI_EMOJI = FONTS_DIR / 'Segoe-UI-Emoji.ttf'

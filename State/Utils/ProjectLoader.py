@@ -1,11 +1,10 @@
 
 import pathlib
-import traceback
 
 from State.Models.Project import Project
 from State.Utils.ReportLoader import ReportLoader
 
-from Logger import log
+from Log import log
 
 
 class ProjectLoader:
@@ -31,7 +30,7 @@ class ProjectLoader:
                 report = ReportLoader.load(path)
             except Exception as err:
                 log.error(f'{err}')
-                log.debug(f'{traceback.format_exc()}')
+                log.debug(f'{err}', exc_info=True)
                 continue
             else:
                 log.debug(str(report))
