@@ -41,7 +41,7 @@ class Navigator(QWidget):
 
         self._layout.removeWidget(self._current_screen)
         self._current_screen.hide()
-        self._current_screen = self._screens[tag]
+        self._current_screen : Screen = self._screens[tag]
         self._current_screen.show()
         self._layout.addWidget(self._current_screen)
 
