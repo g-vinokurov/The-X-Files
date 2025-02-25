@@ -12,6 +12,16 @@ from Log import log
 
 
 class Font(QFont):
+    Thin       = QFont.Thin
+    ExtraLight = QFont.ExtraLight
+    Light      = QFont.Light
+    Regular    = QFont.Normal
+    Medium     = QFont.Medium
+    SemiBold   = QFont.DemiBold
+    Bold       = QFont.Bold
+    ExtraBold  = QFont.ExtraBold
+    Black      = QFont.Black
+    
     _fonts = {}
     
     def __init__(self, path: str | pathlib.Path):
