@@ -17,7 +17,8 @@ class LogLevel(enum.Enum):
 
 logging.basicConfig(
     level=LogLevel[LOG_LVL].value, 
-    filename=LOG_FILE, 
+    filename=LOG_FILE,
+    filemode='w',
     format=LOG_FMT
 )
 
