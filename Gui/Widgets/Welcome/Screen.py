@@ -4,10 +4,12 @@ from PyQt5.QtWidgets import QVBoxLayout
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtGui import QPainter
 
+from PyQt5.QtCore import Qt
+
 from Gui.Widgets.Screen import Screen
 
-from Gui.Widgets.Welcome.Body import Body
 from Gui.Widgets.Welcome.Header import Header
+from Gui.Widgets.Welcome.Body import Body
 from Gui.Widgets.Welcome.Footer import Footer
 
 from Gui.Images import IMG_WELCOME

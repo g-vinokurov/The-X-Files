@@ -10,20 +10,20 @@ from Log import log
 from App import app
 
 
-class Header(QWidget):
+class ReportSection(QWidget):
     def __init__(self, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
         self.initUI()
 
     def initUI(self):
-        self.setObjectName('dashboard-header')
+        self.setObjectName('dashboard-report-section')
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.setStyleSheet(f'''
-            QWidget#dashboard-header {{
-                background-color: {Theme.DashboardHeaderBackgroundColor};
-                border-bottom: 1px solid {Theme.DashboardHeaderBorderColor};
+            QWidget#dashboard-report-section {{
+                background-color: {Theme.DashboardReportSectionBackgroundColor};
                 outline: none;
+                border: none;
                 padding: 0px;
             }}
         ''')
