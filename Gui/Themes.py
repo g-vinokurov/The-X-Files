@@ -17,3 +17,6 @@ class Theme:
 
 class DefaultTheme(Theme):
     pass
+
+
+CurrentTheme = DefaultTheme

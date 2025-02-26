@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt
 
 from Gui.Fonts import Font
-from Gui.Themes import DefaultTheme as Theme
+from Gui.Themes import CurrentTheme as Theme
 
 from Log import log
 from App import app
