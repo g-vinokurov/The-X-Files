@@ -8,9 +8,9 @@ env = dotenv.dotenv_values('.env')
 PROJECT_DIR = pathlib.Path(__file__).absolute().parent
 
 # Assets config
-FONTS_DIR = PROJECT_DIR / 'Gui' / 'Fonts'
-ICONS_DIR = PROJECT_DIR / 'Gui' / 'Icons'
-IMAGES_DIR = PROJECT_DIR / 'Gui' / 'Images'
+FONTS_DIR = PROJECT_DIR / 'Assets' / 'Fonts'
+ICONS_DIR = PROJECT_DIR / 'Assets' / 'Icons'
+IMAGES_DIR = PROJECT_DIR / 'Assets' / 'Images'
 
 # Logging config
 LOG_LVL = env.get('LOG_LVL', 'CRITICAL')

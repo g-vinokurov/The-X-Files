@@ -24,7 +24,7 @@ class Theme:
     DashboardFooterBorderColor     = Colors.COLOR_VSC_TERTIARY
 
     DashboardReportsListSectionBackgroundColor = Colors.COLOR_VSC_PRIMARY
-    DashboardReportSectionBackgroundColor      = Colors.COLOR_BS_LIGHT
+    DashboardReportSectionBackgroundColor      = Colors.COLOR_VSC_SECONDARY
 
 
 class DefaultTheme(Theme):
