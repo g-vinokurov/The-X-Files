@@ -25,6 +25,11 @@ class Theme:
 
     DashboardReportsListSectionBackgroundColor = Colors.COLOR_VSC_PRIMARY
     DashboardReportSectionBackgroundColor      = Colors.COLOR_VSC_SECONDARY
+    
+    DashboardNoReportSelectedFont       = Fonts.FONT_GEOLOGICA_BLACK
+    DashboardNoReportSelectedFontWeight = Fonts.Font.Black
+    DashboardNoReportSelectedFontSize   = 18
+    DashboardNoReportSelectedColor      = Colors.COLOR_BS_SECONDARY
 
 
 class DefaultTheme(Theme):

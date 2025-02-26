@@ -38,8 +38,6 @@ class Body(QWidget):
         self._splitter = Splitter(Qt.Orientation.Horizontal)
         self._splitter.addWidget(self._reports_list_section)
         self._splitter.addWidget(self._report_section)
-        self._splitter.setStretchFactor(0, 34)
-        self._splitter.setStretchFactor(1, 55)
         
         self._layout = QHBoxLayout()
         self._layout.setContentsMargins(0, 0, 0, 0)
