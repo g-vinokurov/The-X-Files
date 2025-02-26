@@ -3,12 +3,17 @@ from Gui import Colors
 from Gui import Fonts
 
 
-WELCOME_LOGO_COLOR       = Colors.COLOR_BS_LIGHT
-WELCOME_LOGO_FONT        = Fonts.FONT_GEOLOGICA_BLACK
-WELCOME_LOGO_FONT_WEIGHT = Fonts.Font.Black
-WELCOME_LOGO_FONT_SIZE   = 48
+class Theme:
+    WelcomeLogoFont       = Fonts.FONT_GEOLOGICA_BLACK
+    WelcomeLogoFontWeight = Fonts.Font.Black
+    WelcomeLogoFontSize   = 48
+    WelcomeLogoColor      = Colors.COLOR_BS_LIGHT
 
-WELCOME_OPEN_PROJECT_COLOR       = Colors.COLOR_BS_LIGHT
-WELCOME_OPEN_PROJECT_FONT        = Fonts.FONT_GEOLOGICA_BLACK
-WELCOME_OPEN_PROJECT_FONT_WEIGHT = Fonts.Font.Black
-WELCOME_OPEN_PROJECT_FONT_SIZE   = 18
+    WelcomeOpenProjectFont       = Fonts.FONT_GEOLOGICA_BLACK
+    WelcomeOpenProjectFontWeight = Fonts.Font.Black
+    WelcomeOpenProjectFontSize   = 18
+    WelcomeOpenProjectColor      = Colors.COLOR_BS_LIGHT
+
+
+class DefaultTheme(Theme):
+    pass

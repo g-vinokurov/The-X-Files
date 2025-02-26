@@ -4,6 +4,9 @@ from PyQt5.QtWidgets import QHBoxLayout
 
 from PyQt5.QtCore import Qt
 
+from Log import log
+from App import app
+
 
 class Header(QWidget):
     def __init__(self, parent, *args, **kwargs):
@@ -11,7 +14,7 @@ class Header(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.setAttribute(Qt.WA_StyledBackground, True)
+        self.setObjectName('welcome-header')
         
         self._layout = QHBoxLayout()
         self._layout.setContentsMargins(0, 0, 0, 0)

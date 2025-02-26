@@ -3,11 +3,10 @@ from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt
 
 from Gui.Fonts import Font
+from Gui.Themes import DefaultTheme as Theme
 
-from Gui.Themes import WELCOME_LOGO_COLOR
-from Gui.Themes import WELCOME_LOGO_FONT
-from Gui.Themes import WELCOME_LOGO_FONT_WEIGHT
-from Gui.Themes import WELCOME_LOGO_FONT_SIZE
+from Log import log
+from App import app
 
 
 class Logo(QLabel):
@@ -16,15 +15,21 @@ class Logo(QLabel):
         self.initUI()
 
     def initUI(self):
+        self.setObjectName('welcome-logo')
+
         self.setStyleSheet(f'''
+            color: {Theme.WelcomeLogoColor};
+            background: none;
+            border: none;
+            outline: none;
             padding: 0px;
-            color: {WELCOME_LOGO_COLOR};
         ''')
+        self.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.setWordWrap(True)
-        self.setAlignment(Qt.AlignCenter)
-
-        font = Font(WELCOME_LOGO_FONT)
-        font.setPointSize(WELCOME_LOGO_FONT_SIZE)
-        font.setWeight(WELCOME_LOGO_FONT_WEIGHT)
-
+        
+        font = Font(Theme.WelcomeLogoFont)
+        font.setPointSize(Theme.WelcomeLogoFontSize)
+        font.setWeight(Theme.WelcomeLogoFontWeight)
         self.setFont(font)
+
+        self.setText('THE X-FILES')

@@ -4,11 +4,10 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QCursor
 
 from Gui.Fonts import Font
+from Gui.Themes import DefaultTheme as Theme
 
-from Gui.Themes import WELCOME_OPEN_PROJECT_COLOR
-from Gui.Themes import WELCOME_OPEN_PROJECT_FONT
-from Gui.Themes import WELCOME_OPEN_PROJECT_FONT_WEIGHT
-from Gui.Themes import WELCOME_OPEN_PROJECT_FONT_SIZE
+from Log import log
+from App import app
 
 
 class OpenProject(QPushButton):
@@ -17,17 +16,20 @@ class OpenProject(QPushButton):
         self.initUI()
 
     def initUI(self):
-        self.setCursor(QCursor(Qt.PointingHandCursor))
+        self.setObjectName('welcome-open-project')
+
         self.setStyleSheet(f'''
+            color: {Theme.WelcomeOpenProjectColor};
             background: none;
             border: none;
             outline: none;
-            padding-top: 16px;
-            color: {WELCOME_OPEN_PROJECT_COLOR};
+            padding: 0px;
         ''')
+        self.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
-        font = Font(WELCOME_OPEN_PROJECT_FONT)
-        font.setPointSize(WELCOME_OPEN_PROJECT_FONT_SIZE)
-        font.setWeight(WELCOME_OPEN_PROJECT_FONT_WEIGHT)
-
+        font = Font(Theme.WelcomeOpenProjectFont)
+        font.setPointSize(Theme.WelcomeOpenProjectFontSize)
+        font.setWeight(Theme.WelcomeOpenProjectFontWeight)
         self.setFont(font)
+
+        self.setText('Open Project')

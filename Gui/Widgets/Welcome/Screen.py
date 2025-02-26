@@ -22,6 +22,8 @@ class WelcomeScreen(Screen):
         self.initUI()
 
     def initUI(self):
+        self.setObjectName('welcome-screen')
+        
         self._background = QPixmap(IMG_WELCOME)
 
         self._header = Header(self)
@@ -63,3 +65,15 @@ class WelcomeScreen(Screen):
             x = 0
             y = (h - screen_height) // -2
         painter.drawPixmap(x, y, w, h, self._background)
+    
+    @property
+    def header(self):
+        return self._header
+    
+    @property
+    def body(self):
+        return self._body
+    
+    @property
+    def footer(self):
+        return self._footer
