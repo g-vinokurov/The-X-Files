@@ -30,16 +30,16 @@ class Scroll(QScrollArea):
             }}
 
             QScrollBar:horizontal {{
-                height: 16px;
-                margin: 4px 16px 4px 16px;
-                border: 1px transparent {Theme.ScrollHorizontalBorderColor};
+                height: 20px;
+                margin: 0px;
+                border: 1px solid {Theme.ScrollHorizontalBorderColor};
                 border-radius: {Theme.ScrollHorizontalBorderRadius}px;
                 background-color: transparent;
             }}
 
             QScrollBar::handle:horizontal {{
                 background-color: {Theme.ScrollHorizontalHandleBackgroundColor};
-                min-width: 8px;
+                min-width: 64px;
                 border-radius: {Theme.ScrollHorizontalHandleBorderRadius}px;
             }}
 
@@ -69,15 +69,15 @@ class Scroll(QScrollArea):
 
             QScrollBar:vertical {{
                 background-color: transparent;
-                width: 16px;
-                margin: 16px 4px 16px 4px;
-                border: 1px transparent {Theme.ScrollVerticalBorderColor};
+                width: 20px;
+                margin: 0px;
+                border: 1px solid {Theme.ScrollVerticalBorderColor};
                 border-radius: {Theme.ScrollVerticalBorderRadius}px;
             }}
 
             QScrollBar::handle:vertical {{
                 background-color: {Theme.ScrollVerticalHandleBackgroundColor};
-                min-height: 8px;
+                min-height: 64px;
                 border-radius: {Theme.ScrollVerticalHandleBorderRadius}px;
             }}
 

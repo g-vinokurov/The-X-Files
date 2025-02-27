@@ -35,8 +35,9 @@ class ReportsListContainer(QWidget):
         ''')
 
         self._reports_list = ReportsList(self)
-
-        self._scroll = Scroll(self)
+        
+        # i can't set stylesheet to scroll when 'self' is set as parent
+        self._scroll = Scroll(app.gui)
         self._scroll.setWidgetResizable(True)
         self._scroll.setWidget(self._reports_list)
 

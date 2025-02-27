@@ -6,12 +6,12 @@ from Gui import Fonts
 class Theme:
     SplitterBackgroundColor = Colors.COLOR_VSC_SECONDARY
 
-    ScrollHorizontalHandleBackgroundColor = Colors.COLOR_BS_LIGHT
-    ScrollHorizontalBorderColor           = Colors.COLOR_BS_LIGHT
+    ScrollHorizontalHandleBackgroundColor = Colors.COLOR_VSC_LIGHT
+    ScrollHorizontalBorderColor           = Colors.COLOR_VSC_SECONDARY
     ScrollHorizontalBorderRadius          = 0
     ScrollHorizontalHandleBorderRadius    = 0
-    ScrollVerticalHandleBackgroundColor   = Colors.COLOR_BS_LIGHT
-    ScrollVerticalBorderColor             = Colors.COLOR_BS_LIGHT
+    ScrollVerticalHandleBackgroundColor   = Colors.COLOR_VSC_LIGHT
+    ScrollVerticalBorderColor             = Colors.COLOR_VSC_SECONDARY
     ScrollVerticalBorderRadius            = 0
     ScrollVerticalHandleBorderRadius      = 0
 
@@ -47,12 +47,12 @@ class Theme:
     DashboardNoReportSelectedFont       = Fonts.FONT_GEOLOGICA_BLACK
     DashboardNoReportSelectedFontWeight = Fonts.Font.Black
     DashboardNoReportSelectedFontSize   = 16
-    DashboardNoReportSelectedColor      = Colors.COLOR_WHITE
+    DashboardNoReportSelectedColor      = Colors.COLOR_VSC_LIGHT
 
     DashboardNoReportsFoundFont       = Fonts.FONT_GEOLOGICA_BLACK
     DashboardNoReportsFoundFontWeight = Fonts.Font.Black
     DashboardNoReportsFoundFontSize   = 16
-    DashboardNoReportsFoundColor      = Colors.COLOR_WHITE
+    DashboardNoReportsFoundColor      = Colors.COLOR_VSC_LIGHT
 
     DashboardReportCardBackgroundColor = Colors.COLOR_VSC_PRIMARY
     DashboardReportCardBorderColor     = Colors.COLOR_VSC_TERTIARY
@@ -60,7 +60,7 @@ class Theme:
     DashboardReportCardTitleFont       = Fonts.FONT_GEOLOGICA_BLACK
     DashboardReportCardTitleFontWeight = Fonts.Font.Black
     DashboardReportCardTitleFontSize   = 11
-    DashboardReportCardTitleColor      = Colors.COLOR_WHITE
+    DashboardReportCardTitleColor      = Colors.COLOR_VSC_LIGHT
 
     DashboardReportCardIdFont       = Fonts.FONT_GEOLOGICA_EXTRA_LIGHT
     DashboardReportCardIdFontWeight = Fonts.Font.ExtraLight
@@ -73,12 +73,12 @@ class Theme:
     DashboardReportPropertyNameFont       = Fonts.FONT_GEOLOGICA_BLACK
     DashboardReportPropertyNameFontWeight = Fonts.Font.Black
     DashboardReportPropertyNameFontSize   = 10
-    DashboardReportPropertyNameColor      = Colors.COLOR_WHITE
+    DashboardReportPropertyNameColor      = Colors.COLOR_VSC_LIGHT
 
     DashboardReportPropertyValueFont       = Fonts.FONT_GEOLOGICA_EXTRA_LIGHT
     DashboardReportPropertyValueFontWeight = Fonts.Font.ExtraLight
     DashboardReportPropertyValueFontSize   = 10
-    DashboardReportPropertyValueColor      = Colors.COLOR_WHITE
+    DashboardReportPropertyValueColor      = Colors.COLOR_VSC_LIGHT
 
 
 class DefaultTheme(Theme):

@@ -21,6 +21,14 @@ class ReportsList(QWidget):
 
     def initUI(self):
         self.setObjectName('dashboard-reports-list')
+        self.setStyleSheet(f'''
+            QWidget#dashboard-reports-list {{
+                background-color: transparent;
+                outline: none;
+                border: none;
+                padding: 0px;
+            }}
+        ''')
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.setCursor(QCursor(Qt.CursorShape.ArrowCursor))
