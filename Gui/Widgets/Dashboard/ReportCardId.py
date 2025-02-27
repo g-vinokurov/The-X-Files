@@ -27,7 +27,7 @@ class ReportCardId(QLabel):
             outline: none;
             padding: 0px;
         ''')
-        self.setContentsMargins(0, 0, 0, 8)
+        self.setContentsMargins(0, 0, 0, 4)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignmentFlag.AlignLeft)
 

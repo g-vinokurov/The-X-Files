@@ -39,7 +39,7 @@ class Scroll(QScrollArea):
 
             QScrollBar::handle:horizontal {{
                 background-color: {Theme.ScrollHorizontalHandleBackgroundColor};
-                min-width: 64px;
+                min-width: 128px;
                 border-radius: {Theme.ScrollHorizontalHandleBorderRadius}px;
             }}
 
@@ -77,7 +77,7 @@ class Scroll(QScrollArea):
 
             QScrollBar::handle:vertical {{
                 background-color: {Theme.ScrollVerticalHandleBackgroundColor};
-                min-height: 64px;
+                min-height: 128px;
                 border-radius: {Theme.ScrollVerticalHandleBorderRadius}px;
             }}
 

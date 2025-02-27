@@ -37,7 +37,7 @@ class ReportCardProperties(QWidget):
 
         self._layout = QGridLayout()
         self._layout.setContentsMargins(0, 0, 0, 0)
-        self._layout.setSpacing(0)
+        self._layout.setSpacing(2)
         self._layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
         self._report_type_emoji = ReportPropertyEmoji('🚩', self)
