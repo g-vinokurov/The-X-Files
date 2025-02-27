@@ -54,8 +54,9 @@ class Theme:
     DashboardNoReportsFoundFontSize   = 16
     DashboardNoReportsFoundColor      = Colors.COLOR_VSC_LIGHT
 
-    DashboardReportCardBackgroundColor = Colors.COLOR_VSC_PRIMARY
-    DashboardReportCardBorderColor     = Colors.COLOR_VSC_TERTIARY
+    DashboardReportCardBackgroundColor        = Colors.COLOR_VSC_PRIMARY
+    DashboardReportCardBorderColor            = Colors.COLOR_VSC_TERTIARY
+    DashboardReportCardHoveredBackgroundColor = Colors.COLOR_VSC_SECONDARY
 
     DashboardReportCardTitleFont       = Fonts.FONT_GEOLOGICA_BLACK
     DashboardReportCardTitleFontWeight = Fonts.Font.Black

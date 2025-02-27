@@ -34,6 +34,10 @@ class ReportCard(QWidget):
                 padding: 0px;
                 outline: none;
             }}
+
+            QWidget#dashboard-report-card:hover {{
+                background-color: {Theme.DashboardReportCardHoveredBackgroundColor};
+            }}
         ''')
 
         self._report_title = ReportCardTitle(self)
