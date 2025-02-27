@@ -33,3 +33,16 @@ class NoReportSelected(QLabel):
         self.setFont(font)
 
         self.setText('No report selected')
+        self.adjustHeight()
+
+    def adjustHeight(self):
+        font_metrics = self.fontMetrics()
+        width = self.width()
+        text = self.text()
+        text_rect = font_metrics.boundingRect(0, 0, width, 0, Qt.TextFlag.TextWordWrap, text)
+        required_height = text_rect.height()
+        self.setMinimumHeight(required_height)
+
+    def resizeEvent(self, event):
+        super().resizeEvent(event)
+        self.adjustHeight()
