@@ -1,8 +1,12 @@
 
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtWidgets import QVBoxLayout
+
 from PyQt5.QtGui import QCursor
+
 from PyQt5.QtCore import Qt
+from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtCore import pyqtSignal
 
 from Gui.Widgets.Dashboard.ReportCard import ReportCard
 from Gui.Themes import CurrentTheme as Theme
@@ -14,6 +18,8 @@ from App import app
 
 
 class ReportsList(QWidget):
+    report_selected = pyqtSignal(Report)
+
     def __init__(self, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
         self._reports = []
@@ -50,8 +56,16 @@ class ReportsList(QWidget):
             widget = self._layout.itemAt(i).widget()
             if widget is None:
                 continue
+            if not isinstance(widget, ReportCard):
+                continue
+            widget.selected.disconnect(self.on_report_card_selected)
             widget.setParent(None)
         for report in sorted(reports, key=lambda r: r.id, reverse=True):
             report_card = ReportCard(self)
             report_card.report = report
+            report_card.selected.connect(self.on_report_card_selected)
             self._layout.addWidget(report_card)
+    
+    @pyqtSlot(Report)
+    def on_report_card_selected(self, report: Report):
+        self.report_selected.emit(report)

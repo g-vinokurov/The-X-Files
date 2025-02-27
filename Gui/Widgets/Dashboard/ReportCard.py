@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QWidget
 from PyQt5.QtWidgets import QVBoxLayout
 from PyQt5.QtGui import QCursor
 from PyQt5.QtCore import Qt
+from PyQt5.QtCore import pyqtSignal
 
 from Gui.Widgets.Dashboard.ReportCardTitle import ReportCardTitle
 from Gui.Widgets.Dashboard.ReportCardId import ReportCardId
@@ -17,6 +18,8 @@ from App import app
 
 
 class ReportCard(QWidget):
+    selected = pyqtSignal(Report)
+
     def __init__(self, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
         self._report = None
@@ -70,3 +73,8 @@ class ReportCard(QWidget):
         self._report_title.report = report
         self._report_id.report = report
         self._report_properties.report = report
+    
+    def mouseDoubleClickEvent(self, event):
+        if self._report is None:
+            return
+        self.selected.emit(self._report)

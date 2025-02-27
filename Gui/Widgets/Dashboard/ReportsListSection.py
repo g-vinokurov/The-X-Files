@@ -35,15 +35,15 @@ class ReportsListSection(QWidget):
         ''')
 
         self._no_reports_found = NoReportsFoundWidget(self)
-        self._reports_list = ReportsListContainer(self)
-        self._reports_list.hide()
+        self._reports_list_container = ReportsListContainer(self)
+        self._reports_list_container.hide()
 
         self._layout = QHBoxLayout()
         self._layout.setContentsMargins(0, 0, 0, 0)
         self._layout.setSpacing(0)
         
         self._layout.addWidget(self._no_reports_found)
-        self._layout.addWidget(self._reports_list)
+        self._layout.addWidget(self._reports_list_container)
 
         self.setLayout(self._layout)
         
@@ -51,14 +51,18 @@ class ReportsListSection(QWidget):
     
     @property
     def reports(self):
-        return self._reports_list.reports
+        return self._reports_list_container.reports
     
     @reports.setter
     def reports(self, reports: list[Report]):
         if not reports:
-            self._reports_list.hide()
+            self._reports_list_container.hide()
             self._no_reports_found.show()
         else:
-            self._reports_list.show()
+            self._reports_list_container.show()
             self._no_reports_found.hide()
-        self._reports_list.reports = reports
+        self._reports_list_container.reports = reports
+    
+    @property
+    def reports_list(self):
+        return self._reports_list_container.reports_list

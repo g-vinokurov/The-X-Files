@@ -3,12 +3,15 @@ from PyQt5.QtWidgets import QWidget
 from PyQt5.QtWidgets import QHBoxLayout
 
 from PyQt5.QtCore import Qt
+from PyQt5.QtCore import pyqtSlot
 
 from Gui.Widgets.Dashboard.ReportsListSection import ReportsListSection
 from Gui.Widgets.Dashboard.ReportSection import ReportSection
 from Gui.Widgets.Splitter import Splitter
 
 from Gui.Themes import CurrentTheme as Theme
+
+from State.Models.Report.Report import Report
 
 from Log import log
 from App import app
@@ -34,6 +37,9 @@ class Body(QWidget):
 
         self._reports_list_section = ReportsListSection(self)
         self._report_section = ReportSection(self)
+        
+        reports = self._reports_list_section.reports_list
+        reports.report_selected.connect(self.on_report_selected)
 
         # self._splitter = Splitter(Qt.Orientation.Horizontal)
         # self._splitter.addWidget(self._reports_list_section)
@@ -61,3 +67,7 @@ class Body(QWidget):
     @property
     def report_section(self):
         return self._report_section
+    
+    @pyqtSlot(Report)
+    def on_report_selected(self, report: Report):
+        self._report_section.report = report

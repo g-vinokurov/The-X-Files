@@ -47,3 +47,6 @@ class ReportWidget(QWidget):
     def report(self, report: Report | None):
         if report == self._report:
             return
+        if report is None:
+            return
+        log.info(f'Report {report.id} selected')

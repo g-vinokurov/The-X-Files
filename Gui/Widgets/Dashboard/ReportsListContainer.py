@@ -56,3 +56,7 @@ class ReportsListContainer(QWidget):
     @reports.setter
     def reports(self, reports: list[Report]):
         self._reports_list.reports = reports
+    
+    @property
+    def reports_list(self):
+        return self._reports_list
