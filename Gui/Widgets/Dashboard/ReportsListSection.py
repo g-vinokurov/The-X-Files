@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QHBoxLayout
 from PyQt5.QtCore import Qt
 
 from Gui.Widgets.Dashboard.NoReportsFoundWidget import NoReportsFoundWidget
-from Gui.Widgets.Dashboard.ReportsList import ReportsList
+from Gui.Widgets.Dashboard.ReportsListContainer import ReportsListContainer
 
 from Gui.Themes import CurrentTheme as Theme
 
@@ -18,9 +18,6 @@ from App import app
 class ReportsListSection(QWidget):
     def __init__(self, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
-
-        self._reports = []
-
         self.initUI()
 
     def initUI(self):
@@ -37,7 +34,7 @@ class ReportsListSection(QWidget):
         ''')
 
         self._no_reports_found = NoReportsFoundWidget(self)
-        self._reports_list = ReportsList(self)
+        self._reports_list = ReportsListContainer(self)
         self._reports_list.hide()
 
         self._layout = QHBoxLayout()
@@ -53,7 +50,7 @@ class ReportsListSection(QWidget):
     
     @property
     def reports(self):
-        return self._reports[::]
+        return self._reports_list.reports
     
     @reports.setter
     def reports(self, reports: list[Report]):

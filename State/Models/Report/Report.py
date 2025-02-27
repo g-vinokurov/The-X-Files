@@ -12,7 +12,7 @@ class Report:
     def __init__(self,
         dir: str,
         name: str,
-        alt_name: str,
+        id: str,
         type: str | None = None,
         provider: Provider | None = None,
         level: Level | None = None,
@@ -23,7 +23,7 @@ class Report:
     ):
         self._dir = dir
         self._name = name
-        self._alt_name = alt_name
+        self._id = id
         self._type= type
         self._provider = provider
         self._level = level
@@ -41,8 +41,8 @@ class Report:
         return self._name
     
     @property
-    def alt_name(self):
-        return self._alt_name
+    def id(self):
+        return self._id
     
     @property
     def type(self):
@@ -76,7 +76,7 @@ class Report:
         data = {
             'dir': str(self._dir),
             'name': str(self._name),
-            'alt_name': str(self._alt_name),
+            'id': str(self._id),
             'type': str(self._type),
             'provider': str(self._provider),
             'level': str(self._level),

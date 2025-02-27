@@ -31,12 +31,12 @@ class ReportLoader:
     
     @classmethod
     def __parse_report(cls, report_dir: pathlib.Path) -> Report:
-        report_alt_name = str(report_dir.name)
+        report_id = str(report_dir.name)
 
         report_file_name = 'report.xml'
         report_file_path = report_dir / report_file_name
         if not report_file_path.exists():
-            raise FileNotFoundError(f'{report_alt_name}: File {report_file_name} not found, skipped!')
+            raise FileNotFoundError(f'{report_id}: File {report_file_name} not found, skipped!')
     
         with open(report_file_path, 'r', encoding='utf-8') as report_file:
             report_xml = bs4.BeautifulSoup(report_file.read(), 'xml')
@@ -49,7 +49,7 @@ class ReportLoader:
         if report_body is None:
             raise ValueError('Report Body not found, skipped!')
         
-        report_name = cls.__parse_report_metadata_item(report_head, 'name', report_alt_name)
+        report_name = cls.__parse_report_metadata_item(report_head, 'name', report_id)
         report_provider = cls.__parse_report_provider(report_head)
         report_type = cls.__parse_report_metadata_item(report_head, 'type')
         report_date = cls.__parse_report_date(report_head)
@@ -62,7 +62,7 @@ class ReportLoader:
         return Report(
             report_dir,
             report_name,
-            report_alt_name,
+            report_id,
             report_type,
             report_provider,
             report_level,
