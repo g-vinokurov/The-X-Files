@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QHBoxLayout
 from PyQt5.QtCore import Qt
 
 from Gui.Widgets.Dashboard.NoReportSelectedWidget import NoReportSelectedWidget
-from Gui.Widgets.Dashboard.ReportWidget import ReportWidget
+from Gui.Widgets.Dashboard.ReportWidgetContainer import ReportWidgetContainer
 
 from Gui.Themes import CurrentTheme as Theme
 
@@ -18,9 +18,7 @@ from App import app
 class ReportSection(QWidget):
     def __init__(self, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
-
         self._report = None
-
         self.initUI()
 
     def initUI(self):
@@ -37,15 +35,15 @@ class ReportSection(QWidget):
         ''')
 
         self._no_report_selected = NoReportSelectedWidget(self)
-        self._report_widget = ReportWidget(self)
-        self._report_widget.hide()
+        self._report_widget_container = ReportWidgetContainer(self)
+        self._report_widget_container.hide()
 
         self._layout = QHBoxLayout()
         self._layout.setContentsMargins(0, 0, 0, 0)
         self._layout.setSpacing(0)
 
         self._layout.addWidget(self._no_report_selected)
-        self._layout.addWidget(self._report_widget)
+        self._layout.addWidget(self._report_widget_container)
 
         self.setLayout(self._layout)
     
@@ -58,9 +56,9 @@ class ReportSection(QWidget):
         if report == self._report:
             return
         if report is None:
-            self._report_widget.hide()
+            self._report_widget_container.hide()
             self._no_report_selected.show()
         else:
-            self._report_widget.show()
+            self._report_widget_container.show()
             self._no_report_selected.hide()
-        self._report_widget.report = report
+        self._report_widget_container.report = report
