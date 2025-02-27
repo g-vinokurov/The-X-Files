@@ -25,7 +25,7 @@ class NoReportSelected(QLabel):
             padding: 0px;
         ''')
         self.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.setWordWrap(True)
+        self.setWordWrap(False)
         
         font = Font(Theme.DashboardNoReportSelectedFont)
         font.setPointSize(Theme.DashboardNoReportSelectedFontSize)
@@ -34,7 +34,8 @@ class NoReportSelected(QLabel):
 
         self.setText('No report selected')
         self.adjustHeight()
-
+    
+    # If word-wrap is True, QLabel does not resize automatically and hide parts of text
     def adjustHeight(self):
         font_metrics = self.fontMetrics()
         width = self.width()

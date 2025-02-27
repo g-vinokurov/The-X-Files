@@ -33,7 +33,7 @@ class NoReportsFoundWidget(QWidget):
         self._no_reports_found = NoReportsFound(self)
 
         self._layout = QHBoxLayout()
-        self._layout.setContentsMargins(0, 0, 0, 0)
+        self._layout.setContentsMargins(64, 64, 64, 64)
         self._layout.setSpacing(0)
         self._layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
