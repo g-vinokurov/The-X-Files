@@ -29,7 +29,12 @@ class Theme:
     DashboardNoReportSelectedFont       = Fonts.FONT_GEOLOGICA_BLACK
     DashboardNoReportSelectedFontWeight = Fonts.Font.Black
     DashboardNoReportSelectedFontSize   = 18
-    DashboardNoReportSelectedColor      = Colors.COLOR_BS_SECONDARY
+    DashboardNoReportSelectedColor      = Colors.COLOR_WHITE
+
+    DashboardNoReportsFoundFont       = Fonts.FONT_GEOLOGICA_BLACK
+    DashboardNoReportsFoundFontWeight = Fonts.Font.Black
+    DashboardNoReportsFoundFontSize   = 18
+    DashboardNoReportsFoundColor      = Colors.COLOR_WHITE
 
 
 class DefaultTheme(Theme):

@@ -9,16 +9,16 @@ from Log import log
 from App import app
 
 
-class NoReportSelected(QLabel):
+class NoReportsFound(QLabel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.initUI()
 
     def initUI(self):
-        self.setObjectName('dashboard-no-report-selected')
+        self.setObjectName('dashboard-no-reports-found')
 
         self.setStyleSheet(f'''
-            color: {Theme.DashboardNoReportSelectedColor};
+            color: {Theme.DashboardNoReportsFoundColor};
             background: none;
             border: none;
             outline: none;
@@ -27,9 +27,9 @@ class NoReportSelected(QLabel):
         self.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.setWordWrap(True)
         
-        font = Font(Theme.DashboardNoReportSelectedFont)
-        font.setPointSize(Theme.DashboardNoReportSelectedFontSize)
-        font.setWeight(Theme.DashboardNoReportSelectedFontWeight)
+        font = Font(Theme.DashboardNoReportsFoundFont)
+        font.setPointSize(Theme.DashboardNoReportsFoundFontSize)
+        font.setWeight(Theme.DashboardNoReportsFoundFontWeight)
         self.setFont(font)
 
-        self.setText('No report selected')
+        self.setText('No reports found')

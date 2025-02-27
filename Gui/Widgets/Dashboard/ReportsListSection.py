@@ -4,7 +4,12 @@ from PyQt5.QtWidgets import QHBoxLayout
 
 from PyQt5.QtCore import Qt
 
+from Gui.Widgets.Dashboard.NoReportsFoundWidget import NoReportsFoundWidget
+from Gui.Widgets.Dashboard.ReportsList import ReportsList
+
 from Gui.Themes import CurrentTheme as Theme
+
+from State.Models.Report.Report import Report
 
 from Log import log
 from App import app
@@ -13,6 +18,9 @@ from App import app
 class ReportsListSection(QWidget):
     def __init__(self, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
+
+        self._reports = []
+
         self.initUI()
 
     def initUI(self):
@@ -28,9 +36,31 @@ class ReportsListSection(QWidget):
             }}
         ''')
 
+        self._no_reports_found = NoReportsFoundWidget(self)
+        self._reports_list = ReportsList(self)
+        self._reports_list.hide()
+
         self._layout = QHBoxLayout()
         self._layout.setContentsMargins(32, 32, 32, 32)
         self._layout.setSpacing(0)
-        self._layout.setAlignment(Qt.AlignmentFlag.AlignLeft)
+        
+        self._layout.addWidget(self._no_reports_found)
+        self._layout.addWidget(self._reports_list)
 
         self.setLayout(self._layout)
+        
+        self.reports = app.state.project.reports
+    
+    @property
+    def reports(self):
+        return self._reports[::]
+    
+    @reports.setter
+    def reports(self, reports: list[Report]):
+        if not reports:
+            self._reports_list.hide()
+            self._no_reports_found.show()
+        else:
+            self._reports_list.show()
+            self._no_reports_found.hide()
+        self._reports_list.reports = reports
