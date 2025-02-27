@@ -1,39 +1,68 @@
+
+from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QVBoxLayout
+from PyQt5.QtGui import QCursor
+from PyQt5.QtCore import Qt
+
+from Gui.Widgets.Dashboard.ReportCardTitle import ReportCardTitle
+from Gui.Widgets.Dashboard.ReportCardId import ReportCardId
+from Gui.Widgets.Dashboard.ReportCardProperties import ReportCardProperties
+
+from Gui.Themes import CurrentTheme as Theme
+
+from State.Models.Report.Report import Report
+
+from Log import log
+from App import app
+
+
 class ReportCard(QWidget):
-    def __init__(self, report: Report, parent, *args, **kwargs):
+    def __init__(self, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
-        self.__report = report
+        self._report = None
         self.initUI()
 
     def initUI(self):
-        self.setAttribute(Qt.WA_StyledBackground, True)
-        self.setStyleSheet(f'''
-            border-radius: 16px;
-            background-color: {COLOR_BS_LIGHT};
-            border-color: none;
-            padding: 0px
-        ''')
-        self.setCursor(QCursor(Qt.PointingHandCursor))
+        self.setObjectName('dashboard-report-card')
 
-        self._report_title = ReportCardTitle(self.__report, self)
-        self._report_alt_name = ReportCardAltName(self.__report, self)
-        self._report_parameters = ReportCardParameters(self.__report, self)
+        self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
+        self.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.setStyleSheet(f'''
+            QWidget#dashboard-report-card {{
+                background-color: {Theme.DashboardReportCardBackgroundColor};
+                border-bottom: 1px solid {Theme.DashboardReportCardBorderColor};
+                padding: 0px;
+                outline: none;
+            }}
+        ''')
+
+        self._report_title = ReportCardTitle(self)
+        self._report_id = ReportCardId(self)
+        self._report_properties = ReportCardProperties(self)
         
         self._layout = QVBoxLayout()
-        self._layout.setContentsMargins(16, 16, 16, 16)
+        self._layout.setContentsMargins(0, 0, 0, 0)
         self._layout.setSpacing(0)
-        self._layout.setAlignment(Qt.AlignTop)
+        self._layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
         self._layout.addWidget(self._report_title)
-        self._layout.addWidget(self._report_alt_name)
-        self._layout.addWidget(self._report_parameters)
+        self._layout.addWidget(self._report_id)
+        self._layout.addWidget(self._report_properties)
 
         self.setLayout(self._layout)
-
-    def updateUI(self, *args, **kwargs):
-        self._report_title.updateUI(*args, **kwargs)
-        self._report_alt_name.updateUI(*args, **kwargs)
-        self._report_parameters.updateUI(*args, **kwargs)
     
-    def mousePressEvent(self, event):
-        if event.button() == Qt.LeftButton:
-            app.gui.navigator.update('dashboard', current_report=self.__report)
+    @property
+    def report(self):
+        return self._report
+    
+    @report.setter
+    def report(self, report: Report | None):
+        if report == self._report:
+            return
+        if report is None:
+            return
+        self._report = report
+        
+        self._report_title.report = report
+        self._report_id.report = report
+        self._report_properties.report = report

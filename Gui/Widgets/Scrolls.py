@@ -15,13 +15,11 @@ class Scroll(QScrollArea):
         self.initUI()
     
     def initUI(self):
-        self.setObjectName('scroll')
-
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
         self.setStyleSheet(f'''
-            QScrollArea#scroll {{ 
+            QScrollArea {{ 
                 background: transparent;
                 border: none;
             }}
@@ -115,13 +113,11 @@ class ScrollPre(QScrollArea):
         self.initUI()
     
     def initUI(self):
-        self.setObjectName('scroll-pre')
-
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
         self.setStyleSheet(f'''
-            QScrollArea#scroll-pre {{ 
+            QScrollArea {{ 
                 background: transparent;
                 border: none;
             }}

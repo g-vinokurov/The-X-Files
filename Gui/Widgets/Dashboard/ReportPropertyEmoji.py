@@ -1,14 +1,25 @@
 
-class ReportParameterEmoji(QLabel):
+from PyQt5.QtWidgets import QLabel
+from PyQt5.QtCore import Qt
+
+from Gui.Fonts import Font
+from Gui.Themes import CurrentTheme as Theme
+
+from Log import log
+from App import app
+
+
+class ReportPropertyEmoji(QLabel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.initUI()
 
     def initUI(self):
-        self.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
-        font = QFont(str(FONT_SEGOE_UI_EMOJI), 12)
-        font.setHintingPreference(QFont.HintingPreference.PreferNoHinting)
+        self.setObjectName('dashboard-report-property-emoji')
+        
+        self.setAlignment(Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignTop)
+
+        font = Font(Theme.DashboardReportPropertyEmojiFont)
+        font.setPointSize(Theme.DashboardReportPropertyEmojiFontSize)
+        font.setHintingPreference(Font.HintingPreference.PreferNoHinting)
         self.setFont(font)
-    
-    def updateUI(self, emoji: str, *args, **kwargs):
-        self.setText(emoji)

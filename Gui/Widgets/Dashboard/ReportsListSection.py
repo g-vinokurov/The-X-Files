@@ -6,6 +6,7 @@ from PyQt5.QtCore import Qt
 
 from Gui.Widgets.Dashboard.NoReportsFoundWidget import NoReportsFoundWidget
 from Gui.Widgets.Dashboard.ReportsListContainer import ReportsListContainer
+from Gui.Widgets.Scrolls import Scroll
 
 from Gui.Themes import CurrentTheme as Theme
 
@@ -38,7 +39,7 @@ class ReportsListSection(QWidget):
         self._reports_list.hide()
 
         self._layout = QHBoxLayout()
-        self._layout.setContentsMargins(32, 32, 32, 32)
+        self._layout.setContentsMargins(0, 0, 0, 0)
         self._layout.setSpacing(0)
         
         self._layout.addWidget(self._no_reports_found)

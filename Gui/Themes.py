@@ -54,11 +54,31 @@ class Theme:
     DashboardNoReportsFoundFontSize   = 16
     DashboardNoReportsFoundColor      = Colors.COLOR_WHITE
 
+    DashboardReportCardBackgroundColor = Colors.COLOR_VSC_PRIMARY
+    DashboardReportCardBorderColor     = Colors.COLOR_VSC_TERTIARY
+
+    DashboardReportCardTitleFont       = Fonts.FONT_GEOLOGICA_BLACK
+    DashboardReportCardTitleFontWeight = Fonts.Font.Black
+    DashboardReportCardTitleFontSize   = 11
+    DashboardReportCardTitleColor      = Colors.COLOR_WHITE
+
+    DashboardReportCardIdFont       = Fonts.FONT_GEOLOGICA_EXTRA_LIGHT
+    DashboardReportCardIdFontWeight = Fonts.Font.ExtraLight
+    DashboardReportCardIdFontSize   = 9
+    DashboardReportCardIdColor      = Colors.COLOR_VSC_QUATERNARY
+    
+    DashboardReportPropertyEmojiFont     = Fonts.FONT_SEGOE_UI_EMOJI
+    DashboardReportPropertyEmojiFontSize = 12
+
+    DashboardReportPropertyNameFont       = Fonts.FONT_GEOLOGICA_BLACK
+    DashboardReportPropertyNameFontWeight = Fonts.Font.Black
+    DashboardReportPropertyNameFontSize   = 10
+    DashboardReportPropertyNameColor      = Colors.COLOR_WHITE
+
     DashboardReportPropertyValueFont       = Fonts.FONT_GEOLOGICA_EXTRA_LIGHT
     DashboardReportPropertyValueFontWeight = Fonts.Font.ExtraLight
     DashboardReportPropertyValueFontSize   = 10
     DashboardReportPropertyValueColor      = Colors.COLOR_WHITE
-    
 
 
 class DefaultTheme(Theme):
