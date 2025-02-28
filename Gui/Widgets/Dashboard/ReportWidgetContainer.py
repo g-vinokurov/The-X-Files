@@ -59,6 +59,8 @@ class ReportWidgetContainer(QWidget):
         if report is None:
             return
         log.info(f'Report {report.id} selected')
-        
+
+        self._report_widget = ReportWidget(self)
         self._report_widget.report = report
+        self._scroll.setWidget(self._report_widget)
         return
