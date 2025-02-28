@@ -4,9 +4,9 @@ from PyQt5.QtWidgets import QHBoxLayout
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QCursor
 
-from Gui.Widgets.Dashboard.ReportCardPropertyEmoji import ReportCardPropertyEmoji
-from Gui.Widgets.Dashboard.ReportCardPropertyName import ReportCardPropertyName
-from Gui.Widgets.Dashboard.ReportCardPropertyValue import ReportCardPropertyValue
+from Gui.Widgets.Dashboard.ReportWidgetPropertyEmoji import ReportWidgetPropertyEmoji
+from Gui.Widgets.Dashboard.ReportWidgetPropertyName import ReportWidgetPropertyName
+from Gui.Widgets.Dashboard.ReportWidgetPropertyValue import ReportWidgetPropertyValue
 
 from Gui.Fonts import Font
 from Gui.Themes import CurrentTheme as Theme
@@ -42,9 +42,9 @@ class ReportItemFile(QWidget):
         self._layout.setSpacing(8)
         self._layout.setAlignment(Qt.AlignmentFlag.AlignLeft)
 
-        self._report_file_emoji = ReportCardPropertyEmoji('📌', self)
-        self._report_file_name = ReportCardPropertyName(self)
-        self._report_file_value = ReportCardPropertyValue(self)
+        self._report_file_emoji = ReportWidgetPropertyEmoji('📌', self)
+        self._report_file_name = ReportWidgetPropertyName(self)
+        self._report_file_value = ReportWidgetPropertyValue(self)
 
         self._layout.addWidget(self._report_file_emoji)
         self._layout.addWidget(self._report_file_name)
