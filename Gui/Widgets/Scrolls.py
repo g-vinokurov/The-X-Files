@@ -32,7 +32,7 @@ class Scroll(QScrollArea):
             }}
 
             QScrollArea#scroll > QWidget > QScrollBar:horizontal {{
-                height: 20px;
+                height: {Theme.ScrollHorizontalHeight}px;
                 margin: 0px;
                 border-top: 1px solid {Theme.ScrollHorizontalBorderColor};
                 border-radius: {Theme.ScrollHorizontalBorderRadius}px;
@@ -41,7 +41,7 @@ class Scroll(QScrollArea):
 
             QScrollArea#scroll > QWidget > QScrollBar::handle:horizontal {{
                 background-color: {Theme.ScrollHorizontalHandleBackgroundColor};
-                min-width: 128px;
+                min-width: {Theme.ScrollHorizontalMinWidth}px;
                 border-radius: {Theme.ScrollHorizontalHandleBorderRadius}px;
             }}
 
@@ -71,7 +71,7 @@ class Scroll(QScrollArea):
 
             QScrollArea#scroll > QWidget > QScrollBar:vertical {{
                 background-color: transparent;
-                width: 20px;
+                width: {Theme.ScrollVerticalWidth}px;
                 margin: 0px;
                 border-left: 1px solid {Theme.ScrollVerticalBorderColor};
                 border-radius: {Theme.ScrollVerticalBorderRadius}px;
@@ -79,7 +79,7 @@ class Scroll(QScrollArea):
 
             QScrollArea#scroll > QWidget > QScrollBar::handle:vertical {{
                 background-color: {Theme.ScrollVerticalHandleBackgroundColor};
-                min-height: 128px;
+                min-height: {Theme.ScrollVerticalMinHeight}px;
                 border-radius: {Theme.ScrollVerticalHandleBorderRadius}px;
             }}
 
@@ -132,7 +132,7 @@ class ScrollPre(QScrollArea):
             }}
 
             QScrollArea#scroll-pre > QWidget > QScrollBar:horizontal {{
-                height: 16px;
+                height: {Theme.ScrollPreHorizontalHeight}px;
                 margin: 0px 0px 0px 0px;
                 border-top: 1px transparent {Theme.ScrollPreHorizontalBorderColor};
                 border-radius: {Theme.ScrollPreHorizontalBorderRadius}px;
@@ -141,7 +141,7 @@ class ScrollPre(QScrollArea):
 
             QScrollArea#scroll-pre > QWidget > QScrollBar::handle:horizontal {{
                 background-color: {Theme.ScrollPreHorizontalHandleBackgroundColor};
-                min-width: 16px;
+                min-width: {Theme.ScrollPreHorizontalMinWidth}px;
                 border-radius: {Theme.ScrollPreHorizontalHandleBorderRadius}px;
             }}
 
@@ -171,7 +171,7 @@ class ScrollPre(QScrollArea):
 
             QScrollArea#scroll-pre > QWidget > QScrollBar:vertical {{
                 background-color: transparent;
-                width: 16px;
+                width: {Theme.ScrollPreVerticalWidth}px;
                 margin: 0px 0px 0px 0px;
                 border-left: 1px transparent {Theme.ScrollPreVerticalBorderColor};
                 border-radius: {Theme.ScrollPreVerticalBorderRadius}px;
@@ -179,7 +179,7 @@ class ScrollPre(QScrollArea):
 
             QScrollArea#scroll-pre > QWidget > QScrollBar::handle:vertical {{
                 background-color: {Theme.ScrollPreVerticalHandleBackgroundColor};
-                min-height: 16px;
+                min-height: {Theme.ScrollPreVerticalMinHeight}px;
                 border-radius: {Theme.ScrollPreVerticalHandleBorderRadius}px;
             }}
 

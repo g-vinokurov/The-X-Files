@@ -37,7 +37,7 @@ class ContentParser:
                 if src is None:
                     continue
                 if report_dir is not None:
-                    src = pathlib.Path(src).resolve()
+                    src = pathlib.Path(src)
                     if src.is_absolute():
                         src = str(src)
                     else:

@@ -10,19 +10,27 @@ class Theme:
     ScrollHorizontalBorderColor           = Colors.COLOR_VSC_SECONDARY
     ScrollHorizontalBorderRadius          = 0
     ScrollHorizontalHandleBorderRadius    = 0
+    ScrollHorizontalMinWidth              = 128
+    ScrollHorizontalHeight                = 20
     ScrollVerticalHandleBackgroundColor   = Colors.COLOR_VSC_LIGHT
     ScrollVerticalBorderColor             = Colors.COLOR_VSC_SECONDARY
     ScrollVerticalBorderRadius            = 0
     ScrollVerticalHandleBorderRadius      = 0
+    ScrollVerticalMinHeight               = 128
+    ScrollVerticalWidth                   = 20
 
     ScrollPreHorizontalHandleBackgroundColor = Colors.COLOR_BS_LIGHT
     ScrollPreHorizontalBorderColor           = Colors.COLOR_BS_LIGHT
     ScrollPreHorizontalBorderRadius          = 0
     ScrollPreHorizontalHandleBorderRadius    = 0
+    ScrollPreHorizontalMinWidth              = 16
+    ScrollPreHorizontalHeight                = 16
     ScrollPreVerticalHandleBackgroundColor   = Colors.COLOR_BS_LIGHT
     ScrollPreVerticalBorderColor             = Colors.COLOR_BS_LIGHT
     ScrollPreVerticalBorderRadius            = 0
     ScrollPreVerticalHandleBorderRadius      = 0
+    ScrollPreVerticalMinHeight               = 16
+    ScrollPreVerticalWidth                   = 16
 
     WelcomeLogoFont       = Fonts.FONT_GEOLOGICA_BLACK
     WelcomeLogoFontWeight = Fonts.Font.Black

@@ -122,17 +122,17 @@ class ReportLoader:
         return tags
 
     @classmethod
-    def __parse_report_task(cls, dir: str | pathlib.Path, report_body: bs4.Tag) -> Task | None:
+    def __parse_report_task(cls, report_dir: str | pathlib.Path, report_body: bs4.Tag) -> Task | None:
         task = report_body.find('task', recursive=False)
         if task is None:
             log.warning('Report Task not found')
             return None
-        return Task(ContentParser.parse(task, report_dir=dir))
+        return Task(ContentParser.parse(task, report_dir=report_dir))
     
     @classmethod
-    def __parse_report_solution(cls, dir: str | pathlib.Path, report_body: bs4.Tag) -> Solution | None:
+    def __parse_report_solution(cls, report_dir: str | pathlib.Path, report_body: bs4.Tag) -> Solution | None:
         solution = report_body.find('solution', recursive=False)
         if solution is None:
             log.warning('Report Solution not found')
             return None
-        return Solution(ContentParser.parse(solution, report_dir=dir))
+        return Solution(ContentParser.parse(solution, report_dir=report_dir))

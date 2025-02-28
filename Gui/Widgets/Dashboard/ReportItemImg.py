@@ -59,7 +59,7 @@ class ReportItemImgContent(QWidget):
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-
+        
         self._pixmap = QPixmap.fromImage(QImage(self._path))
         
         # This code allows show image via QLabel in layout
