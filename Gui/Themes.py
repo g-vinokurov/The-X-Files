@@ -89,6 +89,8 @@ class Theme:
     DashboardReportCardPropertyValueFontSize   = 10
     DashboardReportCardPropertyValueColor      = Colors.COLOR_VSC_LIGHT
 
+    DashboardReportWidgetMargins = (64, 32, 64, 32)
+
     DashboardReportWidgetTitleFont       = Fonts.FONT_GEOLOGICA_BLACK
     DashboardReportWidgetTitleFontWeight = Fonts.Font.Black
     DashboardReportWidgetTitleFontSize   = 13
@@ -96,7 +98,7 @@ class Theme:
 
     DashboardReportWidgetIdFont       = Fonts.FONT_GEOLOGICA_EXTRA_LIGHT
     DashboardReportWidgetIdFontWeight = Fonts.Font.ExtraLight
-    DashboardReportWidgetIdFontSize   = 11
+    DashboardReportWidgetIdFontSize   = 10
     DashboardReportWidgetIdColor      = Colors.COLOR_VSC_QUATERNARY
 
     DashboardReportWidgetPropertyEmojiFont     = Fonts.FONT_SEGOE_UI_EMOJI
@@ -134,4 +136,8 @@ class DefaultTheme(Theme):
     pass
 
 
-CurrentTheme = DefaultTheme
+class LightTheme(Theme):
+    pass
+
+
+CurrentTheme = LightTheme

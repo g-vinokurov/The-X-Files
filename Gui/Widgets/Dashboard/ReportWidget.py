@@ -63,7 +63,7 @@ class ReportWidget(QWidget):
         self._unit_3.add(self._report_solution)
         
         self._layout = QVBoxLayout()
-        self._layout.setContentsMargins(32, 32, 32, 32)
+        self._layout.setContentsMargins(*Theme.DashboardReportWidgetMargins)
         self._layout.setSpacing(32)
         self._layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 

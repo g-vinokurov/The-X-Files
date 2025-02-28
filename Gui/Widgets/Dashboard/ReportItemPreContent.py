@@ -6,6 +6,8 @@ from PyQt5.QtGui import QCursor
 from Gui.Fonts import Font
 from Gui.Themes import CurrentTheme as Theme
 
+from State.Utils.Highlighter import Highlighter
+
 from Log import log
 from App import app
 
@@ -46,4 +48,4 @@ class ReportItemPreContent(QLabel):
     
     @value.setter
     def value(self, value: str):
-        self.setText(value)
+        self.setText(Highlighter.highlight(value))
