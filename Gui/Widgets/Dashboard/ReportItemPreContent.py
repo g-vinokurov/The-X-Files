@@ -48,4 +48,5 @@ class ReportItemPreContent(QLabel):
     
     @value.setter
     def value(self, value: str):
-        self.setText(Highlighter.highlight(value))
+        # self.setText(Highlighter.highlight(value))
+        self.setText(value)

@@ -126,8 +126,8 @@ class Theme:
 
     DashboardReportItemPreBackgroundColor = Colors.COLOR_VSC_PRIMARY
     DashboardReportItemPreFont            = Fonts.FONT_JET_BRAINS_MONO_NL_REGULAR
-    DashboardReportItemPreFontWeight      = Fonts.Font.ExtraLight
-    DashboardReportItemPreFontSize        = 10
+    DashboardReportItemPreFontWeight      = Fonts.Font.Regular
+    DashboardReportItemPreFontSize        = 9
     DashboardReportItemPreColor           = Colors.COLOR_VSC_LIGHT
     DashboardReportItemPreBorderRadius    = 0
 
