@@ -27,7 +27,7 @@ class ReportItemPreWidget(QWidget):
 
         self._content = ReportItemPreContent(self)
 
-        self._scroll = ScrollPre(self)
+        self._scroll = ScrollPre(app.gui)
         self._scroll.setWidgetResizable(True)
         self._scroll.setWidget(self._content)
 

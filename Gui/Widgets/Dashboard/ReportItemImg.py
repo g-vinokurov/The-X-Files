@@ -35,7 +35,7 @@ class ReportItemImg(QWidget):
         self._image = ReportItemImgContent(self._img.src, self)
 
         self._layout = QVBoxLayout()
-        self._layout.setContentsMargins(0, 0, 0, 0)
+        self._layout.setContentsMargins(0, 0, 0, 16)
         self._layout.setSpacing(0)
         self._layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
 

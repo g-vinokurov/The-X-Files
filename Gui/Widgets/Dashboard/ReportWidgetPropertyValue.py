@@ -9,16 +9,16 @@ from Log import log
 from App import app
 
 
-class ReportPropertyValue(QLabel):
+class ReportWidgetPropertyValue(QLabel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.initUI()
 
     def initUI(self):
-        self.setObjectName('dashboard-report-property-value')
+        self.setObjectName('dashboard-report-widget-property-value')
 
         self.setStyleSheet(f'''
-            color: {Theme.DashboardReportPropertyValueColor};
+            color: {Theme.DashboardReportWidgetPropertyValueColor};
             background: none;
             border: none;
             outline: none;
@@ -29,9 +29,9 @@ class ReportPropertyValue(QLabel):
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
 
-        font = Font(Theme.DashboardReportPropertyValueFont)
-        font.setPointSize(Theme.DashboardReportPropertyValueFontSize)
-        font.setWeight(Theme.DashboardReportPropertyValueFontWeight)
+        font = Font(Theme.DashboardReportWidgetPropertyValueFont)
+        font.setPointSize(Theme.DashboardReportWidgetPropertyValueFontSize)
+        font.setWeight(Theme.DashboardReportWidgetPropertyValueFontWeight)
         self.setFont(font)
 
         self.adjustHeight()

@@ -68,18 +68,18 @@ class Theme:
     DashboardReportCardIdFontSize   = 9
     DashboardReportCardIdColor      = Colors.COLOR_VSC_QUATERNARY
     
-    DashboardReportPropertyEmojiFont     = Fonts.FONT_SEGOE_UI_EMOJI
-    DashboardReportPropertyEmojiFontSize = 12
+    DashboardReportCardPropertyEmojiFont     = Fonts.FONT_SEGOE_UI_EMOJI
+    DashboardReportCardPropertyEmojiFontSize = 12
 
-    DashboardReportPropertyNameFont       = Fonts.FONT_GEOLOGICA_BLACK
-    DashboardReportPropertyNameFontWeight = Fonts.Font.Black
-    DashboardReportPropertyNameFontSize   = 10
-    DashboardReportPropertyNameColor      = Colors.COLOR_VSC_LIGHT
+    DashboardReportCardPropertyNameFont       = Fonts.FONT_GEOLOGICA_BLACK
+    DashboardReportCardPropertyNameFontWeight = Fonts.Font.Black
+    DashboardReportCardPropertyNameFontSize   = 10
+    DashboardReportCardPropertyNameColor      = Colors.COLOR_VSC_LIGHT
 
-    DashboardReportPropertyValueFont       = Fonts.FONT_GEOLOGICA_EXTRA_LIGHT
-    DashboardReportPropertyValueFontWeight = Fonts.Font.ExtraLight
-    DashboardReportPropertyValueFontSize   = 10
-    DashboardReportPropertyValueColor      = Colors.COLOR_VSC_LIGHT
+    DashboardReportCardPropertyValueFont       = Fonts.FONT_GEOLOGICA_EXTRA_LIGHT
+    DashboardReportCardPropertyValueFontWeight = Fonts.Font.ExtraLight
+    DashboardReportCardPropertyValueFontSize   = 10
+    DashboardReportCardPropertyValueColor      = Colors.COLOR_VSC_LIGHT
 
     DashboardReportWidgetTitleFont       = Fonts.FONT_GEOLOGICA_BLACK
     DashboardReportWidgetTitleFontWeight = Fonts.Font.Black
@@ -90,6 +90,19 @@ class Theme:
     DashboardReportWidgetIdFontWeight = Fonts.Font.ExtraLight
     DashboardReportWidgetIdFontSize   = 11
     DashboardReportWidgetIdColor      = Colors.COLOR_VSC_QUATERNARY
+
+    DashboardReportWidgetPropertyEmojiFont     = Fonts.FONT_SEGOE_UI_EMOJI
+    DashboardReportWidgetPropertyEmojiFontSize = 12
+
+    DashboardReportWidgetPropertyNameFont       = Fonts.FONT_GEOLOGICA_BLACK
+    DashboardReportWidgetPropertyNameFontWeight = Fonts.Font.Black
+    DashboardReportWidgetPropertyNameFontSize   = 11
+    DashboardReportWidgetPropertyNameColor      = Colors.COLOR_VSC_LIGHT
+
+    DashboardReportWidgetPropertyValueFont       = Fonts.FONT_GEOLOGICA_EXTRA_LIGHT
+    DashboardReportWidgetPropertyValueFontWeight = Fonts.Font.ExtraLight
+    DashboardReportWidgetPropertyValueFontSize   = 11
+    DashboardReportWidgetPropertyValueColor      = Colors.COLOR_VSC_LIGHT
 
     DashboardReportWidgetSubtitleFont       = Fonts.FONT_GEOLOGICA_BLACK
     DashboardReportWidgetSubtitleFontWeight = Fonts.Font.Black
@@ -104,7 +117,7 @@ class Theme:
     DashboardReportItemPreBackgroundColor = Colors.COLOR_VSC_PRIMARY
     DashboardReportItemPreFont            = Fonts.FONT_JET_BRAINS_MONO_NL_REGULAR
     DashboardReportItemPreFontWeight      = Fonts.Font.ExtraLight
-    DashboardReportItemPreFontSize        = 11
+    DashboardReportItemPreFontSize        = 10
     DashboardReportItemPreColor           = Colors.COLOR_VSC_LIGHT
     DashboardReportItemPreBorderRadius    = 0
 

@@ -15,93 +15,95 @@ class Scroll(QScrollArea):
         self.initUI()
     
     def initUI(self):
+        self.setObjectName('scroll')
+
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
         self.setStyleSheet(f'''
-            QScrollArea {{ 
+            QScrollArea#scroll {{ 
                 background: transparent;
                 border: none;
             }}
             
-            QScrollArea > QWidget > QWidget {{
+            QScrollArea#scroll > QWidget > QWidget {{
                 background: transparent; 
                 border: none;
             }}
 
-            QScrollBar:horizontal {{
+            QScrollArea#scroll > QWidget > QScrollBar:horizontal {{
                 height: 20px;
                 margin: 0px;
-                border: 1px solid {Theme.ScrollHorizontalBorderColor};
+                border-top: 1px solid {Theme.ScrollHorizontalBorderColor};
                 border-radius: {Theme.ScrollHorizontalBorderRadius}px;
                 background-color: transparent;
             }}
 
-            QScrollBar::handle:horizontal {{
+            QScrollArea#scroll > QWidget > QScrollBar::handle:horizontal {{
                 background-color: {Theme.ScrollHorizontalHandleBackgroundColor};
                 min-width: 128px;
                 border-radius: {Theme.ScrollHorizontalHandleBorderRadius}px;
             }}
 
-            QScrollBar::add-line:horizontal {{
+            QScrollArea#scroll > QWidget > QScrollBar::add-line:horizontal {{
                 background: none;
             }}
 
-            QScrollBar::sub-line:horizontal {{
+            QScrollArea#scroll > QWidget > QScrollBar::sub-line:horizontal {{
                 background: none;
             }}
 
-            QScrollBar::up-arrow:horizontal {{
+            QScrollArea#scroll > QWidget > QScrollBar::up-arrow:horizontal {{
                 background: none;
             }}
 
-            QScrollBar::down-arrow:horizontal {{
+            QScrollArea#scroll > QWidget > QScrollBar::down-arrow:horizontal {{
                 background: none;
             }}
 
-            QScrollBar::add-page:horizontal {{
+            QScrollArea#scroll > QWidget > QScrollBar::add-page:horizontal {{
                 background: none;
             }}
 
-            QScrollBar::sub-page:horizontal {{
+            QScrollArea#scroll > QWidget > QScrollBar::sub-page:horizontal {{
                 background: none;
             }}
 
-            QScrollBar:vertical {{
+            QScrollArea#scroll > QWidget > QScrollBar:vertical {{
                 background-color: transparent;
                 width: 20px;
                 margin: 0px;
-                border: 1px solid {Theme.ScrollVerticalBorderColor};
+                border-left: 1px solid {Theme.ScrollVerticalBorderColor};
                 border-radius: {Theme.ScrollVerticalBorderRadius}px;
             }}
 
-            QScrollBar::handle:vertical {{
+            QScrollArea#scroll > QWidget > QScrollBar::handle:vertical {{
                 background-color: {Theme.ScrollVerticalHandleBackgroundColor};
                 min-height: 128px;
                 border-radius: {Theme.ScrollVerticalHandleBorderRadius}px;
             }}
 
-            QScrollBar::add-line:vertical {{
+            QScrollArea#scroll > QWidget > QScrollBar::add-line:vertical {{
                 background: none;
             }}
 
-            QScrollBar::sub-line:vertical {{
+            QScrollArea#scroll > QWidget > QScrollBar::sub-line:vertical {{
                 background: none;
             }}
 
-            QScrollBar::up-arrow:vertical {{
+            QScrollArea#scroll > QWidget > QScrollBar::up-arrow:vertical {{
                 background: none;
             }}
 
-            QScrollBar::down-arrow:vertical {{
+            QScrollArea#scroll > QWidget > QScrollBar::down-arrow:vertical {{
                 background: none;
             }}
 
-            QScrollBar::add-page:vertical {{
+            QScrollArea#scroll > QWidget > QScrollBar::add-page:vertical {{
                 background: none;
             }}
 
-            QScrollBar::sub-page:vertical {{
+            QScrollArea#scroll > QWidget > QScrollBar::sub-page:vertical {{
                 background: none;
             }}
         ''')
@@ -113,93 +115,95 @@ class ScrollPre(QScrollArea):
         self.initUI()
     
     def initUI(self):
+        self.setObjectName('scroll-pre')
+
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
         self.setStyleSheet(f'''
-            QScrollArea {{ 
+            QScrollArea#scroll-pre {{ 
                 background: transparent;
                 border: none;
             }}
             
-            QScrollArea > QWidget > QWidget {{
+            QScrollArea#scroll-pre > QWidget > QWidget {{
                 background: transparent; 
                 border: none;
             }}
 
-            QScrollBar:horizontal {{
+            QScrollArea#scroll-pre > QWidget > QScrollBar:horizontal {{
                 height: 16px;
-                margin: 4px 16px 4px 16px;
-                border: 1px transparent {Theme.ScrollPreHorizontalBorderColor};
+                margin: 0px 0px 0px 0px;
+                border-top: 1px transparent {Theme.ScrollPreHorizontalBorderColor};
                 border-radius: {Theme.ScrollPreHorizontalBorderRadius}px;
                 background-color: transparent;
             }}
 
-            QScrollBar::handle:horizontal {{
+            QScrollArea#scroll-pre > QWidget > QScrollBar::handle:horizontal {{
                 background-color: {Theme.ScrollPreHorizontalHandleBackgroundColor};
-                min-width: 8px;
+                min-width: 16px;
                 border-radius: {Theme.ScrollPreHorizontalHandleBorderRadius}px;
             }}
 
-            QScrollBar::add-line:horizontal {{
+            QScrollArea#scroll-pre > QWidget > QScrollBar::add-line:horizontal {{
                 background: none;
             }}
 
-            QScrollBar::sub-line:horizontal {{
+            QScrollArea#scroll-pre > QWidget > QScrollBar::sub-line:horizontal {{
                 background: none;
             }}
 
-            QScrollBar::up-arrow:horizontal {{
+            QScrollArea#scroll-pre > QWidget > QScrollBar::up-arrow:horizontal {{
                 background: none;
             }}
 
-            QScrollBar::down-arrow:horizontal {{
+            QScrollArea#scroll-pre > QWidget > QScrollBar::down-arrow:horizontal {{
                 background: none;
             }}
 
-            QScrollBar::add-page:horizontal {{
+            QScrollArea#scroll-pre > QWidget > QScrollBar::add-page:horizontal {{
                 background: none;
             }}
 
-            QScrollBar::sub-page:horizontal {{
+            QScrollArea#scroll-pre > QWidget > QScrollBar::sub-page:horizontal {{
                 background: none;
             }}
 
-            QScrollBar:vertical {{
+            QScrollArea#scroll-pre > QWidget > QScrollBar:vertical {{
                 background-color: transparent;
                 width: 16px;
-                margin: 16px 4px 16px 4px;
-                border: 1px transparent {Theme.ScrollPreVerticalBorderColor};
+                margin: 0px 0px 0px 0px;
+                border-left: 1px transparent {Theme.ScrollPreVerticalBorderColor};
                 border-radius: {Theme.ScrollPreVerticalBorderRadius}px;
             }}
 
-            QScrollBar::handle:vertical {{
+            QScrollArea#scroll-pre > QWidget > QScrollBar::handle:vertical {{
                 background-color: {Theme.ScrollPreVerticalHandleBackgroundColor};
-                min-height: 8px;
+                min-height: 16px;
                 border-radius: {Theme.ScrollPreVerticalHandleBorderRadius}px;
             }}
 
-            QScrollBar::add-line:vertical {{
+            QScrollArea#scroll-pre > QWidget > QScrollBar::add-line:vertical {{
                 background: none;
             }}
 
-            QScrollBar::sub-line:vertical {{
+            QScrollArea#scroll-pre > QWidget > QScrollBar::sub-line:vertical {{
                 background: none;
             }}
 
-            QScrollBar::up-arrow:vertical {{
+            QScrollArea#scroll-pre > QWidget > QScrollBar::up-arrow:vertical {{
                 background: none;
             }}
 
-            QScrollBar::down-arrow:vertical {{
+            QScrollArea#scroll-pre > QWidget > QScrollBar::down-arrow:vertical {{
                 background: none;
             }}
 
-            QScrollBar::add-page:vertical {{
+            QScrollArea#scroll-pre > QWidget > QScrollBar::add-page:vertical {{
                 background: none;
             }}
 
-            QScrollBar::sub-page:vertical {{
+            QScrollArea#scroll-pre > QWidget > QScrollBar::sub-page:vertical {{
                 background: none;
             }}
         ''')

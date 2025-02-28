@@ -4,9 +4,9 @@ from PyQt5.QtWidgets import QGridLayout
 from PyQt5.QtGui import QCursor
 from PyQt5.QtCore import Qt
 
-from Gui.Widgets.Dashboard.ReportPropertyEmoji import ReportPropertyEmoji
-from Gui.Widgets.Dashboard.ReportPropertyName import ReportPropertyName
-from Gui.Widgets.Dashboard.ReportPropertyValue import ReportPropertyValue
+from Gui.Widgets.Dashboard.ReportCardPropertyEmoji import ReportCardPropertyEmoji
+from Gui.Widgets.Dashboard.ReportCardPropertyName import ReportCardPropertyName
+from Gui.Widgets.Dashboard.ReportCardPropertyValue import ReportCardPropertyValue
 
 from Gui.Themes import CurrentTheme as Theme
 
@@ -40,21 +40,21 @@ class ReportCardProperties(QWidget):
         self._layout.setSpacing(2)
         self._layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
-        self._report_type_emoji = ReportPropertyEmoji('🚩', self)
-        self._report_type = ReportPropertyName('Type:', self)
-        self._report_type_value = ReportPropertyValue(self)
+        self._report_type_emoji = ReportCardPropertyEmoji('🚩', self)
+        self._report_type = ReportCardPropertyName('Type:', self)
+        self._report_type_value = ReportCardPropertyValue(self)
 
-        self._report_level_emoji = ReportPropertyEmoji('☢️', self)
-        self._report_level = ReportPropertyName('Level:', self)
-        self._report_level_value = ReportPropertyValue(self)
+        self._report_level_emoji = ReportCardPropertyEmoji('☢️', self)
+        self._report_level = ReportCardPropertyName('Level:', self)
+        self._report_level_value = ReportCardPropertyValue(self)
 
-        self._report_tags_emoji = ReportPropertyEmoji('🌵', self)
-        self._report_tags = ReportPropertyName('Tags:', self)
-        self._report_tags_value = ReportPropertyValue(self)
+        self._report_tags_emoji = ReportCardPropertyEmoji('🌵', self)
+        self._report_tags = ReportCardPropertyName('Tags:', self)
+        self._report_tags_value = ReportCardPropertyValue(self)
 
-        self._report_date_emoji = ReportPropertyEmoji('☄️', self)
-        self._report_date = ReportPropertyName('Date:', self)
-        self._report_date_value = ReportPropertyValue(self)
+        self._report_date_emoji = ReportCardPropertyEmoji('☄️', self)
+        self._report_date = ReportCardPropertyName('Date:', self)
+        self._report_date_value = ReportCardPropertyValue(self)
 
         self._layout.addWidget(self._report_type_emoji, 0, 0)
         self._layout.addWidget(self._report_type, 0, 1)

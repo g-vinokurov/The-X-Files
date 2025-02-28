@@ -28,7 +28,7 @@ class ReportWidgetId(QLabel):
             outline: none;
             padding: 0px;
         ''')
-        self.setContentsMargins(0, 0, 0, 4)
+        self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)

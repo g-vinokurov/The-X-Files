@@ -9,28 +9,28 @@ from Log import log
 from App import app
 
 
-class ReportPropertyName(QLabel):
+class ReportCardPropertyName(QLabel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.initUI()
 
     def initUI(self):
-        self.setObjectName('dashboard-report-property-name')
+        self.setObjectName('dashboard-report-card-property-name')
         
         self.setStyleSheet(f'''
-            color: {Theme.DashboardReportPropertyNameColor};
+            color: {Theme.DashboardReportCardPropertyNameColor};
             background: none;
             border: none;
             outline: none;
             padding: 0px;
         ''')
-        self.setContentsMargins(0, 0, 0, 0)
+        self.setContentsMargins(0, 0, 4, 0)
         self.setWordWrap(False)
         self.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
 
-        font = Font(Theme.DashboardReportPropertyNameFont)
-        font.setPointSize(Theme.DashboardReportPropertyNameFontSize)
-        font.setWeight(Theme.DashboardReportPropertyNameFontWeight)
+        font = Font(Theme.DashboardReportCardPropertyNameFont)
+        font.setPointSize(Theme.DashboardReportCardPropertyNameFontSize)
+        font.setWeight(Theme.DashboardReportCardPropertyNameFontWeight)
         self.setFont(font)
     
     @property

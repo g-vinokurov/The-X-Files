@@ -17,6 +17,14 @@ class ReportItemPreContent(QLabel):
     
     def initUI(self):
         self.setObjectName('dashboard-report-item-pre-content')
+        self.setStyleSheet(f'''
+            QWidget#dashboard-report-item-pre-content {{
+                padding: 16px;
+                background: transparent;
+                border: none;
+                color: {Theme.DashboardReportItemPreColor};
+            }}
+        ''')
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.setCursor(QCursor(Qt.CursorShape.IBeamCursor))

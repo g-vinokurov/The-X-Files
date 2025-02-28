@@ -4,9 +4,9 @@ from PyQt5.QtWidgets import QHBoxLayout
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QCursor
 
-from Gui.Widgets.Dashboard.ReportPropertyEmoji import ReportPropertyEmoji
-from Gui.Widgets.Dashboard.ReportPropertyName import ReportPropertyName
-from Gui.Widgets.Dashboard.ReportPropertyValue import ReportPropertyValue
+from Gui.Widgets.Dashboard.ReportCardPropertyEmoji import ReportCardPropertyEmoji
+from Gui.Widgets.Dashboard.ReportCardPropertyName import ReportCardPropertyName
+from Gui.Widgets.Dashboard.ReportCardPropertyValue import ReportCardPropertyValue
 
 from Gui.Fonts import Font
 from Gui.Themes import CurrentTheme as Theme
@@ -39,12 +39,12 @@ class ReportItemFile(QWidget):
 
         self._layout = QHBoxLayout()
         self._layout.setContentsMargins(0, 0, 0, 0)
-        self._layout.setSpacing(0)
+        self._layout.setSpacing(8)
         self._layout.setAlignment(Qt.AlignmentFlag.AlignLeft)
 
-        self._report_file_emoji = ReportPropertyEmoji('📌', self)
-        self._report_file_name = ReportPropertyName(self)
-        self._report_file_value = ReportPropertyValue(self)
+        self._report_file_emoji = ReportCardPropertyEmoji('📌', self)
+        self._report_file_name = ReportCardPropertyName(self)
+        self._report_file_value = ReportCardPropertyValue(self)
 
         self._layout.addWidget(self._report_file_emoji)
         self._layout.addWidget(self._report_file_name)
@@ -65,6 +65,6 @@ class ReportItemFile(QWidget):
         if file is None:
             return
         self._file = file
-        self._report_file_name.value = file.name
+        self._report_file_name.value = f'{file.name}:'
         self._report_file_value.value = file.src
         return
