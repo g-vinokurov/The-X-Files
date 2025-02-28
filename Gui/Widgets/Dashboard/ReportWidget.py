@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QVBoxLayout
 from PyQt5.QtGui import QCursor
 from PyQt5.QtCore import Qt
 
+from Gui.Widgets.Dashboard.ReportWidgetUnit import ReportWidgetUnit
 from Gui.Widgets.Dashboard.ReportWidgetTitle import ReportWidgetTitle
 from Gui.Widgets.Dashboard.ReportWidgetId import ReportWidgetId
 from Gui.Widgets.Dashboard.ReportWidgetProperties import ReportWidgetProperties
@@ -41,26 +42,35 @@ class ReportWidget(QWidget):
 
         self._report_title = ReportWidgetTitle(self)
         self._report_id = ReportWidgetId(self)
+        self._unit_0 = ReportWidgetUnit(self)
+        self._unit_0.add(self._report_title)
+        self._unit_0.add(self._report_id)
+        
         self._report_properties = ReportWidgetProperties(self)
+        self._unit_1 = ReportWidgetUnit(self)
+        self._unit_1.add(self._report_properties)
 
         self._report_task_subtitle = ReportWidgetSubtitle('Задача', self)
         self._report_task = ReportWidgetContent(self)
+        self._unit_2 = ReportWidgetUnit(self)
+        self._unit_2.add(self._report_task_subtitle)
+        self._unit_2.add(self._report_task)
 
         self._report_solution_subtitle = ReportWidgetSubtitle('Решение', self)
         self._report_solution = ReportWidgetContent(self)
+        self._unit_3 = ReportWidgetUnit(self)
+        self._unit_3.add(self._report_solution_subtitle)
+        self._unit_3.add(self._report_solution)
         
         self._layout = QVBoxLayout()
         self._layout.setContentsMargins(32, 32, 32, 32)
-        self._layout.setSpacing(0)
+        self._layout.setSpacing(32)
         self._layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
-        self._layout.addWidget(self._report_title)
-        self._layout.addWidget(self._report_id)
-        self._layout.addWidget(self._report_properties)
-        self._layout.addWidget(self._report_task_subtitle)
-        self._layout.addWidget(self._report_task)
-        self._layout.addWidget(self._report_solution_subtitle)
-        self._layout.addWidget(self._report_solution)
+        self._layout.addWidget(self._unit_0)
+        self._layout.addWidget(self._unit_1)
+        self._layout.addWidget(self._unit_2)
+        self._layout.addWidget(self._unit_3)
 
         self.setLayout(self._layout)
     
