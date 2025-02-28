@@ -5,6 +5,12 @@ from PyQt5.QtWidgets import QVBoxLayout
 from PyQt5.QtGui import QCursor
 from PyQt5.QtCore import Qt
 
+from Gui.Widgets.Dashboard.ReportWidgetTitle import ReportWidgetTitle
+from Gui.Widgets.Dashboard.ReportWidgetId import ReportWidgetId
+from Gui.Widgets.Dashboard.ReportWidgetProperties import ReportWidgetProperties
+from Gui.Widgets.Dashboard.ReportWidgetSubtitle import ReportWidgetSubtitle
+from Gui.Widgets.Dashboard.ReportWidgetContent import ReportWidgetContent
+
 from Gui.Themes import CurrentTheme as Theme
 
 from State.Models.Report.Report import Report
@@ -33,10 +39,28 @@ class ReportWidget(QWidget):
         ''')
         self.setCursor(QCursor(Qt.CursorShape.IBeamCursor))
 
+        self._report_title = ReportWidgetTitle(self)
+        self._report_id = ReportWidgetId(self)
+        self._report_properties = ReportWidgetProperties(self)
+
+        self._report_task_subtitle = ReportWidgetSubtitle('Задача', self)
+        self._report_task = ReportWidgetContent(self)
+
+        self._report_solution_subtitle = ReportWidgetSubtitle('Решение', self)
+        self._report_solution = ReportWidgetContent(self)
+        
         self._layout = QVBoxLayout()
         self._layout.setContentsMargins(0, 0, 0, 0)
         self._layout.setSpacing(0)
         self._layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+
+        self._layout.addWidget(self._report_title)
+        self._layout.addWidget(self._report_id)
+        self._layout.addWidget(self._report_properties)
+        self._layout.addWidget(self._report_task_subtitle)
+        self._layout.addWidget(self._report_task)
+        self._layout.addWidget(self._report_solution_subtitle)
+        self._layout.addWidget(self._report_solution)
 
         self.setLayout(self._layout)
     
@@ -50,3 +74,13 @@ class ReportWidget(QWidget):
             return
         if report is None:
             return
+        self._report = report
+
+        self._report_title.report = report
+        self._report_id.report = report
+        self._report_properties.report = report
+        if report.task is not None:
+            self._report_task.content = report.task.content
+        if report.solution is not None:
+            self._report_solution.content = report.solution.content
+        return

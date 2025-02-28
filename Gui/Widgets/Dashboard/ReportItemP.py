@@ -1,27 +1,28 @@
 
 from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QCursor
 
 from Gui.Fonts import Font
 from Gui.Themes import CurrentTheme as Theme
 
-from State.Models.Report.Report import Report
+from State.Models.Content.P import P
 
 from Log import log
 from App import app
 
 
-class ReportCardTitle(QLabel):
-    def __init__(self, *args, **kwargs):
+class ReportItemP(QLabel):
+    def __init__(self, p: P, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self._report = None
+        self._p = p
         self.initUI()
-    
+
     def initUI(self):
-        self.setObjectName('dashboard-report-card-title')
+        self.setObjectName('dashboard-report-item-p')
 
         self.setStyleSheet(f'''
-            color: {Theme.DashboardReportCardTitleColor};
+            color: {Theme.DashboardReportItemPColor};
             background: none;
             border: none;
             outline: none;
@@ -30,11 +31,15 @@ class ReportCardTitle(QLabel):
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignmentFlag.AlignLeft)
+        self.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
+        self.setCursor(QCursor(Qt.CursorShape.IBeamCursor))
 
-        font = Font(Theme.DashboardReportCardTitleFont)
-        font.setPointSize(Theme.DashboardReportCardTitleFontSize)
-        font.setWeight(Theme.DashboardReportCardTitleFontWeight)
+        font = Font(Theme.DashboardReportItemPFont)
+        font.setPointSize(Theme.DashboardReportItemPFontSize)
+        font.setWeight(Theme.DashboardReportItemPFontWeight)
         self.setFont(font)
+
+        self.setText(self._p.text)
         self.adjustHeight()
     
     # If word-wrap is True, QLabel does not resize automatically and hide parts of text
@@ -49,25 +54,7 @@ class ReportCardTitle(QLabel):
     def resizeEvent(self, event):
         super().resizeEvent(event)
         self.adjustHeight()
-    
-    @property
-    def report(self):
-        return self._report
-    
-    @report.setter
-    def report(self, report: Report | None):
-        if report == self._report:
-            return
-        if report is None:
-            return 
-        self._report = report
 
-        if report.provider is not None and report.provider.name:
-            text = f'{report.provider.name}. '
-        else:
-            text = ''
-        if report.name:
-            text = text + f'{report.name}'
-        else:
-            text = f'{report.id}'
-        self.setText(text)
+    @property
+    def p(self):
+        return self._p

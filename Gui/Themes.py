@@ -81,6 +81,33 @@ class Theme:
     DashboardReportPropertyValueFontSize   = 10
     DashboardReportPropertyValueColor      = Colors.COLOR_VSC_LIGHT
 
+    DashboardReportWidgetTitleFont       = Fonts.FONT_GEOLOGICA_BLACK
+    DashboardReportWidgetTitleFontWeight = Fonts.Font.Black
+    DashboardReportWidgetTitleFontSize   = 13
+    DashboardReportWidgetTitleColor      = Colors.COLOR_VSC_LIGHT
+
+    DashboardReportWidgetIdFont       = Fonts.FONT_GEOLOGICA_EXTRA_LIGHT
+    DashboardReportWidgetIdFontWeight = Fonts.Font.ExtraLight
+    DashboardReportWidgetIdFontSize   = 11
+    DashboardReportWidgetIdColor      = Colors.COLOR_VSC_QUATERNARY
+
+    DashboardReportWidgetSubtitleFont       = Fonts.FONT_GEOLOGICA_BLACK
+    DashboardReportWidgetSubtitleFontWeight = Fonts.Font.Black
+    DashboardReportWidgetSubtitleFontSize   = 11
+    DashboardReportWidgetSubtitleColor      = Colors.COLOR_VSC_LIGHT
+
+    DashboardReportItemPFont       = Fonts.FONT_GEOLOGICA_EXTRA_LIGHT
+    DashboardReportItemPFontWeight = Fonts.Font.ExtraLight
+    DashboardReportItemPFontSize   = 11
+    DashboardReportItemPColor      = Colors.COLOR_VSC_LIGHT
+
+    DashboardReportItemPreBackgroundColor = Colors.COLOR_VSC_PRIMARY
+    DashboardReportItemPreFont            = Fonts.FONT_JET_BRAINS_MONO_NL_REGULAR
+    DashboardReportItemPreFontWeight      = Fonts.Font.ExtraLight
+    DashboardReportItemPreFontSize        = 11
+    DashboardReportItemPreColor           = Colors.COLOR_VSC_LIGHT
+    DashboardReportItemPreBorderRadius    = 0
+
 
 class DefaultTheme(Theme):
     pass

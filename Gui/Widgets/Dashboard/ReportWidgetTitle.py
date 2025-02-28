@@ -1,6 +1,7 @@
 
 from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QCursor
 
 from Gui.Fonts import Font
 from Gui.Themes import CurrentTheme as Theme
@@ -11,17 +12,17 @@ from Log import log
 from App import app
 
 
-class ReportCardTitle(QLabel):
+class ReportWidgetTitle(QLabel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._report = None
         self.initUI()
     
     def initUI(self):
-        self.setObjectName('dashboard-report-card-title')
+        self.setObjectName('dashboard-report-widget-title')
 
         self.setStyleSheet(f'''
-            color: {Theme.DashboardReportCardTitleColor};
+            color: {Theme.DashboardReportWidgetTitleColor};
             background: none;
             border: none;
             outline: none;
@@ -29,26 +30,14 @@ class ReportCardTitle(QLabel):
         ''')
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
-        self.setAlignment(Qt.AlignmentFlag.AlignLeft)
+        self.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
+        self.setCursor(QCursor(Qt.CursorShape.IBeamCursor))
 
-        font = Font(Theme.DashboardReportCardTitleFont)
-        font.setPointSize(Theme.DashboardReportCardTitleFontSize)
-        font.setWeight(Theme.DashboardReportCardTitleFontWeight)
+        font = Font(Theme.DashboardReportWidgetTitleFont)
+        font.setPointSize(Theme.DashboardReportWidgetTitleFontSize)
+        font.setWeight(Theme.DashboardReportWidgetTitleFontWeight)
         self.setFont(font)
-        self.adjustHeight()
-    
-    # If word-wrap is True, QLabel does not resize automatically and hide parts of text
-    def adjustHeight(self):
-        font_metrics = self.fontMetrics()
-        width = self.width()
-        text = self.text()
-        text_rect = font_metrics.boundingRect(0, 0, width, 0, Qt.TextFlag.TextWordWrap, text)
-        required_height = text_rect.height()
-        self.setMinimumHeight(required_height)
-
-    def resizeEvent(self, event):
-        super().resizeEvent(event)
-        self.adjustHeight()
     
     @property
     def report(self):

@@ -1,6 +1,7 @@
 
 import bs4
 import re
+import pathlib
 
 from State.Models.Content.Content import Content
 from State.Models.Content.File import File
@@ -11,7 +12,7 @@ from State.Models.Content.Pre import Pre
 
 class ContentParser:
     @classmethod
-    def parse(cls, content: bs4.Tag) -> Content:
+    def parse(cls, content: bs4.Tag, report_dir: str | pathlib.Path | None = None) -> Content:
         ws = re.compile(r'\s+')
 
         items = []
@@ -35,6 +36,14 @@ class ContentParser:
                 src = child.attrs.get('src', None)
                 if src is None:
                     continue
+                if report_dir is not None:
+                    src = pathlib.Path(src).resolve()
+                    if src.is_absolute():
+                        src = str(src)
+                    else:
+                        src = str(pathlib.Path(report_dir) / src)
+                else:
+                    src = str(src)
                 items.append(Img(src, name))
                 continue
             

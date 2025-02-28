@@ -1,78 +1,61 @@
 
-class ReportPreformatted(QWidget):
-    def __init__(self, text: str, *args, **kwargs):
+from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QVBoxLayout
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QCursor
+
+from Gui.Widgets.Dashboard.ReportItemPreWidget import ReportItemPreWidget
+
+from Gui.Fonts import Font
+from Gui.Themes import CurrentTheme as Theme
+
+from State.Models.Content.Pre import Pre
+
+from Log import log
+from App import app
+
+
+class ReportItemPre(QWidget):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.__text = text
+        self._pre = None
         self.initUI()
 
     def initUI(self):
-        self.setAttribute(Qt.WA_StyledBackground, True)
-        self.setCursor(QCursor(Qt.IBeamCursor))
+        self.setObjectName('dashboard-report-item-pre')
+
+        self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
+        self.setCursor(QCursor(Qt.CursorShape.IBeamCursor))
         self.setStyleSheet(f'''
-            padding: 0px;
-            background-color: {COLOR_BS_GRAY_200};
-            border-radius: 16px;
-            border-color: none;
-            color: {COLOR_BS_DARK};
+            QWidget#dashboard-report-item-pre {{
+                padding: 0px;
+                background-color: {Theme.DashboardReportItemPreBackgroundColor};
+                border-radius: {Theme.DashboardReportItemPreBorderRadius}px;
+                border-color: none;
+                color: {Theme.DashboardReportItemPreColor};
+            }}
         ''')
 
-        self._widget = ReportPreformattedWidget(self.__text, self)
+        self._widget = ReportItemPreWidget(self)
 
         self._layout = QVBoxLayout()
         self._layout.setContentsMargins(0, 0, 0, 0)
         self._layout.setSpacing(0)
-        self._layout.setAlignment(Qt.AlignTop)
+        self._layout.setAlignment(Qt.AlignmentFlag.AlignTop)
         
         self._layout.addWidget(self._widget)
 
         self.setLayout(self._layout)
+
+    @property
+    def pre(self):
+        return self._pre
     
-    def updateUI(self, *args, **kwargs):
-        self._widget.updateUI(*args, **kwargs)
-
-
-class ReportPreformattedWidget(QWidget):
-    def __init__(self, text: str, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.__text = text
-        self.initUI()
-    
-    def initUI(self):
-        self.setAttribute(Qt.WA_StyledBackground, True)
-
-        self._content = ReportPreformattedWidgetContent(self.__text, self)
-
-        self._scroll = ScrollSecondary(self)
-        self._scroll.setWidgetResizable(True)
-        self._scroll.setWidget(self._content)
-
-        self._layout = QVBoxLayout()
-        self._layout.setContentsMargins(16, 16, 16, 16)
-        self._layout.setSpacing(0)
-        self._layout.setAlignment(Qt.AlignTop)
-
-        self._layout.addWidget(self._scroll)
-
-        self.setLayout(self._layout)
-    
-    def updateUI(self, *args, **kwargs):
-        self._content.updateUI(*args, **kwargs)
-
-
-
-class ReportPreformattedWidgetContent(QLabel):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.initUI()
-    
-    def initUI(self):
-        self.setContentsMargins(8, 8, 8, 8)
-        self.setWordWrap(False)
-        self.setAlignment(Qt.AlignLeft | Qt.AlignTop)
-        self.setFont(QFont(str(FONT_JET_BRAINS_MONO_NL_REGULAR), 9))
-        self.setTextInteractionFlags(Qt.TextSelectableByMouse)
-        self.setCursor(QCursor(Qt.IBeamCursor))
-    
-    def updateUI(self, *args, **kwargs):
-        pass
-
+    @pre.setter
+    def pre(self, pre: Pre | None):
+        if pre == self._pre:
+            return
+        if pre is None:
+            return
+        self._pre = pre
+        self._widget.value = pre.text
