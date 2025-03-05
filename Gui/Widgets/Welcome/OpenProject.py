@@ -9,6 +9,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QCursor
 
 from State.Utils.ProjectLoader import ProjectLoader
+from State.Utils.Desktop import Desktop
 
 from Gui.Fonts import Font
 from Gui.Themes import CurrentTheme as Theme
@@ -44,7 +45,7 @@ class OpenProject(QPushButton):
     
     def on_clicked(self, event):
         title = 'Open directory with reports'
-        cwd = os.getcwd()
+        cwd = Desktop.location()
 
         dir = str(QFileDialog.getExistingDirectory(self, title, cwd))
         if not dir:
