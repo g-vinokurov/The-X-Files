@@ -48,7 +48,7 @@ class ReportCard(QWidget):
         self._report_properties = ReportCardProperties(self)
         
         self._layout = QVBoxLayout()
-        self._layout.setContentsMargins(16, 16, 16, 16)
+        self._layout.setContentsMargins(32, 32, 32, 32)
         self._layout.setSpacing(0)
         self._layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
