@@ -12,15 +12,15 @@ from Log import log
 
 
 class Font(QFont):
-    Thin       = QFont.Thin
-    ExtraLight = QFont.ExtraLight
-    Light      = QFont.Light
-    Regular    = QFont.Normal
-    Medium     = QFont.Medium
-    SemiBold   = QFont.DemiBold
-    Bold       = QFont.Bold
-    ExtraBold  = QFont.ExtraBold
-    Black      = QFont.Black
+    Thin       = QFont.Weight.Thin
+    ExtraLight = QFont.Weight.ExtraLight
+    Light      = QFont.Weight.Light
+    Regular    = QFont.Weight.Normal
+    Medium     = QFont.Weight.Medium
+    SemiBold   = QFont.Weight.DemiBold
+    Bold       = QFont.Weight.Bold
+    ExtraBold  = QFont.Weight.ExtraBold
+    Black      = QFont.Weight.Black
     
     _fonts = {}
     
