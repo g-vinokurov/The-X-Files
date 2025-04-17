@@ -1,6 +1,8 @@
 
 import pathlib
 
+from PIL import Image as PillowImage
+
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtWidgets import QLabel
 from PyQt5.QtWidgets import QSizePolicy
@@ -93,3 +95,7 @@ class ReportItemImgContent(QWidget):
         width = round(self._image.width() * self._scale)
         pixmap = self._pixmap.scaledToWidth(width, Qt.TransformationMode.SmoothTransformation)
         self._image.setPixmap(pixmap)
+    
+    def mousePressEvent(self, event):
+        if event.button() == Qt.MouseButton.LeftButton:
+            PillowImage.open(self._path).show()
