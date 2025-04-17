@@ -51,6 +51,7 @@ class ReportItemImg(QWidget):
 class ReportItemImgContent(QWidget):
     def __init__(self, path: str | pathlib.Path, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self._scale = 0.75
         self._path = str(path)
         self.initUI()
     
@@ -83,9 +84,12 @@ class ReportItemImgContent(QWidget):
         self._layout.addWidget(self._image)
 
         self.setLayout(self._layout)
-
-        self._image.setPixmap(self._pixmap)
+        
+        width = round(self._image.width() * self._scale)
+        pixmap = self._pixmap.scaledToWidth(width, Qt.TransformationMode.SmoothTransformation)
+        self._image.setPixmap(pixmap)
 
     def resizeEvent(self, event):
-        pixmap = self._pixmap.scaledToWidth(self._image.width(), Qt.TransformationMode.SmoothTransformation)
+        width = round(self._image.width() * self._scale)
+        pixmap = self._pixmap.scaledToWidth(width, Qt.TransformationMode.SmoothTransformation)
         self._image.setPixmap(pixmap)

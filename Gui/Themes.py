@@ -132,12 +132,57 @@ class Theme:
     DashboardReportItemPreBorderRadius    = 0
 
 
-class DefaultTheme(Theme):
+class DarkTheme(Theme):
     pass
 
 
 class LightTheme(Theme):
-    pass
+    SplitterBackgroundColor = Colors.COLOR_WHITE
+
+    ScrollHorizontalHandleBackgroundColor = Colors.COLOR_VSC_LIGHT
+    ScrollHorizontalBorderColor           = Colors.COLOR_VSC_LIGHT
+    ScrollVerticalHandleBackgroundColor   = Colors.COLOR_VSC_LIGHT
+    ScrollVerticalBorderColor             = Colors.COLOR_VSC_LIGHT
+
+    ScrollPreHorizontalHandleBackgroundColor = Colors.COLOR_VSC_LIGHT
+    ScrollPreHorizontalBorderColor           = Colors.COLOR_VSC_LIGHT
+    ScrollPreVerticalHandleBackgroundColor   = Colors.COLOR_VSC_LIGHT
+    ScrollPreVerticalBorderColor             = Colors.COLOR_VSC_LIGHT
+
+    DashboardScreenBackgroundColor = Colors.COLOR_WHITE
+    DashboardHeaderBackgroundColor = Colors.COLOR_WHITE
+    DashboardHeaderBorderColor     = Colors.COLOR_VSC_LIGHT
+    DashboardBodyBackgroundColor   = Colors.COLOR_WHITE
+    DashboardFooterBackgroundColor = Colors.COLOR_WHITE
+    DashboardFooterBorderColor     = Colors.COLOR_VSC_LIGHT
+
+    DashboardReportsListSectionBackgroundColor = Colors.COLOR_WHITE
+    DashboardReportSectionBackgroundColor      = Colors.COLOR_WHITE
+    
+    DashboardNoReportSelectedColor      = Colors.COLOR_BS_DARK
+    DashboardNoReportsFoundColor      = Colors.COLOR_BS_DARK
+
+    DashboardReportCardBackgroundColor        = Colors.COLOR_WHITE
+    DashboardReportCardBorderColor            = Colors.COLOR_VSC_LIGHT
+    DashboardReportCardHoveredBackgroundColor = Colors.COLOR_BS_LIGHT
+
+    DashboardReportCardTitleColor      = Colors.COLOR_BS_DARK
+    DashboardReportCardIdColor      = Colors.COLOR_VSC_TERTIARY
+
+    DashboardReportCardPropertyNameColor      = Colors.COLOR_BS_DARK
+    DashboardReportCardPropertyValueColor      = Colors.COLOR_BS_DARK
+
+    DashboardReportWidgetTitleColor      = Colors.COLOR_BS_DARK
+    DashboardReportWidgetIdColor      = Colors.COLOR_VSC_TERTIARY
+
+    DashboardReportWidgetPropertyNameColor      = Colors.COLOR_BS_DARK
+    DashboardReportWidgetPropertyValueColor      = Colors.COLOR_BS_DARK
+
+    DashboardReportWidgetSubtitleColor      = Colors.COLOR_BS_DARK
+
+    DashboardReportItemPColor      = Colors.COLOR_BS_DARK
+    DashboardReportItemPreBackgroundColor = Colors.COLOR_BS_DARK
+    DashboardReportItemPreColor           = Colors.COLOR_WHITE
 
 
 CurrentTheme = LightTheme

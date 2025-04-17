@@ -35,6 +35,7 @@ class Scroll(QScrollArea):
                 height: {Theme.ScrollHorizontalHeight}px;
                 margin: 0px;
                 border-top: 1px solid {Theme.ScrollHorizontalBorderColor};
+                border-bottom: 1px solid {Theme.ScrollHorizontalBorderColor};
                 border-radius: {Theme.ScrollHorizontalBorderRadius}px;
                 background-color: transparent;
             }}
@@ -74,6 +75,7 @@ class Scroll(QScrollArea):
                 width: {Theme.ScrollVerticalWidth}px;
                 margin: 0px;
                 border-left: 1px solid {Theme.ScrollVerticalBorderColor};
+                border-right: 1px solid {Theme.ScrollVerticalBorderColor};
                 border-radius: {Theme.ScrollVerticalBorderRadius}px;
             }}
 
