@@ -6,12 +6,14 @@ from Gui import Fonts
 class Theme:
     SplitterBackgroundColor = Colors.COLOR_VSC_SECONDARY
 
+    ScrollHorizontalBackgroundColor       = Colors.COLOR_VSC_PRIMARY
     ScrollHorizontalHandleBackgroundColor = Colors.COLOR_VSC_LIGHT
     ScrollHorizontalBorderColor           = Colors.COLOR_VSC_SECONDARY
     ScrollHorizontalBorderRadius          = 0
     ScrollHorizontalHandleBorderRadius    = 0
     ScrollHorizontalMinWidth              = 128
     ScrollHorizontalHeight                = 20
+    ScrollVerticalBackgroundColor         = Colors.COLOR_VSC_PRIMARY
     ScrollVerticalHandleBackgroundColor   = Colors.COLOR_VSC_LIGHT
     ScrollVerticalBorderColor             = Colors.COLOR_VSC_SECONDARY
     ScrollVerticalBorderRadius            = 0
@@ -138,9 +140,11 @@ class DarkTheme(Theme):
 
 class LightTheme(Theme):
     SplitterBackgroundColor = Colors.COLOR_WHITE
-
+    
+    ScrollHorizontalBackgroundColor       = Colors.COLOR_BS_LIGHT
     ScrollHorizontalHandleBackgroundColor = Colors.COLOR_VSC_LIGHT
     ScrollHorizontalBorderColor           = Colors.COLOR_VSC_LIGHT
+    ScrollVerticalBackgroundColor         = Colors.COLOR_BS_LIGHT
     ScrollVerticalHandleBackgroundColor   = Colors.COLOR_VSC_LIGHT
     ScrollVerticalBorderColor             = Colors.COLOR_VSC_LIGHT
 

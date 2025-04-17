@@ -34,10 +34,8 @@ class Scroll(QScrollArea):
             QScrollArea#scroll > QWidget > QScrollBar:horizontal {{
                 height: {Theme.ScrollHorizontalHeight}px;
                 margin: 0px;
-                border-top: 1px solid {Theme.ScrollHorizontalBorderColor};
-                border-bottom: 1px solid {Theme.ScrollHorizontalBorderColor};
                 border-radius: {Theme.ScrollHorizontalBorderRadius}px;
-                background-color: transparent;
+                background-color: {Theme.ScrollHorizontalBackgroundColor};
             }}
 
             QScrollArea#scroll > QWidget > QScrollBar::handle:horizontal {{
@@ -71,11 +69,9 @@ class Scroll(QScrollArea):
             }}
 
             QScrollArea#scroll > QWidget > QScrollBar:vertical {{
-                background-color: transparent;
+                background-color: {Theme.ScrollVerticalBackgroundColor};
                 width: {Theme.ScrollVerticalWidth}px;
                 margin: 0px;
-                border-left: 1px solid {Theme.ScrollVerticalBorderColor};
-                border-right: 1px solid {Theme.ScrollVerticalBorderColor};
                 border-radius: {Theme.ScrollVerticalBorderRadius}px;
             }}
 
