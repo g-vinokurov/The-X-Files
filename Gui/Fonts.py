@@ -90,3 +90,5 @@ FONT_MONTSERRAT_MEDIUM      = FONTS_DIR / 'Montserrat-Medium.ttf'
 FONT_MONTSERRAT_REGULAR     = FONTS_DIR / 'Montserrat-Regular.ttf'
 FONT_MONTSERRAT_SEMI_BOLD   = FONTS_DIR / 'Montserrat-SemiBold.ttf'
 FONT_MONTSERRAT_THIN        = FONTS_DIR / 'Montserrat-Thin.ttf'
+
+FONT_PT_SERIF_REGULAR = FONTS_DIR / 'PTSerif-Regular.ttf'
