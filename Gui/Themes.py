@@ -51,6 +51,15 @@ class Theme:
     DashboardFooterBackgroundColor = Colors.COLOR_VSC_PRIMARY
     DashboardFooterBorderColor     = Colors.COLOR_VSC_TERTIARY
 
+    DashboardReloadProjectFont                 = Fonts.FONT_GEOLOGICA_BLACK
+    DashboardReloadProjectFontWeight           = Fonts.Font.Black
+    DashboardReloadProjectFontSize             = 13
+    DashboardReloadProjectColor                = Colors.COLOR_BS_LIGHT
+    DashboardReloadProjectHoverColor           = Colors.COLOR_BS_LIGHT
+    DashboardReloadProjectBackgroundColor      = Colors.COLOR_VSC_SECONDARY
+    DashboardReloadProjectHoverBackgroundColor = Colors.COLOR_VSC_TERTIARY
+    DashboardReloadProjectBorderColor          = Colors.COLOR_VSC_SECONDARY
+
     DashboardReportsListSectionBackgroundColor = Colors.COLOR_VSC_PRIMARY
     DashboardReportSectionBackgroundColor      = Colors.COLOR_VSC_SECONDARY
     
@@ -160,33 +169,39 @@ class LightTheme(Theme):
     DashboardFooterBackgroundColor = Colors.COLOR_WHITE
     DashboardFooterBorderColor     = Colors.COLOR_VSC_LIGHT
 
+    DashboardReloadProjectColor                = Colors.COLOR_BS_DARK
+    DashboardReloadProjectHoverColor           = Colors.COLOR_BS_LIGHT
+    DashboardReloadProjectBackgroundColor      = 'transparent'
+    DashboardReloadProjectHoverBackgroundColor = Colors.COLOR_BS_DARK
+    DashboardReloadProjectBorderColor          = Colors.COLOR_BS_DARK
+
     DashboardReportsListSectionBackgroundColor = Colors.COLOR_WHITE
     DashboardReportSectionBackgroundColor      = Colors.COLOR_WHITE
     
-    DashboardNoReportSelectedColor      = Colors.COLOR_BS_DARK
-    DashboardNoReportsFoundColor      = Colors.COLOR_BS_DARK
+    DashboardNoReportSelectedColor = Colors.COLOR_BS_DARK
+    DashboardNoReportsFoundColor   = Colors.COLOR_BS_DARK
 
     DashboardReportCardBackgroundColor        = Colors.COLOR_WHITE
     DashboardReportCardBorderColor            = Colors.COLOR_VSC_LIGHT
     DashboardReportCardHoveredBackgroundColor = Colors.COLOR_BS_LIGHT
 
-    DashboardReportCardTitleColor      = Colors.COLOR_BS_DARK
-    DashboardReportCardIdColor      = Colors.COLOR_VSC_TERTIARY
+    DashboardReportCardTitleColor = Colors.COLOR_BS_DARK
+    DashboardReportCardIdColor    = Colors.COLOR_VSC_TERTIARY
 
-    DashboardReportCardPropertyNameColor      = Colors.COLOR_BS_DARK
-    DashboardReportCardPropertyValueColor      = Colors.COLOR_BS_DARK
+    DashboardReportCardPropertyNameColor  = Colors.COLOR_BS_DARK
+    DashboardReportCardPropertyValueColor = Colors.COLOR_BS_DARK
 
-    DashboardReportWidgetTitleColor      = Colors.COLOR_BS_DARK
-    DashboardReportWidgetIdColor      = Colors.COLOR_VSC_TERTIARY
+    DashboardReportWidgetTitleColor = Colors.COLOR_BS_DARK
+    DashboardReportWidgetIdColor    = Colors.COLOR_VSC_TERTIARY
 
-    DashboardReportWidgetPropertyNameColor      = Colors.COLOR_BS_DARK
-    DashboardReportWidgetPropertyValueColor      = Colors.COLOR_BS_DARK
+    DashboardReportWidgetPropertyNameColor  = Colors.COLOR_BS_DARK
+    DashboardReportWidgetPropertyValueColor = Colors.COLOR_BS_DARK
 
-    DashboardReportWidgetSubtitleColor      = Colors.COLOR_BS_DARK
+    DashboardReportWidgetSubtitleColor = Colors.COLOR_BS_DARK
 
-    DashboardReportItemPColor      = Colors.COLOR_BS_DARK
+    DashboardReportItemPColor             = Colors.COLOR_BS_DARK
     DashboardReportItemPreBackgroundColor = Colors.COLOR_BS_DARK
     DashboardReportItemPreColor           = Colors.COLOR_WHITE
 
 
-CurrentTheme = LightTheme
+CurrentTheme = DarkTheme

@@ -4,6 +4,8 @@ from PyQt5.QtWidgets import QHBoxLayout
 
 from PyQt5.QtCore import Qt
 
+from Gui.Widgets.Dashboard.ReloadProject import ReloadProject
+
 from Gui.Themes import CurrentTheme as Theme
 
 from Log import log
@@ -28,9 +30,17 @@ class Header(QWidget):
             }}
         ''')
 
+        self._reload_project = ReloadProject('Reload Project', self)
+        self._reload_project.clicked.connect(self._on_reload_project_clicked)
+
         self._layout = QHBoxLayout()
-        self._layout.setContentsMargins(16, 16, 16, 16)
+        self._layout.setContentsMargins(32, 16, 32, 16)
         self._layout.setSpacing(0)
         self._layout.setAlignment(Qt.AlignmentFlag.AlignLeft)
 
+        self._layout.addWidget(self._reload_project)
+
         self.setLayout(self._layout)
+    
+    def _on_reload_project_clicked(self):
+        pass
