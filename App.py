@@ -4,6 +4,10 @@ from PyQt5.QtWidgets import QApplication
 from Gui.Widgets.Window import Window
 from State.State import State
 
+from Exceptions import Handler
+
+Handler.connect()
+
 
 class App(QApplication):
     def __init__(self, *args, **kwargs):
