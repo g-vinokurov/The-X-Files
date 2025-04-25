@@ -67,7 +67,7 @@ class ReportCardTitle(QLabel):
             text = f'{report.id}'
         self.setText(text)
      
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             color: {Themes.CurrentTheme.DashboardReportCardTitleColor};
             background: none;

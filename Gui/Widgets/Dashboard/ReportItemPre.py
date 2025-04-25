@@ -39,7 +39,7 @@ class ReportItemPre(QWidget):
         self.setLayout(self._layout)
         self.restyleUI()
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QWidget#dashboard-report-item-pre {{
                 padding: 0px;
@@ -49,7 +49,9 @@ class ReportItemPre(QWidget):
                 color: {Themes.CurrentTheme.DashboardReportItemPreColor};
             }}
         ''')
-        self._widget.restyleUI()
+        if not recursive:
+            return
+        self._widget.restyleUI(recursive)
 
     @property
     def pre(self):

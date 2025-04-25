@@ -36,7 +36,7 @@ class ReportItemPreContent(QLabel):
 
         self.restyleUI()
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QWidget#dashboard-report-item-pre-content {{
                 padding: 16px;

@@ -67,7 +67,7 @@ class ReportWidget(QWidget):
         self.setLayout(self._layout)
         self.restyleUI()
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QWidget#dashboard-report-widget {{
                 background: transparent;
@@ -76,10 +76,12 @@ class ReportWidget(QWidget):
                 padding: 0px;
             }}
         ''')
-        self._unit_0.restyleUI()
-        self._unit_1.restyleUI()
-        self._unit_2.restyleUI()
-        self._unit_3.restyleUI()
+        if not recursive:
+            return
+        self._unit_0.restyleUI(recursive)
+        self._unit_1.restyleUI(recursive)
+        self._unit_2.restyleUI(recursive)
+        self._unit_3.restyleUI(recursive)
     
     @property
     def report(self):

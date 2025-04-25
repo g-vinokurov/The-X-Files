@@ -34,7 +34,7 @@ class ReportWidgetId(QLabel):
 
         self.restyleUI()
 
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             color: {Themes.CurrentTheme.DashboardReportWidgetIdColor};
             background: none;

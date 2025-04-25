@@ -68,7 +68,7 @@ class ReportCard(QWidget):
             return
         self.selected.emit(self._report)
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QWidget#dashboard-report-card {{
                 background-color: {Themes.CurrentTheme.DashboardReportCardBackgroundColor};
@@ -82,6 +82,8 @@ class ReportCard(QWidget):
                 background-color: {Themes.CurrentTheme.DashboardReportCardHoveredBackgroundColor};
             }}
         ''')
-        self._report_title.restyleUI()
-        self._report_id.restyleUI()
-        self._report_properties.restyleUI()
+        if not recursive:
+            return
+        self._report_title.restyleUI(recursive)
+        self._report_id.restyleUI(recursive)
+        self._report_properties.restyleUI(recursive)

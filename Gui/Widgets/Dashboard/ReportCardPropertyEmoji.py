@@ -26,5 +26,5 @@ class ReportCardPropertyEmoji(QLabel):
 
         self.restyleUI()
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         pass

@@ -92,7 +92,7 @@ class ReportCardProperties(QWidget):
         self._report_tags_value.value = str(report_tags)
         self._report_date_value.value = str(report_date)
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QWidget#dashboard-report-card-properties {{
                 background-color: transparent;
@@ -101,15 +101,17 @@ class ReportCardProperties(QWidget):
                 outline: none;
             }}
         ''')
-        self._report_type_emoji.restyleUI()
-        self._report_type.restyleUI()
-        self._report_type_value.restyleUI()
-        self._report_level_emoji.restyleUI()
-        self._report_level.restyleUI()
-        self._report_level_value.restyleUI()
-        self._report_tags_emoji.restyleUI()
-        self._report_tags.restyleUI()
-        self._report_tags_value.restyleUI()
-        self._report_date_emoji.restyleUI()
-        self._report_date.restyleUI()
-        self._report_date_value.restyleUI()
+        if not recursive:
+            return
+        self._report_type_emoji.restyleUI(recursive)
+        self._report_type.restyleUI(recursive)
+        self._report_type_value.restyleUI(recursive)
+        self._report_level_emoji.restyleUI(recursive)
+        self._report_level.restyleUI(recursive)
+        self._report_level_value.restyleUI(recursive)
+        self._report_tags_emoji.restyleUI(recursive)
+        self._report_tags.restyleUI(recursive)
+        self._report_tags_value.restyleUI(recursive)
+        self._report_date_emoji.restyleUI(recursive)
+        self._report_date.restyleUI(recursive)
+        self._report_date_value.restyleUI(recursive)

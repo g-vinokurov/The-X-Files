@@ -48,7 +48,7 @@ class ReportItemFile(QWidget):
 
         self.setLayout(self._layout)
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QWidget#dashboard-report-item-file {{
                 padding: 0px;
@@ -57,9 +57,11 @@ class ReportItemFile(QWidget):
                 outline: none;
             }}
         ''')
-        self._report_file_emoji.restyleUI()
-        self._report_file_name.restyleUI()
-        self._report_file_value.restyleUI()
+        if not recursive:
+            return
+        self._report_file_emoji.restyleUI(recursive)
+        self._report_file_name.restyleUI(recursive)
+        self._report_file_value.restyleUI(recursive)
     
     @property
     def file(self):

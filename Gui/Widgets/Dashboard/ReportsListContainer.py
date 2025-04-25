@@ -42,7 +42,7 @@ class ReportsListContainer(QWidget):
         self.setLayout(self._layout)
         self.restyleUI()
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QWidget#dashboard-reports-list-container {{
                 background: transparent;
@@ -51,8 +51,10 @@ class ReportsListContainer(QWidget):
                 padding: 0px;
             }}
         ''')
-        self._reports_list.restyleUI()
-        self._scroll.restyleUI()
+        if not recursive:
+            return
+        self._reports_list.restyleUI(recursive)
+        self._scroll.restyleUI(recursive)
     
     @property
     def reports(self):

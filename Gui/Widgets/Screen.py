@@ -6,5 +6,5 @@ class Screen(QWidget):
     def updateUI(self, *args, **kwargs):
         pass
 
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         pass

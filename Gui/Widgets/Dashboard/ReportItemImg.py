@@ -46,7 +46,7 @@ class ReportItemImg(QWidget):
         self.setLayout(self._layout)
         self.restyleUI()
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         pass
     
     @property
@@ -104,5 +104,5 @@ class ReportItemImgContent(QWidget):
         if event.button() == Qt.MouseButton.LeftButton:
             PillowImage.open(self._path).show()
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         pass

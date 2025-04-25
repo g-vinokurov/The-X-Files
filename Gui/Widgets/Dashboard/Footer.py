@@ -28,7 +28,7 @@ class Footer(QWidget):
         self.setLayout(self._layout)
         self.restyleUI()
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QWidget#dashboard-footer {{
                 background-color: {Themes.CurrentTheme.DashboardFooterBackgroundColor};
@@ -37,3 +37,5 @@ class Footer(QWidget):
                 padding: 0px;
             }}
         ''')
+        if not recursive:
+            return

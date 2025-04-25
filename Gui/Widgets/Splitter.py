@@ -17,7 +17,7 @@ class Splitter(QSplitter):
 
         self.restyleUI()
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QSplitter#splitter::handle {{
                 background-color: {Themes.CurrentTheme.SplitterBackgroundColor};

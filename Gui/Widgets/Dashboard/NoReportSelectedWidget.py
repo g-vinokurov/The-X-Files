@@ -34,7 +34,7 @@ class NoReportSelectedWidget(QWidget):
         self.setLayout(self._layout)
         self.restyleUI()
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QWidget#dashboard-no-report-selected-widget {{
                 background: transparent;
@@ -43,4 +43,6 @@ class NoReportSelectedWidget(QWidget):
                 padding: 0px;
             }}
         ''')
-        self._no_report_selected.restyleUI()
+        if not recursive:
+            return
+        self._no_report_selected.restyleUI(recursive)

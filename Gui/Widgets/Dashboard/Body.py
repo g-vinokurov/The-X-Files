@@ -71,7 +71,7 @@ class Body(QWidget):
     def on_report_selected(self, report: Report):
         self._report_section.report = report
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QWidget#dashboard-body {{
                 background-color: {Themes.CurrentTheme.DashboardBodyBackgroundColor};
@@ -80,6 +80,8 @@ class Body(QWidget):
                 padding: 0px;
             }}
         ''')
-        self._reports_list_section.restyleUI()
-        self._report_section.restyleUI()
-        self._splitter.restyleUI()
+        if not recursive:
+            return
+        self._reports_list_section.restyleUI(recursive)
+        self._report_section.restyleUI(recursive)
+        self._splitter.restyleUI(recursive)

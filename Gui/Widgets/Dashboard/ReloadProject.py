@@ -34,7 +34,7 @@ class ReloadProject(QPushButton):
     def _on_clicked(self):
         pass
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QPushButton#dashboard-reload-project {{
                 color: {Themes.CurrentTheme.DashboardReloadProjectColor};
@@ -52,3 +52,5 @@ class ReloadProject(QPushButton):
                 background: {Themes.CurrentTheme.DashboardReloadProjectHoverBackgroundColor};
             }}
         ''')
+        if not recursive:
+            return

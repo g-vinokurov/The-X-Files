@@ -41,7 +41,7 @@ class SwitchTheme(QPushButton):
             pass
         app.gui.navigator.restyleAll()
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QPushButton#dashboard-switch-theme {{
                 color: {Themes.CurrentTheme.DashboardSwitchThemeColor};

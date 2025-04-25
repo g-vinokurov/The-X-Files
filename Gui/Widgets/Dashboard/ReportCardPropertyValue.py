@@ -50,7 +50,7 @@ class ReportCardPropertyValue(QLabel):
     def value(self, value: str):
         self.setText(value)
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             color: {Themes.CurrentTheme.DashboardReportCardPropertyValueColor};
             background: none;

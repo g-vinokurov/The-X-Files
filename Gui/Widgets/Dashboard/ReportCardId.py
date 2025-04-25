@@ -59,7 +59,7 @@ class ReportCardId(QLabel):
         text = f'{report.id}'
         self.setText(text)
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             color: {Themes.CurrentTheme.DashboardReportCardIdColor};
             background: none;
@@ -67,3 +67,5 @@ class ReportCardId(QLabel):
             outline: none;
             padding: 0px;
         ''')
+        if not recursive:
+            return

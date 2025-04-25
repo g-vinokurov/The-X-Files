@@ -40,7 +40,7 @@ class ReportSection(QWidget):
         self.setLayout(self._layout)
         self.restyleUI()
 
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QWidget#dashboard-report-section {{
                 background-color: {Themes.CurrentTheme.DashboardReportSectionBackgroundColor};
@@ -49,8 +49,10 @@ class ReportSection(QWidget):
                 padding: 0px;
             }}
         ''')
-        self._no_report_selected.restyleUI()
-        self._report_widget_container.restyleUI()
+        if not recursive:
+            return
+        self._no_report_selected.restyleUI(recursive)
+        self._report_widget_container.restyleUI(recursive)
     
     @property
     def report(self):

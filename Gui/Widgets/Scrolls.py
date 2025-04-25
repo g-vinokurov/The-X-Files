@@ -22,7 +22,7 @@ class Scroll(QScrollArea):
         
         self.restyleUI()
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QScrollArea#scroll {{ 
                 background: transparent;
@@ -123,7 +123,7 @@ class ScrollPre(QScrollArea):
         
         self.restyleUI()
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QScrollArea#scroll-pre {{ 
                 background: transparent;

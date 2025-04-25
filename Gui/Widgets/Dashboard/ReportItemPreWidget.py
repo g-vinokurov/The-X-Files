@@ -41,9 +41,11 @@ class ReportItemPreWidget(QWidget):
         self.setLayout(self._layout)
         self.restyleUI()
     
-    def restyleUI(self):
-        self._content.restyleUI()
-        self._scroll.restyleUI()
+    def restyleUI(self, recursive: bool = False):
+        if not recursive:
+            return
+        self._content.restyleUI(recursive)
+        self._scroll.restyleUI(recursive)
     
     @property
     def value(self):

@@ -43,7 +43,7 @@ class ReportsListSection(QWidget):
         
         self.restyleUI()
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QWidget#dashboard-reports-list-section {{
                 background-color: {Themes.CurrentTheme.DashboardReportsListSectionBackgroundColor};
@@ -52,8 +52,10 @@ class ReportsListSection(QWidget):
                 padding: 0px;
             }}
         ''')
-        self._no_reports_found.restyleUI()
-        self._reports_list_container.restyleUI()
+        if not recursive:
+            return
+        self._no_reports_found.restyleUI(recursive)
+        self._reports_list_container.restyleUI(recursive)
     
     @property
     def reports(self):

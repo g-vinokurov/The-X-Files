@@ -80,5 +80,5 @@ class WelcomeScreen(Screen):
     def footer(self):
         return self._footer
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         pass

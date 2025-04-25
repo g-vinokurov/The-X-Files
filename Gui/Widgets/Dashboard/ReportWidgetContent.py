@@ -42,7 +42,7 @@ class ReportWidgetContent(QWidget):
         
         self.restyleUI()
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QWidget#dashboard-report-widget-content {{
                 background-color: transparent;
@@ -51,6 +51,8 @@ class ReportWidgetContent(QWidget):
                 outline: none;
             }}
         ''')
+        if not recursive:
+            return
         for i in range(self._layout.count()):
             item = self._layout.itemAt(i)
             if item is None:
@@ -58,7 +60,7 @@ class ReportWidgetContent(QWidget):
             widget = item.widget()
             if widget is None:
                 continue
-            widget.restyleUI()
+            widget.restyleUI(recursive)
     
     @property
     def content(self):

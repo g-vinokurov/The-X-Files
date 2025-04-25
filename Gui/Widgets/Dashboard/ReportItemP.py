@@ -53,7 +53,7 @@ class ReportItemP(QLabel):
     def p(self):
         return self._p
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             color: {Themes.CurrentTheme.DashboardReportItemPColor};
             background: none;

@@ -37,7 +37,7 @@ class Navigator(QWidget):
     
     def restyle(self, tag: str):
         screen : Screen = self._screens.get(tag, Screen(self))
-        screen.restyleUI()
+        screen.restyleUI(recursive=True)
     
     def restyleAll(self):
         for screen in self._screens:

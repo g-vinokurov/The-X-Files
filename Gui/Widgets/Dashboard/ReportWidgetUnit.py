@@ -27,7 +27,7 @@ class ReportWidgetUnit(QWidget):
         self.setLayout(self._layout)
         self.restyleUI()
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QWidget#dashboard-report-widget-unit {{
                 background: transparent;
@@ -36,6 +36,8 @@ class ReportWidgetUnit(QWidget):
                 padding: 0px;
             }}
         ''')
+        if not recursive:
+            return
         for i in range(self._layout.count()):
             item = self._layout.itemAt(i)
             if item is None:
@@ -43,7 +45,7 @@ class ReportWidgetUnit(QWidget):
             widget = item.widget()
             if widget is None:
                 continue
-            widget.restyleUI()
+            widget.restyleUI(recursive)
 
     def add(self, widget: QWidget):
         self._layout.addWidget(widget)

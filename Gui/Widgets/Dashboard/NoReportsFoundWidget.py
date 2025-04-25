@@ -34,7 +34,7 @@ class NoReportsFoundWidget(QWidget):
         self.setLayout(self._layout)
         self.restyleUI()
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QWidget#dashboard-no-reports-found-widget {{
                 background: transparent;
@@ -43,4 +43,6 @@ class NoReportsFoundWidget(QWidget):
                 padding: 0px;
             }}
         ''')
-        self._no_reports_found.restyleUI()
+        if not recursive:
+            return
+        self._no_reports_found.restyleUI(recursive)

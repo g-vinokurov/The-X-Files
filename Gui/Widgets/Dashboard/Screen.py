@@ -56,7 +56,7 @@ class DashboardScreen(Screen):
     def footer(self):
         return self._footer
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QWidget#dashboard-screen {{
                 background-color: {Themes.CurrentTheme.DashboardScreenBackgroundColor};
@@ -65,6 +65,8 @@ class DashboardScreen(Screen):
                 padding: 0px;
             }}
         ''')
-        self._header.restyleUI()
-        self._body.restyleUI()
-        self._footer.restyleUI()
+        if not recursive:
+            return
+        self._header.restyleUI(recursive)
+        self._body.restyleUI(recursive)
+        self._footer.restyleUI(recursive)

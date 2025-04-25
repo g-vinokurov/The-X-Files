@@ -43,7 +43,7 @@ class Header(QWidget):
     def _on_switch_theme_clicked(self):
         pass
     
-    def restyleUI(self):
+    def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
             QWidget#dashboard-header {{
                 background-color: {Themes.CurrentTheme.DashboardHeaderBackgroundColor};
@@ -52,5 +52,7 @@ class Header(QWidget):
                 padding: 0px;
             }}
         ''')
-        self._reload_project.restyleUI()
-        self._switch_theme.restyleUI()
+        if not recursive:
+            return
+        self._reload_project.restyleUI(recursive)
+        self._switch_theme.restyleUI(recursive)
