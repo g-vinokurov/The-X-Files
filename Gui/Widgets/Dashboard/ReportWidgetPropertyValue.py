@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt
 
 from Gui.Fonts import Font
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from Log import log
 from App import app
@@ -17,24 +17,26 @@ class ReportWidgetPropertyValue(QLabel):
     def initUI(self):
         self.setObjectName('dashboard-report-widget-property-value')
 
+        self.setContentsMargins(0, 0, 0, 0)
+        self.setWordWrap(True)
+        self.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
+
+        font = Font(Themes.CurrentTheme.DashboardReportWidgetPropertyValueFont)
+        font.setPointSize(Themes.CurrentTheme.DashboardReportWidgetPropertyValueFontSize)
+        font.setWeight(Themes.CurrentTheme.DashboardReportWidgetPropertyValueFontWeight)
+        self.setFont(font)
+
+        self.adjustHeight()
+        self.restyleUI()
+    
+    def restyleUI(self):
         self.setStyleSheet(f'''
-            color: {Theme.DashboardReportWidgetPropertyValueColor};
+            color: {Themes.CurrentTheme.DashboardReportWidgetPropertyValueColor};
             background: none;
             border: none;
             outline: none;
             padding: 0px;
         ''')
-
-        self.setContentsMargins(0, 0, 0, 0)
-        self.setWordWrap(True)
-        self.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
-
-        font = Font(Theme.DashboardReportWidgetPropertyValueFont)
-        font.setPointSize(Theme.DashboardReportWidgetPropertyValueFontSize)
-        font.setWeight(Theme.DashboardReportWidgetPropertyValueFontWeight)
-        self.setFont(font)
-
-        self.adjustHeight()
     
     # Without this method after word-wrapping QLabel will hide last content rows
     def adjustHeight(self):

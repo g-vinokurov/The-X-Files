@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QHBoxLayout
 
 from PyQt5.QtCore import Qt
 
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from Log import log
 from App import app
@@ -19,14 +19,6 @@ class Footer(QWidget):
         self.setObjectName('dashboard-footer')
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
-        self.setStyleSheet(f'''
-            QWidget#dashboard-footer {{
-                background-color: {Theme.DashboardFooterBackgroundColor};
-                border-top: 1px solid {Theme.DashboardFooterBorderColor};
-                outline: none;
-                padding: 0px;
-            }}
-        ''')
 
         self._layout = QHBoxLayout()
         self._layout.setContentsMargins(16, 16, 16, 16)
@@ -34,3 +26,14 @@ class Footer(QWidget):
         self._layout.setAlignment(Qt.AlignmentFlag.AlignLeft)
 
         self.setLayout(self._layout)
+        self.restyleUI()
+    
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            QWidget#dashboard-footer {{
+                background-color: {Themes.CurrentTheme.DashboardFooterBackgroundColor};
+                border-top: 1px solid {Themes.CurrentTheme.DashboardFooterBorderColor};
+                outline: none;
+                padding: 0px;
+            }}
+        ''')

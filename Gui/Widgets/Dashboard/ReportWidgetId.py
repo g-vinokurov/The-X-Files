@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QCursor
 
 from Gui.Fonts import Font
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from State.Models.Report.Report import Report
 
@@ -21,23 +21,27 @@ class ReportWidgetId(QLabel):
     def initUI(self):
         self.setObjectName('dashboard-report-widget-id')
 
-        self.setStyleSheet(f'''
-            color: {Theme.DashboardReportWidgetIdColor};
-            background: none;
-            border: none;
-            outline: none;
-            padding: 0px;
-        ''')
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
         self.setCursor(QCursor(Qt.CursorShape.IBeamCursor))
 
-        font = Font(Theme.DashboardReportWidgetIdFont)
-        font.setPointSize(Theme.DashboardReportWidgetIdFontSize)
-        font.setWeight(Theme.DashboardReportWidgetIdFontWeight)
+        font = Font(Themes.CurrentTheme.DashboardReportWidgetIdFont)
+        font.setPointSize(Themes.CurrentTheme.DashboardReportWidgetIdFontSize)
+        font.setWeight(Themes.CurrentTheme.DashboardReportWidgetIdFontWeight)
         self.setFont(font)
+
+        self.restyleUI()
+
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            color: {Themes.CurrentTheme.DashboardReportWidgetIdColor};
+            background: none;
+            border: none;
+            outline: none;
+            padding: 0px;
+        ''')
     
     @property
     def report(self):

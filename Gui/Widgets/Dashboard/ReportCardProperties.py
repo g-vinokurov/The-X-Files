@@ -8,7 +8,7 @@ from Gui.Widgets.Dashboard.ReportCardPropertyEmoji import ReportCardPropertyEmoj
 from Gui.Widgets.Dashboard.ReportCardPropertyName import ReportCardPropertyName
 from Gui.Widgets.Dashboard.ReportCardPropertyValue import ReportCardPropertyValue
 
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from State.Models.Report.Report import Report
 
@@ -26,14 +26,6 @@ class ReportCardProperties(QWidget):
         self.setObjectName('dashboard-report-card-properties')
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
-        self.setStyleSheet(f'''
-            QWidget#dashboard-report-card-properties {{
-                background-color: transparent;
-                border: none;
-                padding: 0px;
-                outline: none;
-            }}
-        ''')
 
         self._layout = QGridLayout()
         self._layout.setContentsMargins(0, 0, 0, 0)
@@ -75,6 +67,7 @@ class ReportCardProperties(QWidget):
         self._layout.setColumnStretch(2, 1)
 
         self.setLayout(self._layout)
+        self.restyleUI()
     
     @property
     def report(self):
@@ -98,3 +91,25 @@ class ReportCardProperties(QWidget):
         self._report_level_value.value = str(report_level)
         self._report_tags_value.value = str(report_tags)
         self._report_date_value.value = str(report_date)
+    
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            QWidget#dashboard-report-card-properties {{
+                background-color: transparent;
+                border: none;
+                padding: 0px;
+                outline: none;
+            }}
+        ''')
+        self._report_type_emoji.restyleUI()
+        self._report_type.restyleUI()
+        self._report_type_value.restyleUI()
+        self._report_level_emoji.restyleUI()
+        self._report_level.restyleUI()
+        self._report_level_value.restyleUI()
+        self._report_tags_emoji.restyleUI()
+        self._report_tags.restyleUI()
+        self._report_tags_value.restyleUI()
+        self._report_date_emoji.restyleUI()
+        self._report_date.restyleUI()
+        self._report_date_value.restyleUI()

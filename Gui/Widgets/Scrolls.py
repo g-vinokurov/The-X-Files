@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QScrollArea
 from PyQt5.QtGui import QCursor
 from PyQt5.QtCore import Qt
 
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from Log import log
 from App import app
@@ -19,7 +19,10 @@ class Scroll(QScrollArea):
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-
+        
+        self.restyleUI()
+    
+    def restyleUI(self):
         self.setStyleSheet(f'''
             QScrollArea#scroll {{ 
                 background: transparent;
@@ -32,16 +35,16 @@ class Scroll(QScrollArea):
             }}
 
             QScrollArea#scroll > QWidget > QScrollBar:horizontal {{
-                height: {Theme.ScrollHorizontalHeight}px;
+                height: {Themes.CurrentTheme.ScrollHorizontalHeight}px;
                 margin: 0px;
-                border-radius: {Theme.ScrollHorizontalBorderRadius}px;
-                background-color: {Theme.ScrollHorizontalBackgroundColor};
+                border-radius: {Themes.CurrentTheme.ScrollHorizontalBorderRadius}px;
+                background-color: {Themes.CurrentTheme.ScrollHorizontalBackgroundColor};
             }}
 
             QScrollArea#scroll > QWidget > QScrollBar::handle:horizontal {{
-                background-color: {Theme.ScrollHorizontalHandleBackgroundColor};
-                min-width: {Theme.ScrollHorizontalMinWidth}px;
-                border-radius: {Theme.ScrollHorizontalHandleBorderRadius}px;
+                background-color: {Themes.CurrentTheme.ScrollHorizontalHandleBackgroundColor};
+                min-width: {Themes.CurrentTheme.ScrollHorizontalMinWidth}px;
+                border-radius: {Themes.CurrentTheme.ScrollHorizontalHandleBorderRadius}px;
             }}
 
             QScrollArea#scroll > QWidget > QScrollBar::add-line:horizontal {{
@@ -69,16 +72,16 @@ class Scroll(QScrollArea):
             }}
 
             QScrollArea#scroll > QWidget > QScrollBar:vertical {{
-                background-color: {Theme.ScrollVerticalBackgroundColor};
-                width: {Theme.ScrollVerticalWidth}px;
+                background-color: {Themes.CurrentTheme.ScrollVerticalBackgroundColor};
+                width: {Themes.CurrentTheme.ScrollVerticalWidth}px;
                 margin: 0px;
-                border-radius: {Theme.ScrollVerticalBorderRadius}px;
+                border-radius: {Themes.CurrentTheme.ScrollVerticalBorderRadius}px;
             }}
 
             QScrollArea#scroll > QWidget > QScrollBar::handle:vertical {{
-                background-color: {Theme.ScrollVerticalHandleBackgroundColor};
-                min-height: {Theme.ScrollVerticalMinHeight}px;
-                border-radius: {Theme.ScrollVerticalHandleBorderRadius}px;
+                background-color: {Themes.CurrentTheme.ScrollVerticalHandleBackgroundColor};
+                min-height: {Themes.CurrentTheme.ScrollVerticalMinHeight}px;
+                border-radius: {Themes.CurrentTheme.ScrollVerticalHandleBorderRadius}px;
             }}
 
             QScrollArea#scroll > QWidget > QScrollBar::add-line:vertical {{
@@ -117,7 +120,10 @@ class ScrollPre(QScrollArea):
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-
+        
+        self.restyleUI()
+    
+    def restyleUI(self):
         self.setStyleSheet(f'''
             QScrollArea#scroll-pre {{ 
                 background: transparent;
@@ -130,17 +136,17 @@ class ScrollPre(QScrollArea):
             }}
 
             QScrollArea#scroll-pre > QWidget > QScrollBar:horizontal {{
-                height: {Theme.ScrollPreHorizontalHeight}px;
+                height: {Themes.CurrentTheme.ScrollPreHorizontalHeight}px;
                 margin: 0px 0px 0px 0px;
-                border-top: 1px transparent {Theme.ScrollPreHorizontalBorderColor};
-                border-radius: {Theme.ScrollPreHorizontalBorderRadius}px;
+                border-top: 1px transparent {Themes.CurrentTheme.ScrollPreHorizontalBorderColor};
+                border-radius: {Themes.CurrentTheme.ScrollPreHorizontalBorderRadius}px;
                 background-color: transparent;
             }}
 
             QScrollArea#scroll-pre > QWidget > QScrollBar::handle:horizontal {{
-                background-color: {Theme.ScrollPreHorizontalHandleBackgroundColor};
-                min-width: {Theme.ScrollPreHorizontalMinWidth}px;
-                border-radius: {Theme.ScrollPreHorizontalHandleBorderRadius}px;
+                background-color: {Themes.CurrentTheme.ScrollPreHorizontalHandleBackgroundColor};
+                min-width: {Themes.CurrentTheme.ScrollPreHorizontalMinWidth}px;
+                border-radius: {Themes.CurrentTheme.ScrollPreHorizontalHandleBorderRadius}px;
             }}
 
             QScrollArea#scroll-pre > QWidget > QScrollBar::add-line:horizontal {{
@@ -169,16 +175,16 @@ class ScrollPre(QScrollArea):
 
             QScrollArea#scroll-pre > QWidget > QScrollBar:vertical {{
                 background-color: transparent;
-                width: {Theme.ScrollPreVerticalWidth}px;
+                width: {Themes.CurrentTheme.ScrollPreVerticalWidth}px;
                 margin: 0px 0px 0px 0px;
-                border-left: 1px transparent {Theme.ScrollPreVerticalBorderColor};
-                border-radius: {Theme.ScrollPreVerticalBorderRadius}px;
+                border-left: 1px transparent {Themes.CurrentTheme.ScrollPreVerticalBorderColor};
+                border-radius: {Themes.CurrentTheme.ScrollPreVerticalBorderRadius}px;
             }}
 
             QScrollArea#scroll-pre > QWidget > QScrollBar::handle:vertical {{
-                background-color: {Theme.ScrollPreVerticalHandleBackgroundColor};
-                min-height: {Theme.ScrollPreVerticalMinHeight}px;
-                border-radius: {Theme.ScrollPreVerticalHandleBorderRadius}px;
+                background-color: {Themes.CurrentTheme.ScrollPreVerticalHandleBackgroundColor};
+                min-height: {Themes.CurrentTheme.ScrollPreVerticalMinHeight}px;
+                border-radius: {Themes.CurrentTheme.ScrollPreVerticalHandleBorderRadius}px;
             }}
 
             QScrollArea#scroll-pre > QWidget > QScrollBar::add-line:vertical {{

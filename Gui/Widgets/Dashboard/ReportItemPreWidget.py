@@ -8,7 +8,7 @@ from Gui.Widgets.Dashboard.ReportItemPreContent import ReportItemPreContent
 from Gui.Widgets.Scrolls import ScrollPre
 
 from Gui.Fonts import Font
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from Log import log
 from App import app
@@ -39,6 +39,11 @@ class ReportItemPreWidget(QWidget):
         self._layout.addWidget(self._scroll)
 
         self.setLayout(self._layout)
+        self.restyleUI()
+    
+    def restyleUI(self):
+        self._content.restyleUI()
+        self._scroll.restyleUI()
     
     @property
     def value(self):

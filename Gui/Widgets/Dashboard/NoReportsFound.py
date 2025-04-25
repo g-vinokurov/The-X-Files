@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt
 
 from Gui.Fonts import Font
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from Log import log
 from App import app
@@ -17,23 +17,17 @@ class NoReportsFound(QLabel):
     def initUI(self):
         self.setObjectName('dashboard-no-reports-found')
 
-        self.setStyleSheet(f'''
-            color: {Theme.DashboardNoReportsFoundColor};
-            background: none;
-            border: none;
-            outline: none;
-            padding: 0px;
-        ''')
         self.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.setWordWrap(False)
         
-        font = Font(Theme.DashboardNoReportsFoundFont)
-        font.setPointSize(Theme.DashboardNoReportsFoundFontSize)
-        font.setWeight(Theme.DashboardNoReportsFoundFontWeight)
+        font = Font(Themes.CurrentTheme.DashboardNoReportsFoundFont)
+        font.setPointSize(Themes.CurrentTheme.DashboardNoReportsFoundFontSize)
+        font.setWeight(Themes.CurrentTheme.DashboardNoReportsFoundFontWeight)
         self.setFont(font)
 
         self.setText('No reports found')
         self.adjustHeight()
+        self.restyleUI()
 
     # If word-wrap is True, QLabel does not resize automatically and hide parts of text
     def adjustHeight(self):
@@ -47,3 +41,12 @@ class NoReportsFound(QLabel):
     def resizeEvent(self, event):
         super().resizeEvent(event)
         self.adjustHeight()
+    
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            color: {Themes.CurrentTheme.DashboardNoReportsFoundColor};
+            background: none;
+            border: none;
+            outline: none;
+            padding: 0px;
+        ''')

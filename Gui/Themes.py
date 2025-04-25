@@ -2,8 +2,14 @@
 from Gui import Colors
 from Gui import Fonts
 
+THEME_DEFAULT = 'Default'
+THEME_DARK = 'Dark'
+THEME_LIGHT = 'Light'
+
 
 class Theme:
+    NAME = THEME_DEFAULT
+
     SplitterBackgroundColor = Colors.COLOR_VSC_SECONDARY
 
     ScrollHorizontalBackgroundColor       = Colors.COLOR_VSC_PRIMARY
@@ -59,6 +65,15 @@ class Theme:
     DashboardReloadProjectBackgroundColor      = Colors.COLOR_VSC_SECONDARY
     DashboardReloadProjectHoverBackgroundColor = Colors.COLOR_VSC_TERTIARY
     DashboardReloadProjectBorderColor          = Colors.COLOR_VSC_SECONDARY
+
+    DashboardSwitchThemeFont                 = Fonts.FONT_GEOLOGICA_BLACK
+    DashboardSwitchThemeFontWeight           = Fonts.Font.Black
+    DashboardSwitchThemeFontSize             = 13
+    DashboardSwitchThemeColor                = Colors.COLOR_BS_LIGHT
+    DashboardSwitchThemeHoverColor           = Colors.COLOR_BS_LIGHT
+    DashboardSwitchThemeBackgroundColor      = Colors.COLOR_VSC_SECONDARY
+    DashboardSwitchThemeHoverBackgroundColor = Colors.COLOR_VSC_TERTIARY
+    DashboardSwitchThemeBorderColor          = Colors.COLOR_VSC_SECONDARY
 
     DashboardReportsListSectionBackgroundColor = Colors.COLOR_VSC_PRIMARY
     DashboardReportSectionBackgroundColor      = Colors.COLOR_VSC_SECONDARY
@@ -144,10 +159,12 @@ class Theme:
 
 
 class DarkTheme(Theme):
-    pass
+    NAME = THEME_DARK
 
 
 class LightTheme(Theme):
+    NAME = THEME_LIGHT
+
     SplitterBackgroundColor = Colors.COLOR_WHITE
     
     ScrollHorizontalBackgroundColor       = Colors.COLOR_BS_LIGHT
@@ -174,6 +191,12 @@ class LightTheme(Theme):
     DashboardReloadProjectBackgroundColor      = 'transparent'
     DashboardReloadProjectHoverBackgroundColor = Colors.COLOR_BS_DARK
     DashboardReloadProjectBorderColor          = Colors.COLOR_BS_DARK
+
+    DashboardSwitchThemeColor                = Colors.COLOR_BS_DARK
+    DashboardSwitchThemeHoverColor           = Colors.COLOR_BS_LIGHT
+    DashboardSwitchThemeBackgroundColor      = 'transparent'
+    DashboardSwitchThemeHoverBackgroundColor = Colors.COLOR_BS_DARK
+    DashboardSwitchThemeBorderColor          = Colors.COLOR_BS_DARK
 
     DashboardReportsListSectionBackgroundColor = Colors.COLOR_WHITE
     DashboardReportSectionBackgroundColor      = Colors.COLOR_WHITE
@@ -204,4 +227,21 @@ class LightTheme(Theme):
     DashboardReportItemPreColor           = Colors.COLOR_WHITE
 
 
-CurrentTheme = DarkTheme
+CurrentTheme = None
+
+
+def set_theme(theme):
+    global CurrentTheme
+
+    if theme == THEME_DARK:
+        CurrentTheme = DarkTheme
+        return
+    
+    if theme == THEME_LIGHT:
+        CurrentTheme = LightTheme
+        return
+    
+    CurrentTheme = Theme
+
+
+set_theme(THEME_DARK)

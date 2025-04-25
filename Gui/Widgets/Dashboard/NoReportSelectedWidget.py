@@ -6,7 +6,7 @@ from PyQt5.QtCore import Qt
 
 from Gui.Widgets.Dashboard.NoReportSelected import NoReportSelected
 
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from Log import log
 from App import app
@@ -21,14 +21,6 @@ class NoReportSelectedWidget(QWidget):
         self.setObjectName('dashboard-no-report-selected-widget')
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
-        self.setStyleSheet(f'''
-            QWidget#dashboard-no-report-selected-widget {{
-                background: transparent;
-                border: none;
-                outline: none;
-                padding: 0px;
-            }}
-        ''')
 
         self._no_report_selected = NoReportSelected(self)
 
@@ -40,3 +32,15 @@ class NoReportSelectedWidget(QWidget):
         self._layout.addWidget(self._no_report_selected)
 
         self.setLayout(self._layout)
+        self.restyleUI()
+    
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            QWidget#dashboard-no-report-selected-widget {{
+                background: transparent;
+                border: none;
+                outline: none;
+                padding: 0px;
+            }}
+        ''')
+        self._no_report_selected.restyleUI()

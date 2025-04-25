@@ -10,7 +10,7 @@ from Gui.Widgets.Dashboard.ReportItemImg import ReportItemImg
 from Gui.Widgets.Dashboard.ReportItemFile import ReportItemFile
 
 from Gui.Fonts import Font
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from State.Models.Content.Content import Content
 from State.Models.Content.File import File
@@ -32,6 +32,17 @@ class ReportWidgetContent(QWidget):
         self.setObjectName('dashboard-report-widget-content')
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
+
+        self._layout = QVBoxLayout()
+        self._layout.setContentsMargins(0, 0, 0, 0)
+        self._layout.setSpacing(16)
+        self._layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+
+        self.setLayout(self._layout)
+        
+        self.restyleUI()
+    
+    def restyleUI(self):
         self.setStyleSheet(f'''
             QWidget#dashboard-report-widget-content {{
                 background-color: transparent;
@@ -40,13 +51,14 @@ class ReportWidgetContent(QWidget):
                 outline: none;
             }}
         ''')
-
-        self._layout = QVBoxLayout()
-        self._layout.setContentsMargins(0, 0, 0, 0)
-        self._layout.setSpacing(16)
-        self._layout.setAlignment(Qt.AlignmentFlag.AlignTop)
-
-        self.setLayout(self._layout)
+        for i in range(self._layout.count()):
+            item = self._layout.itemAt(i)
+            if item is None:
+                continue
+            widget = item.widget()
+            if widget is None:
+                continue
+            widget.restyleUI()
     
     @property
     def content(self):

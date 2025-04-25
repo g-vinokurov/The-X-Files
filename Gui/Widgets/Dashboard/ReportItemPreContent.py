@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QCursor
 
 from Gui.Fonts import Font
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from State.Utils.Highlighter import Highlighter
 
@@ -19,15 +19,7 @@ class ReportItemPreContent(QLabel):
     
     def initUI(self):
         self.setObjectName('dashboard-report-item-pre-content')
-        self.setStyleSheet(f'''
-            QWidget#dashboard-report-item-pre-content {{
-                padding: 16px;
-                background: transparent;
-                border: none;
-                color: {Theme.DashboardReportItemPreColor};
-            }}
-        ''')
-
+        
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.setCursor(QCursor(Qt.CursorShape.IBeamCursor))
         self.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
@@ -37,10 +29,22 @@ class ReportItemPreContent(QLabel):
         self.setWordWrap(False)
         self.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
 
-        font = Font(Theme.DashboardReportItemPreFont)
-        font.setPointSize(Theme.DashboardReportItemPreFontSize)
-        font.setWeight(Theme.DashboardReportItemPreFontWeight)
+        font = Font(Themes.CurrentTheme.DashboardReportItemPreFont)
+        font.setPointSize(Themes.CurrentTheme.DashboardReportItemPreFontSize)
+        font.setWeight(Themes.CurrentTheme.DashboardReportItemPreFontWeight)
         self.setFont(font)
+
+        self.restyleUI()
+    
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            QWidget#dashboard-report-item-pre-content {{
+                padding: 16px;
+                background: transparent;
+                border: none;
+                color: {Themes.CurrentTheme.DashboardReportItemPreColor};
+            }}
+        ''')
     
     @property
     def value(self):

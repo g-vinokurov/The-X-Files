@@ -9,7 +9,7 @@ from Gui.Widgets.Dashboard.Header import Header
 from Gui.Widgets.Dashboard.Body import Body
 from Gui.Widgets.Dashboard.Footer import Footer
 
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from Log import log
 from App import app
@@ -24,14 +24,6 @@ class DashboardScreen(Screen):
         self.setObjectName('dashboard-screen')
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
-        self.setStyleSheet(f'''
-            QWidget#dashboard-screen {{
-                background-color: {Theme.DashboardScreenBackgroundColor};
-                border: none;
-                outline: none;
-                padding: 0px;
-            }}
-        ''')
 
         self._header = Header(self)
         self._body = Body(self)
@@ -50,6 +42,7 @@ class DashboardScreen(Screen):
         self.setLayout(self._layout)
 
         app.gui.setWindowTitle('The X-Files | Dashboard')
+        self.restyleUI()
     
     @property
     def header(self):
@@ -62,3 +55,16 @@ class DashboardScreen(Screen):
     @property
     def footer(self):
         return self._footer
+    
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            QWidget#dashboard-screen {{
+                background-color: {Themes.CurrentTheme.DashboardScreenBackgroundColor};
+                border: none;
+                outline: none;
+                padding: 0px;
+            }}
+        ''')
+        self._header.restyleUI()
+        self._body.restyleUI()
+        self._footer.restyleUI()

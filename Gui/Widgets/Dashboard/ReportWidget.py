@@ -12,7 +12,7 @@ from Gui.Widgets.Dashboard.ReportWidgetProperties import ReportWidgetProperties
 from Gui.Widgets.Dashboard.ReportWidgetSubtitle import ReportWidgetSubtitle
 from Gui.Widgets.Dashboard.ReportWidgetContent import ReportWidgetContent
 
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from State.Models.Report.Report import Report
 
@@ -30,14 +30,6 @@ class ReportWidget(QWidget):
         self.setObjectName('dashboard-report-widget')
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
-        self.setStyleSheet(f'''
-            QWidget#dashboard-report-widget {{
-                background: transparent;
-                border: none;
-                outline: none;
-                padding: 0px;
-            }}
-        ''')
         self.setCursor(QCursor(Qt.CursorShape.IBeamCursor))
 
         self._report_title = ReportWidgetTitle(self)
@@ -63,7 +55,7 @@ class ReportWidget(QWidget):
         self._unit_3.add(self._report_solution)
         
         self._layout = QVBoxLayout()
-        self._layout.setContentsMargins(*Theme.DashboardReportWidgetMargins)
+        self._layout.setContentsMargins(*Themes.CurrentTheme.DashboardReportWidgetMargins)
         self._layout.setSpacing(32)
         self._layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
@@ -73,6 +65,21 @@ class ReportWidget(QWidget):
         self._layout.addWidget(self._unit_3)
 
         self.setLayout(self._layout)
+        self.restyleUI()
+    
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            QWidget#dashboard-report-widget {{
+                background: transparent;
+                border: none;
+                outline: none;
+                padding: 0px;
+            }}
+        ''')
+        self._unit_0.restyleUI()
+        self._unit_1.restyleUI()
+        self._unit_2.restyleUI()
+        self._unit_3.restyleUI()
     
     @property
     def report(self):

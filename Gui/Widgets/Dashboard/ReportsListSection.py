@@ -8,7 +8,7 @@ from Gui.Widgets.Dashboard.NoReportsFoundWidget import NoReportsFoundWidget
 from Gui.Widgets.Dashboard.ReportsListContainer import ReportsListContainer
 from Gui.Widgets.Scrolls import Scroll
 
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from State.Models.Report.Report import Report
 
@@ -25,14 +25,6 @@ class ReportsListSection(QWidget):
         self.setObjectName('dashboard-reports-list-section')
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
-        self.setStyleSheet(f'''
-            QWidget#dashboard-reports-list-section {{
-                background-color: {Theme.DashboardReportsListSectionBackgroundColor};
-                outline: none;
-                border: none;
-                padding: 0px;
-            }}
-        ''')
 
         self._no_reports_found = NoReportsFoundWidget(self)
         self._reports_list_container = ReportsListContainer(self)
@@ -48,6 +40,20 @@ class ReportsListSection(QWidget):
         self.setLayout(self._layout)
         
         self.reports = app.state.project.reports
+        
+        self.restyleUI()
+    
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            QWidget#dashboard-reports-list-section {{
+                background-color: {Themes.CurrentTheme.DashboardReportsListSectionBackgroundColor};
+                outline: none;
+                border: none;
+                padding: 0px;
+            }}
+        ''')
+        self._no_reports_found.restyleUI()
+        self._reports_list_container.restyleUI()
     
     @property
     def reports(self):

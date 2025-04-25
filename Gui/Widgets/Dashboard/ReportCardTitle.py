@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt
 
 from Gui.Fonts import Font
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from State.Models.Report.Report import Report
 
@@ -20,22 +20,17 @@ class ReportCardTitle(QLabel):
     def initUI(self):
         self.setObjectName('dashboard-report-card-title')
 
-        self.setStyleSheet(f'''
-            color: {Theme.DashboardReportCardTitleColor};
-            background: none;
-            border: none;
-            outline: none;
-            padding: 0px;
-        ''')
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignmentFlag.AlignLeft)
 
-        font = Font(Theme.DashboardReportCardTitleFont)
-        font.setPointSize(Theme.DashboardReportCardTitleFontSize)
-        font.setWeight(Theme.DashboardReportCardTitleFontWeight)
+        font = Font(Themes.CurrentTheme.DashboardReportCardTitleFont)
+        font.setPointSize(Themes.CurrentTheme.DashboardReportCardTitleFontSize)
+        font.setWeight(Themes.CurrentTheme.DashboardReportCardTitleFontWeight)
         self.setFont(font)
+        
         self.adjustHeight()
+        self.restyleUI()
     
     # If word-wrap is True, QLabel does not resize automatically and hide parts of text
     def adjustHeight(self):
@@ -71,3 +66,12 @@ class ReportCardTitle(QLabel):
         else:
             text = f'{report.id}'
         self.setText(text)
+     
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            color: {Themes.CurrentTheme.DashboardReportCardTitleColor};
+            background: none;
+            border: none;
+            outline: none;
+            padding: 0px;
+        ''')

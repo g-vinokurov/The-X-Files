@@ -9,7 +9,7 @@ from Gui.Widgets.Dashboard.ReportCardTitle import ReportCardTitle
 from Gui.Widgets.Dashboard.ReportCardId import ReportCardId
 from Gui.Widgets.Dashboard.ReportCardProperties import ReportCardProperties
 
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from State.Models.Report.Report import Report
 
@@ -30,19 +30,6 @@ class ReportCard(QWidget):
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.setStyleSheet(f'''
-            QWidget#dashboard-report-card {{
-                background-color: {Theme.DashboardReportCardBackgroundColor};
-                border-bottom: 1px solid {Theme.DashboardReportCardBorderColor};
-                border-right: 1px solid {Theme.DashboardReportCardBorderColor};
-                padding: 0px;
-                outline: none;
-            }}
-
-            QWidget#dashboard-report-card:hover {{
-                background-color: {Theme.DashboardReportCardHoveredBackgroundColor};
-            }}
-        ''')
 
         self._report_title = ReportCardTitle(self)
         self._report_id = ReportCardId(self)
@@ -58,6 +45,7 @@ class ReportCard(QWidget):
         self._layout.addWidget(self._report_properties)
 
         self.setLayout(self._layout)
+        self.restyleUI()
     
     @property
     def report(self):
@@ -79,3 +67,21 @@ class ReportCard(QWidget):
         if self._report is None:
             return
         self.selected.emit(self._report)
+    
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            QWidget#dashboard-report-card {{
+                background-color: {Themes.CurrentTheme.DashboardReportCardBackgroundColor};
+                border-bottom: 1px solid {Themes.CurrentTheme.DashboardReportCardBorderColor};
+                border-right: 1px solid {Themes.CurrentTheme.DashboardReportCardBorderColor};
+                padding: 0px;
+                outline: none;
+            }}
+
+            QWidget#dashboard-report-card:hover {{
+                background-color: {Themes.CurrentTheme.DashboardReportCardHoveredBackgroundColor};
+            }}
+        ''')
+        self._report_title.restyleUI()
+        self._report_id.restyleUI()
+        self._report_properties.restyleUI()

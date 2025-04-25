@@ -9,7 +9,7 @@ from Gui.Widgets.Dashboard.ReportWidgetPropertyName import ReportWidgetPropertyN
 from Gui.Widgets.Dashboard.ReportWidgetPropertyValue import ReportWidgetPropertyValue
 
 from Gui.Fonts import Font
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from State.Models.Content.File import File
 
@@ -28,14 +28,6 @@ class ReportItemFile(QWidget):
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.setCursor(QCursor(Qt.CursorShape.IBeamCursor))
-        self.setStyleSheet(f'''
-            QWidget#dashboard-report-item-file {{
-                padding: 0px;
-                background: none;
-                border: none;
-                outline: none;
-            }}
-        ''')
 
         self._layout = QHBoxLayout()
         self._layout.setContentsMargins(0, 0, 0, 0)
@@ -46,6 +38,8 @@ class ReportItemFile(QWidget):
         self._report_file_name = ReportWidgetPropertyName(self)
         self._report_file_value = ReportWidgetPropertyValue(self)
 
+        self.restyleUI()
+
         self._layout.addWidget(self._report_file_emoji)
         self._layout.addWidget(self._report_file_name)
         self._layout.addWidget(self._report_file_value)
@@ -53,6 +47,19 @@ class ReportItemFile(QWidget):
         self._layout.setStretch(2, 1)
 
         self.setLayout(self._layout)
+    
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            QWidget#dashboard-report-item-file {{
+                padding: 0px;
+                background: none;
+                border: none;
+                outline: none;
+            }}
+        ''')
+        self._report_file_emoji.restyleUI()
+        self._report_file_name.restyleUI()
+        self._report_file_value.restyleUI()
     
     @property
     def file(self):

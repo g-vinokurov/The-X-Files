@@ -1,7 +1,7 @@
 
 from PyQt5.QtWidgets import QSplitter
 
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from Log import log
 from App import app
@@ -14,8 +14,12 @@ class Splitter(QSplitter):
     
     def initUI(self):
         self.setObjectName('splitter')
+
+        self.restyleUI()
+    
+    def restyleUI(self):
         self.setStyleSheet(f'''
             QSplitter#splitter::handle {{
-                background-color: {Theme.SplitterBackgroundColor};
+                background-color: {Themes.CurrentTheme.SplitterBackgroundColor};
             }}
         ''')

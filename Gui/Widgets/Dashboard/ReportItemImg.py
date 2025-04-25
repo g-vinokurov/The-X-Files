@@ -14,7 +14,7 @@ from PyQt5.QtGui import QImage
 from PyQt5.QtGui import QCursor
 
 from Gui.Fonts import Font
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from State.Models.Content.Img import Img
 
@@ -44,6 +44,10 @@ class ReportItemImg(QWidget):
         self._layout.addWidget(self._image)
 
         self.setLayout(self._layout)
+        self.restyleUI()
+    
+    def restyleUI(self):
+        pass
     
     @property
     def img(self):
@@ -99,3 +103,6 @@ class ReportItemImgContent(QWidget):
     def mousePressEvent(self, event):
         if event.button() == Qt.MouseButton.LeftButton:
             PillowImage.open(self._path).show()
+    
+    def restyleUI(self):
+        pass

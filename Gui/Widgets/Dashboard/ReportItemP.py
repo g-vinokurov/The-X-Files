@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QCursor
 
 from Gui.Fonts import Font
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from State.Models.Content.P import P
 
@@ -21,26 +21,20 @@ class ReportItemP(QLabel):
     def initUI(self):
         self.setObjectName('dashboard-report-item-p')
 
-        self.setStyleSheet(f'''
-            color: {Theme.DashboardReportItemPColor};
-            background: none;
-            border: none;
-            outline: none;
-            padding: 0px;
-        ''')
         self.setContentsMargins(0, 0, 0, 16)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignmentFlag.AlignLeft)
         self.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
         self.setCursor(QCursor(Qt.CursorShape.IBeamCursor))
 
-        font = Font(Theme.DashboardReportItemPFont)
-        font.setPointSize(Theme.DashboardReportItemPFontSize)
-        font.setWeight(Theme.DashboardReportItemPFontWeight)
+        font = Font(Themes.CurrentTheme.DashboardReportItemPFont)
+        font.setPointSize(Themes.CurrentTheme.DashboardReportItemPFontSize)
+        font.setWeight(Themes.CurrentTheme.DashboardReportItemPFontWeight)
         self.setFont(font)
 
         self.setText(self._p.text)
         self.adjustHeight()
+        self.restyleUI()
     
     # If word-wrap is True, QLabel does not resize automatically and hide parts of text
     def adjustHeight(self):
@@ -58,3 +52,12 @@ class ReportItemP(QLabel):
     @property
     def p(self):
         return self._p
+    
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            color: {Themes.CurrentTheme.DashboardReportItemPColor};
+            background: none;
+            border: none;
+            outline: none;
+            padding: 0px;
+        ''')

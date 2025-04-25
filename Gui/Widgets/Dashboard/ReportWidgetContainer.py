@@ -7,7 +7,7 @@ from PyQt5.QtCore import Qt
 from Gui.Widgets.Dashboard.ReportWidget import ReportWidget
 from Gui.Widgets.Scrolls import Scroll
 
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from State.Models.Report.Report import Report
 
@@ -25,14 +25,6 @@ class ReportWidgetContainer(QWidget):
         self.setObjectName('dashboard-report-widget-container')
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
-        self.setStyleSheet(f'''
-            QWidget#dashboard-report-widget-container {{
-                background: transparent;
-                border: none;
-                outline: none;
-                padding: 0px;
-            }}
-        ''')
 
         self._report_widget = ReportWidget(self)
 
@@ -47,6 +39,19 @@ class ReportWidgetContainer(QWidget):
         self._layout.addWidget(self._scroll)
 
         self.setLayout(self._layout)
+        self.restyleUI()
+    
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            QWidget#dashboard-report-widget-container {{
+                background: transparent;
+                border: none;
+                outline: none;
+                padding: 0px;
+            }}
+        ''')
+        self._report_widget.restyleUI()
+        self._scroll.restyleUI()
     
     @property
     def report(self):

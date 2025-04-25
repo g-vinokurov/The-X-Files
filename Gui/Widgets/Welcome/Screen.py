@@ -79,3 +79,6 @@ class WelcomeScreen(Screen):
     @property
     def footer(self):
         return self._footer
+    
+    def restyleUI(self):
+        pass

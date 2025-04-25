@@ -7,7 +7,7 @@ from PyQt5.QtCore import Qt
 from Gui.Widgets.Dashboard.NoReportSelectedWidget import NoReportSelectedWidget
 from Gui.Widgets.Dashboard.ReportWidgetContainer import ReportWidgetContainer
 
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from State.Models.Report.Report import Report
 
@@ -25,14 +25,6 @@ class ReportSection(QWidget):
         self.setObjectName('dashboard-report-section')
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
-        self.setStyleSheet(f'''
-            QWidget#dashboard-report-section {{
-                background-color: {Theme.DashboardReportSectionBackgroundColor};
-                outline: none;
-                border: none;
-                padding: 0px;
-            }}
-        ''')
 
         self._no_report_selected = NoReportSelectedWidget(self)
         self._report_widget_container = ReportWidgetContainer(self)
@@ -46,6 +38,19 @@ class ReportSection(QWidget):
         self._layout.addWidget(self._report_widget_container)
 
         self.setLayout(self._layout)
+        self.restyleUI()
+
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            QWidget#dashboard-report-section {{
+                background-color: {Themes.CurrentTheme.DashboardReportSectionBackgroundColor};
+                outline: none;
+                border: none;
+                padding: 0px;
+            }}
+        ''')
+        self._no_report_selected.restyleUI()
+        self._report_widget_container.restyleUI()
     
     @property
     def report(self):

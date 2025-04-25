@@ -9,7 +9,7 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtCore import pyqtSignal
 
 from Gui.Widgets.Dashboard.ReportCard import ReportCard
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from State.Models.Report.Report import Report
 
@@ -27,14 +27,6 @@ class ReportsList(QWidget):
 
     def initUI(self):
         self.setObjectName('dashboard-reports-list')
-        self.setStyleSheet(f'''
-            QWidget#dashboard-reports-list {{
-                background-color: transparent;
-                outline: none;
-                border: none;
-                padding: 0px;
-            }}
-        ''')
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.setCursor(QCursor(Qt.CursorShape.ArrowCursor))
@@ -45,6 +37,27 @@ class ReportsList(QWidget):
         self._layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
         self.setLayout(self._layout)
+        self.restyleUI()
+    
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            QWidget#dashboard-reports-list {{
+                background-color: transparent;
+                outline: none;
+                border: none;
+                padding: 0px;
+            }}
+        ''')
+        for i in range(self._layout.count()):
+            item = self._layout.itemAt(i)
+            if item is None:
+                continue
+            widget = item.widget()
+            if widget is None:
+                continue
+            if not isinstance(widget, ReportCard):
+                continue
+            widget.restyleUI()
 
     @property
     def reports(self):

@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt
 
 from Gui.Fonts import Font
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from Log import log
 from App import app
@@ -19,7 +19,12 @@ class ReportWidgetPropertyEmoji(QLabel):
         
         self.setAlignment(Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignTop)
 
-        font = Font(Theme.DashboardReportWidgetPropertyEmojiFont)
-        font.setPointSize(Theme.DashboardReportWidgetPropertyEmojiFontSize)
+        font = Font(Themes.CurrentTheme.DashboardReportWidgetPropertyEmojiFont)
+        font.setPointSize(Themes.CurrentTheme.DashboardReportWidgetPropertyEmojiFontSize)
         font.setHintingPreference(Font.HintingPreference.PreferNoHinting)
         self.setFont(font)
+
+        self.restyleUI()
+    
+    def restyleUI(self):
+        pass

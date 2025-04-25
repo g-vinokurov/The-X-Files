@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt
 
 from Gui.Fonts import Font
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from Log import log
 from App import app
@@ -17,21 +17,16 @@ class ReportCardPropertyName(QLabel):
     def initUI(self):
         self.setObjectName('dashboard-report-card-property-name')
         
-        self.setStyleSheet(f'''
-            color: {Theme.DashboardReportCardPropertyNameColor};
-            background: none;
-            border: none;
-            outline: none;
-            padding: 0px;
-        ''')
         self.setContentsMargins(0, 0, 4, 0)
         self.setWordWrap(False)
         self.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
 
-        font = Font(Theme.DashboardReportCardPropertyNameFont)
-        font.setPointSize(Theme.DashboardReportCardPropertyNameFontSize)
-        font.setWeight(Theme.DashboardReportCardPropertyNameFontWeight)
+        font = Font(Themes.CurrentTheme.DashboardReportCardPropertyNameFont)
+        font.setPointSize(Themes.CurrentTheme.DashboardReportCardPropertyNameFontSize)
+        font.setWeight(Themes.CurrentTheme.DashboardReportCardPropertyNameFontWeight)
         self.setFont(font)
+        
+        self.restyleUI()
     
     @property
     def value(self):
@@ -40,3 +35,12 @@ class ReportCardPropertyName(QLabel):
     @value.setter
     def value(self, value: str):
         self.setText(value)
+    
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            color: {Themes.CurrentTheme.DashboardReportCardPropertyNameColor};
+            background: none;
+            border: none;
+            outline: none;
+            padding: 0px;
+        ''')

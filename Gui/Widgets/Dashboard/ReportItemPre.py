@@ -7,7 +7,7 @@ from PyQt5.QtGui import QCursor
 from Gui.Widgets.Dashboard.ReportItemPreWidget import ReportItemPreWidget
 
 from Gui.Fonts import Font
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from State.Models.Content.Pre import Pre
 
@@ -26,15 +26,6 @@ class ReportItemPre(QWidget):
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.setCursor(QCursor(Qt.CursorShape.IBeamCursor))
-        self.setStyleSheet(f'''
-            QWidget#dashboard-report-item-pre {{
-                padding: 0px;
-                background-color: {Theme.DashboardReportItemPreBackgroundColor};
-                border-radius: {Theme.DashboardReportItemPreBorderRadius}px;
-                border-color: none;
-                color: {Theme.DashboardReportItemPreColor};
-            }}
-        ''')
 
         self._widget = ReportItemPreWidget(self)
 
@@ -46,6 +37,19 @@ class ReportItemPre(QWidget):
         self._layout.addWidget(self._widget)
 
         self.setLayout(self._layout)
+        self.restyleUI()
+    
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            QWidget#dashboard-report-item-pre {{
+                padding: 0px;
+                background-color: {Themes.CurrentTheme.DashboardReportItemPreBackgroundColor};
+                border-radius: {Themes.CurrentTheme.DashboardReportItemPreBorderRadius}px;
+                border-color: none;
+                color: {Themes.CurrentTheme.DashboardReportItemPreColor};
+            }}
+        ''')
+        self._widget.restyleUI()
 
     @property
     def pre(self):

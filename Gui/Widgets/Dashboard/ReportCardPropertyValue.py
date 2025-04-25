@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt
 
 from Gui.Fonts import Font
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from Log import log
 from App import app
@@ -17,24 +17,17 @@ class ReportCardPropertyValue(QLabel):
     def initUI(self):
         self.setObjectName('dashboard-report-card-property-value')
 
-        self.setStyleSheet(f'''
-            color: {Theme.DashboardReportCardPropertyValueColor};
-            background: none;
-            border: none;
-            outline: none;
-            padding: 0px;
-        ''')
-
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
 
-        font = Font(Theme.DashboardReportCardPropertyValueFont)
-        font.setPointSize(Theme.DashboardReportCardPropertyValueFontSize)
-        font.setWeight(Theme.DashboardReportCardPropertyValueFontWeight)
+        font = Font(Themes.CurrentTheme.DashboardReportCardPropertyValueFont)
+        font.setPointSize(Themes.CurrentTheme.DashboardReportCardPropertyValueFontSize)
+        font.setWeight(Themes.CurrentTheme.DashboardReportCardPropertyValueFontWeight)
         self.setFont(font)
 
         self.adjustHeight()
+        self.restyleUI()
     
     # Without this method after word-wrapping QLabel will hide last content rows
     def adjustHeight(self):
@@ -56,3 +49,12 @@ class ReportCardPropertyValue(QLabel):
     @value.setter
     def value(self, value: str):
         self.setText(value)
+    
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            color: {Themes.CurrentTheme.DashboardReportCardPropertyValueColor};
+            background: none;
+            border: none;
+            outline: none;
+            padding: 0px;
+        ''')

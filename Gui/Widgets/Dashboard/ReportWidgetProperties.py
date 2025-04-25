@@ -8,7 +8,7 @@ from Gui.Widgets.Dashboard.ReportWidgetPropertyEmoji import ReportWidgetProperty
 from Gui.Widgets.Dashboard.ReportWidgetPropertyName import ReportWidgetPropertyName
 from Gui.Widgets.Dashboard.ReportWidgetPropertyValue import ReportWidgetPropertyValue
 
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from State.Models.Report.Report import Report
 
@@ -26,14 +26,6 @@ class ReportWidgetProperties(QWidget):
         self.setObjectName('dashboard-report-widget-properties')
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
-        self.setStyleSheet(f'''
-            QWidget#dashboard-report-widget-properties {{
-                background-color: transparent;
-                border: none;
-                padding: 0px;
-                outline: none;
-            }}
-        ''')
 
         self._layout = QGridLayout()
         self._layout.setContentsMargins(0, 16, 0, 16)
@@ -75,6 +67,30 @@ class ReportWidgetProperties(QWidget):
         self._layout.setColumnStretch(2, 1)
 
         self.setLayout(self._layout)
+
+        self.restyleUI()
+    
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            QWidget#dashboard-report-widget-properties {{
+                background-color: transparent;
+                border: none;
+                padding: 0px;
+                outline: none;
+            }}
+        ''')
+        self._report_type_emoji.restyleUI()
+        self._report_type.restyleUI()
+        self._report_type_value.restyleUI()
+        self._report_level_emoji.restyleUI()
+        self._report_level.restyleUI()
+        self._report_level_value.restyleUI()
+        self._report_tags_emoji.restyleUI()
+        self._report_tags.restyleUI()
+        self._report_tags_value.restyleUI()
+        self._report_date_emoji.restyleUI()
+        self._report_date.restyleUI()
+        self._report_date_value.restyleUI()
     
     @property
     def report(self):

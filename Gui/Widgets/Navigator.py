@@ -34,6 +34,14 @@ class Navigator(QWidget):
     def update(self, tag: str, *args, **kwargs):
         screen : Screen = self._screens.get(tag, Screen(self))
         screen.updateUI(*args, **kwargs)
+    
+    def restyle(self, tag: str):
+        screen : Screen = self._screens.get(tag, Screen(self))
+        screen.restyleUI()
+    
+    def restyleAll(self):
+        for screen in self._screens:
+            self.restyle(screen)
 
     def goto(self, tag: str, *args, **kwargs):
         if tag not in self._screens:

@@ -9,7 +9,7 @@ from Gui.Widgets.Dashboard.ReportsListSection import ReportsListSection
 from Gui.Widgets.Dashboard.ReportSection import ReportSection
 from Gui.Widgets.Splitter import Splitter
 
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from State.Models.Report.Report import Report
 
@@ -26,14 +26,6 @@ class Body(QWidget):
         self.setObjectName('dashboard-body')
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
-        self.setStyleSheet(f'''
-            QWidget#dashboard-body {{
-                background-color: {Theme.DashboardBodyBackgroundColor};
-                border: none;
-                outline: none;
-                padding: 0px;
-            }}
-        ''')
 
         self._reports_list_section = ReportsListSection(self)
         self._report_section = ReportSection(self)
@@ -65,6 +57,7 @@ class Body(QWidget):
         # self._layout.setStretch(1, 34)
 
         self.setLayout(self._layout)
+        self.restyleUI()
     
     @property
     def reports_list_section(self):
@@ -77,3 +70,16 @@ class Body(QWidget):
     @pyqtSlot(Report)
     def on_report_selected(self, report: Report):
         self._report_section.report = report
+    
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            QWidget#dashboard-body {{
+                background-color: {Themes.CurrentTheme.DashboardBodyBackgroundColor};
+                border: none;
+                outline: none;
+                padding: 0px;
+            }}
+        ''')
+        self._reports_list_section.restyleUI()
+        self._report_section.restyleUI()
+        self._splitter.restyleUI()

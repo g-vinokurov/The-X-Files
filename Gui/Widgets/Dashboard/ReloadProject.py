@@ -8,7 +8,7 @@ from PyQt5.QtGui import QCursor
 # from State.Utils.Desktop import Desktop
 
 from Gui.Fonts import Font
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from Log import log
 
@@ -21,11 +21,25 @@ class ReloadProject(QPushButton):
     def initUI(self):
         self.setObjectName('dashboard-reload-project')
 
+        self.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+
+        font = Font(Themes.CurrentTheme.DashboardReloadProjectFont)
+        font.setPointSize(Themes.CurrentTheme.DashboardReloadProjectFontSize)
+        font.setWeight(Themes.CurrentTheme.DashboardReloadProjectFontWeight)
+        self.setFont(font)
+
+        self.clicked.connect(self._on_clicked)
+        self.restyleUI()
+    
+    def _on_clicked(self):
+        pass
+    
+    def restyleUI(self):
         self.setStyleSheet(f'''
             QPushButton#dashboard-reload-project {{
-                color: {Theme.DashboardReloadProjectColor};
-                background: {Theme.DashboardReloadProjectBackgroundColor};
-                border: 1px solid {Theme.DashboardReloadProjectBorderColor};
+                color: {Themes.CurrentTheme.DashboardReloadProjectColor};
+                background: {Themes.CurrentTheme.DashboardReloadProjectBackgroundColor};
+                border: 1px solid {Themes.CurrentTheme.DashboardReloadProjectBorderColor};
                 outline: none;
                 padding-left: 32px;
                 padding-top: 4px;
@@ -34,13 +48,7 @@ class ReloadProject(QPushButton):
             }}
 
             QPushButton#dashboard-reload-project:hover {{
-                color: {Theme.DashboardReloadProjectHoverColor};
-                background: {Theme.DashboardReloadProjectHoverBackgroundColor};
+                color: {Themes.CurrentTheme.DashboardReloadProjectHoverColor};
+                background: {Themes.CurrentTheme.DashboardReloadProjectHoverBackgroundColor};
             }}
         ''')
-        self.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-
-        font = Font(Theme.DashboardReloadProjectFont)
-        font.setPointSize(Theme.DashboardReloadProjectFontSize)
-        font.setWeight(Theme.DashboardReloadProjectFontWeight)
-        self.setFont(font)

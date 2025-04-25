@@ -7,7 +7,7 @@ from PyQt5.QtCore import Qt
 from Gui.Widgets.Dashboard.ReportsList import ReportsList
 from Gui.Widgets.Scrolls import Scroll
 
-from Gui.Themes import CurrentTheme as Theme
+import Gui.Themes as Themes
 
 from State.Models.Report.Report import Report
 
@@ -25,15 +25,7 @@ class ReportsListContainer(QWidget):
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.setCursor(QCursor(Qt.CursorShape.ArrowCursor))
-        self.setStyleSheet(f'''
-            QWidget#dashboard-reports-list-container {{
-                background: transparent;
-                border: none;
-                outline: none;
-                padding: 0px;
-            }}
-        ''')
-
+        
         self._reports_list = ReportsList(self)
         
         # i can't set stylesheet to scroll when 'self' is set as parent
@@ -48,6 +40,19 @@ class ReportsListContainer(QWidget):
         self._layout.addWidget(self._scroll)
 
         self.setLayout(self._layout)
+        self.restyleUI()
+    
+    def restyleUI(self):
+        self.setStyleSheet(f'''
+            QWidget#dashboard-reports-list-container {{
+                background: transparent;
+                border: none;
+                outline: none;
+                padding: 0px;
+            }}
+        ''')
+        self._reports_list.restyleUI()
+        self._scroll.restyleUI()
     
     @property
     def reports(self):
