@@ -10,8 +10,7 @@ class Navigator(QWidget):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self._screens = {}
-        
+        self._screens : dict[str, Screen] = {}
         self.initUI()
 
     def initUI(self):

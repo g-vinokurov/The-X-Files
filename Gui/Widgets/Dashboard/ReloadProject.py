@@ -4,13 +4,13 @@ from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QCursor
 
-# from State.Utils.ProjectLoader import ProjectLoader
-# from State.Utils.Desktop import Desktop
+from State.Utils.ProjectLoader import ProjectLoader
 
 from Gui.Fonts import Font
 import Gui.Themes as Themes
 
 from Log import log
+from App import app
 
 
 class ReloadProject(QPushButton):
@@ -32,7 +32,14 @@ class ReloadProject(QPushButton):
         self.restyleUI()
     
     def _on_clicked(self):
-        pass
+        try:
+            app.state.project = ProjectLoader.load(app.state.project.dir)
+        except Exception as err:
+            log.debug(f'{err}', exc_info=True)
+            log.error('Could not reload project')
+            return
+        app.gui.navigator.load('dashboard')
+        app.gui.navigator.goto('dashboard')
     
     def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''

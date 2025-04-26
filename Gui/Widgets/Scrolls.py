@@ -76,6 +76,7 @@ class Scroll(QScrollArea):
                 width: {Themes.CurrentTheme.ScrollVerticalWidth}px;
                 margin: 0px;
                 border-radius: {Themes.CurrentTheme.ScrollVerticalBorderRadius}px;
+                border-left: 1px solid {Themes.CurrentTheme.ScrollVerticalBorderColor};
             }}
 
             QScrollArea#scroll > QWidget > QScrollBar::handle:vertical {{

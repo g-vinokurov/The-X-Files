@@ -73,7 +73,6 @@ class ReportCard(QWidget):
             QWidget#dashboard-report-card {{
                 background-color: {Themes.CurrentTheme.DashboardReportCardBackgroundColor};
                 border-bottom: 1px solid {Themes.CurrentTheme.DashboardReportCardBorderColor};
-                border-right: 1px solid {Themes.CurrentTheme.DashboardReportCardBorderColor};
                 padding: 0px;
                 outline: none;
             }}
