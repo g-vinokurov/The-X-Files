@@ -38,7 +38,7 @@ class ReportWidgetUnit(QWidget):
         ''')
         if not recursive:
             return
-        for i in range(self._layout.count()):
+        for i in reversed(range(self._layout.count())):
             item = self._layout.itemAt(i)
             if item is None:
                 continue

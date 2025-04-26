@@ -31,6 +31,12 @@ class ReportsListSection(QWidget):
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         
         self._tools = ReportsListTools(self)
+        self._tools.search_query_field.returnPressed.connect(self._on_search)
+        self._tools.search.clicked.connect(self._on_search)
+        self._tools.curr_page.returnPressed.connect(self._on_curr_page_changed)
+        self._tools.prev_page.clicked.connect(self._on_prev_page_clicked)
+        self._tools.next_page.clicked.connect(self._on_next_page_clicked)
+
         self._no_reports_found = NoReportsFoundWidget(self)
         self._reports_list_container = ReportsListContainer(self)
         self._reports_list_container.hide()
@@ -106,3 +112,18 @@ class ReportsListSection(QWidget):
     @property
     def reports_list(self):
         return self._reports_list_container.reports_list
+    
+    def _on_search(self):
+        query = self._tools.search_query_field.text()
+        log.debug(f'Search: {query}')
+        result = app.state.project.search(query)
+        self.reports = result
+    
+    def _on_curr_page_changed(self):
+        log.debug(f'Set Current Page: {self._tools.curr_page.text()}')
+    
+    def _on_prev_page_clicked(self):
+        log.debug(f'Previous Page')
+
+    def _on_next_page_clicked(self):
+        log.debug(f'Next Page')

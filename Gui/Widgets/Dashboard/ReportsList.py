@@ -50,7 +50,7 @@ class ReportsList(QWidget):
         ''')
         if not recursive:
             return
-        for i in range(self._layout.count()):
+        for i in reversed(range(self._layout.count())):
             item = self._layout.itemAt(i)
             if item is None:
                 continue
@@ -68,14 +68,19 @@ class ReportsList(QWidget):
     @reports.setter
     def reports(self, reports: list[Report]):
         self._reports = reports[::]
-
-        for i in range(self._layout.count()):
-            widget = self._layout.itemAt(i).widget()
+        
+        # YOU MUST USE "REVERSED" FOR CORRECT LAYOUT CLEARING!!! 
+        for i in reversed(range(self._layout.count())):
+            item = self._layout.itemAt(i)
+            if item is None:
+                continue
+            widget = item.widget()
             if widget is None:
                 continue
             if not isinstance(widget, ReportCard):
                 continue
             widget.selected.disconnect(self.on_report_card_selected)
+            widget.hide()
             widget.setParent(None)
         
         for report in sorted(reports, key=lambda r: r.id, reverse=True):

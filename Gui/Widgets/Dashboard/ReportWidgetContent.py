@@ -53,7 +53,7 @@ class ReportWidgetContent(QWidget):
         ''')
         if not recursive:
             return
-        for i in range(self._layout.count()):
+        for i in reversed(range(self._layout.count())):
             item = self._layout.itemAt(i)
             if item is None:
                 continue
@@ -74,13 +74,14 @@ class ReportWidgetContent(QWidget):
             return
         self._content = content
 
-        for i in range(self._layout.count()):
+        for i in reversed(range(self._layout.count())):
             item = self._layout.itemAt(i)
             if item is None:
                 continue
             widget = item.widget()
             if widget is None:
                 continue
+            widget.hide()
             widget.setParent(None)
         
         for item in self._content.items:
