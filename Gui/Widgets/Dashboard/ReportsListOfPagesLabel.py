@@ -10,24 +10,24 @@ from Log import log
 from App import app
 
 
-class ReportsListTotalPages(QLabel):
+class ReportsListOfPagesLabel(QLabel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self._pages = 1
         self.initUI()
 
     def initUI(self):
-        self.setObjectName('dashboard-reports-list-total-pages')
+        self.setObjectName('dashboard-reports-list-of-pages-label')
 
         self.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.setWordWrap(False)
         
-        font = Font(Themes.CurrentTheme.DashboardReportsListTotalPagesFont)
-        font.setPointSize(Themes.CurrentTheme.DashboardReportsListTotalPagesFontSize)
-        font.setWeight(Themes.CurrentTheme.DashboardReportsListTotalPagesFontWeight)
+        font = Font(Themes.CurrentTheme.DashboardReportsListOfPagesLabelFont)
+        font.setPointSize(Themes.CurrentTheme.DashboardReportsListOfPagesLabelFontSize)
+        font.setWeight(Themes.CurrentTheme.DashboardReportsListOfPagesLabelFontWeight)
         self.setFont(font)
 
         self.adjustHeight()
+        self.setText('of')
         self.restyleUI()
     
     # If word-wrap is True, QLabel does not resize automatically and hide parts of text
@@ -45,24 +45,13 @@ class ReportsListTotalPages(QLabel):
     
     def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
-            color: {Themes.CurrentTheme.DashboardReportsListTotalPagesColor};
+            color: {Themes.CurrentTheme.DashboardReportsListOfPagesLabelColor};
             background: none;
             border: none;
-            border-left: 1px solid {Themes.CurrentTheme.DashboardReportsListTotalPagesBorderColor};
+            border-left: 1px solid {Themes.CurrentTheme.DashboardReportsListOfPagesLabelBorderColor};
             outline: none;
-            padding-left: 32px;
+            padding-left: 16px;
             padding-top: 4px;
-            padding-right: 32px;
+            padding-right: 16px;
             padding-bottom: 4px;
         ''')
-    
-    @property
-    def pages(self):
-        return self._pages
-     
-    @pages.setter
-    def pages(self, pages: int):
-        if pages < 0:
-            return
-        self._pages = pages
-        self.setText(f'{pages}')

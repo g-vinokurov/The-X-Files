@@ -127,6 +127,12 @@ class Theme:
     DashboardReportsListPagesLabelColor       = Colors.COLOR_VSC_LIGHT
     DashboardReportsListPagesLabelBorderColor = Colors.COLOR_VSC_SECONDARY
 
+    DashboardReportsListOfPagesLabelFont        = Fonts.FONT_GEOLOGICA_BLACK
+    DashboardReportsListOfPagesLabelFontWeight  = Fonts.Font.Black
+    DashboardReportsListOfPagesLabelFontSize    = 12
+    DashboardReportsListOfPagesLabelColor       = Colors.COLOR_VSC_LIGHT
+    DashboardReportsListOfPagesLabelBorderColor = Colors.COLOR_VSC_SECONDARY
+
     DashboardReportsListSearchFont                 = Fonts.FONT_GEOLOGICA_BLACK
     DashboardReportsListSearchFontWeight           = Fonts.Font.Black
     DashboardReportsListSearchFontSize             = 12
@@ -276,6 +282,9 @@ class LightTheme(Theme):
 
     DashboardReportsListPagesLabelColor                 = Colors.COLOR_BS_DARK
     DashboardReportsListPagesLabelBorderColor           = Colors.COLOR_VSC_LIGHT
+
+    DashboardReportsListOfPagesLabelColor                 = Colors.COLOR_BS_DARK
+    DashboardReportsListOfPagesLabelBorderColor           = Colors.COLOR_VSC_LIGHT
 
     DashboardReportsListPageControlColor                = Colors.COLOR_BS_DARK
     DashboardReportsListPageControlHoverColor           = Colors.COLOR_BS_DARK

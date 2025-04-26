@@ -37,8 +37,8 @@ class ReportsListNewReport(QPushButton):
                 background: {Themes.CurrentTheme.DashboardReportsListNewReportBackgroundColor};
                 border: none;
                 outline: none;
-                padding-left: 16px;
-                padding-right: 16px;
+                padding-left: 20px;
+                padding-right: 20px;
                 padding-top: 4px;
                 padding-bottom: 4px;
             }}

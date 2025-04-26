@@ -12,6 +12,7 @@ from Gui.Widgets.Dashboard.ReportsListPagesLabel import ReportsListPagesLabel
 from Gui.Widgets.Dashboard.ReportsListSearch import ReportsListSearch
 from Gui.Widgets.Dashboard.ReportsListSearchQueryField import ReportsListSearchQueryField
 from Gui.Widgets.Dashboard.ReportsListTotalPages import ReportsListTotalPages
+from Gui.Widgets.Dashboard.ReportsListOfPagesLabel import ReportsListOfPagesLabel
 
 from Gui.Fonts import Font
 import Gui.Themes as Themes
@@ -34,6 +35,7 @@ class ReportsListTools(QWidget):
         self._pages = ReportsListPagesLabel(self)
         self._prev_page = ReportsListPageControl('<', self)
         self._curr_page = ReportsListCurrentPage(self)
+        self._of = ReportsListOfPagesLabel(self)
         self._total_pages = ReportsListTotalPages(self)
         self._next_page = ReportsListPageControl('>', self)
 
@@ -53,13 +55,14 @@ class ReportsListTools(QWidget):
         self._pagination.setSpacing(0)
         self._pagination.setAlignment(Qt.AlignmentFlag.AlignLeft)
 
-        self._pagination.addWidget(self._pages, stretch=1)
-        self._pagination.addWidget(self._prev_page, stretch=1)
-        self._pagination.addWidget(self._curr_page, stretch=0)
-        self._pagination.addWidget(self._total_pages, stretch=1)
-        self._pagination.addWidget(self._next_page, stretch=1)
+        self._pagination.addWidget(self._pages)
+        self._pagination.addWidget(self._prev_page)
+        self._pagination.addWidget(self._curr_page)
+        self._pagination.addWidget(self._of)
+        self._pagination.addWidget(self._total_pages)
+        self._pagination.addWidget(self._next_page)
 
-        self._layout.addLayout(self._pagination, stretch=0)
+        self._layout.addLayout(self._pagination)
         
         self.setLayout(self._layout)
         self.restyleUI()
@@ -82,6 +85,7 @@ class ReportsListTools(QWidget):
         self._pages.restyleUI(recursive)
         self._prev_page.restyleUI(recursive)
         self._curr_page.restyleUI(recursive)
+        self._of.restyleUI(recursive)
         self._total_pages.restyleUI(recursive)
         self._next_page.restyleUI(recursive)
     
