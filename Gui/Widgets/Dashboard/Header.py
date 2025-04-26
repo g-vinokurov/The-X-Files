@@ -29,7 +29,7 @@ class Header(QWidget):
         self._layout = QHBoxLayout()
         self._layout.setContentsMargins(32, 16, 32, 16)
         self._layout.setSpacing(32)
-        self._layout.setAlignment(Qt.AlignmentFlag.AlignLeft)
+        self._layout.setAlignment(Qt.AlignmentFlag.AlignRight)
 
         self._layout.addWidget(self._reload_project)
         self._layout.addWidget(self._switch_theme)
@@ -48,6 +48,7 @@ class Header(QWidget):
             QWidget#dashboard-header {{
                 background-color: {Themes.CurrentTheme.DashboardHeaderBackgroundColor};
                 border-bottom: 1px solid {Themes.CurrentTheme.DashboardHeaderBorderColor};
+                border-top: 1px solid {Themes.CurrentTheme.DashboardHeaderBorderColor};
                 outline: none;
                 padding: 0px;
             }}

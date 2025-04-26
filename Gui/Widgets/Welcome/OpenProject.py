@@ -1,11 +1,9 @@
 
-import os
-
-from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtWidgets import QFileDialog
 
 from PyQt5.QtCore import Qt
+
 from PyQt5.QtGui import QCursor
 
 from State.Utils.ProjectLoader import ProjectLoader
