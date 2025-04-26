@@ -19,7 +19,11 @@ class Splitter(QSplitter):
     
     def restyleUI(self, recursive: bool = False):
         self.setStyleSheet(f'''
+            QSplitter#splitter {{
+                width: 1px;
+            }}
             QSplitter#splitter::handle {{
+                width: 1px;
                 background-color: {Themes.CurrentTheme.SplitterBackgroundColor};
             }}
         ''')

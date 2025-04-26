@@ -60,8 +60,8 @@ class Theme:
     DashboardReloadProjectFont                 = Fonts.FONT_GEOLOGICA_BLACK
     DashboardReloadProjectFontWeight           = Fonts.Font.Black
     DashboardReloadProjectFontSize             = 13
-    DashboardReloadProjectColor                = Colors.COLOR_BS_LIGHT
-    DashboardReloadProjectHoverColor           = Colors.COLOR_BS_LIGHT
+    DashboardReloadProjectColor                = Colors.COLOR_VSC_LIGHT
+    DashboardReloadProjectHoverColor           = Colors.COLOR_VSC_LIGHT
     DashboardReloadProjectBackgroundColor      = Colors.COLOR_VSC_SECONDARY
     DashboardReloadProjectHoverBackgroundColor = Colors.COLOR_VSC_TERTIARY
     DashboardReloadProjectBorderColor          = Colors.COLOR_VSC_SECONDARY
@@ -69,8 +69,8 @@ class Theme:
     DashboardSwitchThemeFont                 = Fonts.FONT_GEOLOGICA_BLACK
     DashboardSwitchThemeFontWeight           = Fonts.Font.Black
     DashboardSwitchThemeFontSize             = 13
-    DashboardSwitchThemeColor                = Colors.COLOR_BS_LIGHT
-    DashboardSwitchThemeHoverColor           = Colors.COLOR_BS_LIGHT
+    DashboardSwitchThemeColor                = Colors.COLOR_VSC_LIGHT
+    DashboardSwitchThemeHoverColor           = Colors.COLOR_VSC_LIGHT
     DashboardSwitchThemeBackgroundColor      = Colors.COLOR_VSC_SECONDARY
     DashboardSwitchThemeHoverBackgroundColor = Colors.COLOR_VSC_TERTIARY
     DashboardSwitchThemeBorderColor          = Colors.COLOR_VSC_SECONDARY
@@ -87,6 +87,61 @@ class Theme:
     DashboardNoReportsFoundFontWeight = Fonts.Font.Black
     DashboardNoReportsFoundFontSize   = 16
     DashboardNoReportsFoundColor      = Colors.COLOR_VSC_LIGHT
+
+    DashboardReportsListToolsBorderColor = Colors.COLOR_VSC_SECONDARY
+
+    DashboardReportsListSearchQueryFieldFont            = Fonts.FONT_GEOLOGICA_BLACK
+    DashboardReportsListSearchQueryFieldFontWeight      = Fonts.Font.Black
+    DashboardReportsListSearchQueryFieldFontSize        = 12
+    DashboardReportsListSearchQueryFieldColor           = Colors.COLOR_VSC_LIGHT
+    DashboardReportsListSearchQueryFieldBackgroundColor = Colors.COLOR_VSC_PRIMARY
+    DashboardReportsListSearchQueryFieldBorderColor     = Colors.COLOR_VSC_SECONDARY
+
+    DashboardReportsListCurrentPageFont            = Fonts.FONT_GEOLOGICA_BLACK
+    DashboardReportsListCurrentPageFontWeight      = Fonts.Font.Black
+    DashboardReportsListCurrentPageFontSize        = 12
+    DashboardReportsListCurrentPageColor           = Colors.COLOR_VSC_LIGHT
+    DashboardReportsListCurrentPageBackgroundColor = Colors.COLOR_VSC_PRIMARY
+    DashboardReportsListCurrentPageBorderColor     = Colors.COLOR_VSC_SECONDARY
+
+    DashboardReportsListPageControlFont                 = Fonts.FONT_GEOLOGICA_BLACK
+    DashboardReportsListPageControlFontWeight           = Fonts.Font.Black
+    DashboardReportsListPageControlFontSize             = 12
+    DashboardReportsListPageControlColor                = Colors.COLOR_VSC_LIGHT
+    DashboardReportsListPageControlHoverColor           = Colors.COLOR_VSC_LIGHT
+    DashboardReportsListPageControlBackgroundColor      = Colors.COLOR_VSC_PRIMARY
+    DashboardReportsListPageControlHoverBackgroundColor = Colors.COLOR_VSC_SECONDARY
+    DashboardReportsListPageControlBorderColor          = Colors.COLOR_VSC_SECONDARY
+
+    DashboardReportsListTotalPagesFont        = Fonts.FONT_GEOLOGICA_BLACK
+    DashboardReportsListTotalPagesFontWeight  = Fonts.Font.Black
+    DashboardReportsListTotalPagesFontSize    = 12
+    DashboardReportsListTotalPagesColor       = Colors.COLOR_VSC_LIGHT
+    DashboardReportsListTotalPagesBorderColor = Colors.COLOR_VSC_SECONDARY
+
+    DashboardReportsListPagesLabelFont        = Fonts.FONT_GEOLOGICA_BLACK
+    DashboardReportsListPagesLabelFontWeight  = Fonts.Font.Black
+    DashboardReportsListPagesLabelFontSize    = 12
+    DashboardReportsListPagesLabelColor       = Colors.COLOR_VSC_LIGHT
+    DashboardReportsListPagesLabelBorderColor = Colors.COLOR_VSC_SECONDARY
+
+    DashboardReportsListSearchFont                 = Fonts.FONT_GEOLOGICA_BLACK
+    DashboardReportsListSearchFontWeight           = Fonts.Font.Black
+    DashboardReportsListSearchFontSize             = 12
+    DashboardReportsListSearchColor                = Colors.COLOR_VSC_LIGHT
+    DashboardReportsListSearchHoverColor           = Colors.COLOR_VSC_LIGHT
+    DashboardReportsListSearchBackgroundColor      = Colors.COLOR_VSC_PRIMARY
+    DashboardReportsListSearchHoverBackgroundColor = Colors.COLOR_VSC_SECONDARY
+    DashboardReportsListSearchBorderColor          = Colors.COLOR_VSC_SECONDARY
+
+    DashboardReportsListNewReportFont                 = Fonts.FONT_GEOLOGICA_BLACK
+    DashboardReportsListNewReportFontWeight           = Fonts.Font.Black
+    DashboardReportsListNewReportFontSize             = 12
+    DashboardReportsListNewReportColor                = Colors.COLOR_VSC_LIGHT
+    DashboardReportsListNewReportHoverColor           = Colors.COLOR_VSC_LIGHT
+    DashboardReportsListNewReportBackgroundColor      = Colors.COLOR_VSC_PRIMARY
+    DashboardReportsListNewReportHoverBackgroundColor = Colors.COLOR_VSC_SECONDARY
+    DashboardReportsListNewReportBorderColor          = Colors.COLOR_VSC_SECONDARY
 
     DashboardReportCardBackgroundColor        = Colors.COLOR_VSC_PRIMARY
     DashboardReportCardBorderColor            = Colors.COLOR_VSC_TERTIARY
@@ -165,7 +220,7 @@ class DarkTheme(Theme):
 class LightTheme(Theme):
     NAME = THEME_LIGHT
 
-    SplitterBackgroundColor = Colors.COLOR_WHITE
+    SplitterBackgroundColor = Colors.COLOR_VSC_LIGHT
     
     ScrollHorizontalBackgroundColor       = Colors.COLOR_BS_LIGHT
     ScrollHorizontalHandleBackgroundColor = Colors.COLOR_VSC_LIGHT
@@ -203,6 +258,40 @@ class LightTheme(Theme):
     
     DashboardNoReportSelectedColor = Colors.COLOR_BS_DARK
     DashboardNoReportsFoundColor   = Colors.COLOR_BS_DARK
+
+    DashboardReportsListToolsBorderColor = Colors.COLOR_VSC_LIGHT
+
+    DashboardReportsListSearchQueryFieldColor           = Colors.COLOR_BS_DARK
+    DashboardReportsListSearchQueryFieldBackgroundColor = Colors.COLOR_WHITE
+    DashboardReportsListSearchQueryFieldBorderColor     = Colors.COLOR_VSC_LIGHT
+
+    DashboardReportsListCurrentPageColor                = Colors.COLOR_BS_DARK
+    DashboardReportsListCurrentPageBackgroundColor      = Colors.COLOR_WHITE
+    DashboardReportsListCurrentPageBorderColor          = Colors.COLOR_VSC_LIGHT
+
+    DashboardReportsListTotalPagesColor                 = Colors.COLOR_BS_DARK
+    DashboardReportsListTotalPagesBorderColor           = Colors.COLOR_VSC_LIGHT
+
+    DashboardReportsListPagesLabelColor                 = Colors.COLOR_BS_DARK
+    DashboardReportsListPagesLabelBorderColor           = Colors.COLOR_VSC_LIGHT
+
+    DashboardReportsListPageControlColor                = Colors.COLOR_BS_DARK
+    DashboardReportsListPageControlHoverColor           = Colors.COLOR_BS_DARK
+    DashboardReportsListPageControlBackgroundColor      = Colors.COLOR_WHITE
+    DashboardReportsListPageControlHoverBackgroundColor = Colors.COLOR_BS_LIGHT
+    DashboardReportsListPageControlBorderColor          = Colors.COLOR_VSC_LIGHT
+
+    DashboardReportsListSearchColor                = Colors.COLOR_BS_DARK
+    DashboardReportsListSearchHoverColor           = Colors.COLOR_BS_DARK
+    DashboardReportsListSearchBackgroundColor      = Colors.COLOR_WHITE
+    DashboardReportsListSearchHoverBackgroundColor = Colors.COLOR_BS_LIGHT
+    DashboardReportsListSearchBorderColor          = Colors.COLOR_VSC_LIGHT
+
+    DashboardReportsListNewReportColor                = Colors.COLOR_BS_DARK
+    DashboardReportsListNewReportHoverColor           = Colors.COLOR_BS_DARK
+    DashboardReportsListNewReportBackgroundColor      = Colors.COLOR_WHITE
+    DashboardReportsListNewReportHoverBackgroundColor = Colors.COLOR_BS_LIGHT
+    DashboardReportsListNewReportBorderColor          = Colors.COLOR_VSC_LIGHT
 
     DashboardReportCardBackgroundColor        = Colors.COLOR_WHITE
     DashboardReportCardBorderColor            = Colors.COLOR_VSC_LIGHT

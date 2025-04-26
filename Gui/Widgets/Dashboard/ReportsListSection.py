@@ -1,11 +1,12 @@
 
 from PyQt5.QtWidgets import QWidget
-from PyQt5.QtWidgets import QHBoxLayout
+from PyQt5.QtWidgets import QVBoxLayout
 
 from PyQt5.QtCore import Qt
 
 from Gui.Widgets.Dashboard.NoReportsFoundWidget import NoReportsFoundWidget
 from Gui.Widgets.Dashboard.ReportsListContainer import ReportsListContainer
+from Gui.Widgets.Dashboard.ReportsListTools import ReportsListTools
 from Gui.Widgets.Scrolls import Scroll
 
 import Gui.Themes as Themes
@@ -25,17 +26,19 @@ class ReportsListSection(QWidget):
         self.setObjectName('dashboard-reports-list-section')
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
-
+        
+        self._tools = ReportsListTools(self)
         self._no_reports_found = NoReportsFoundWidget(self)
         self._reports_list_container = ReportsListContainer(self)
         self._reports_list_container.hide()
 
-        self._layout = QHBoxLayout()
+        self._layout = QVBoxLayout()
         self._layout.setContentsMargins(0, 0, 0, 0)
         self._layout.setSpacing(0)
         
-        self._layout.addWidget(self._no_reports_found)
-        self._layout.addWidget(self._reports_list_container)
+        self._layout.addWidget(self._tools)
+        self._layout.addWidget(self._no_reports_found, stretch=1)
+        self._layout.addWidget(self._reports_list_container, stretch=1)
 
         self.setLayout(self._layout)
         
@@ -54,6 +57,7 @@ class ReportsListSection(QWidget):
         ''')
         if not recursive:
             return
+        self._tools.restyleUI(recursive)
         self._no_reports_found.restyleUI(recursive)
         self._reports_list_container.restyleUI(recursive)
     
