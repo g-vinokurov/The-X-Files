@@ -83,7 +83,7 @@ class ReportsList(QWidget):
             widget.hide()
             widget.setParent(None)
         
-        for report in sorted(reports, key=lambda r: r.id, reverse=True):
+        for report in reports:
             report_card = ReportCard(self)
             report_card.report = report
             report_card.selected.connect(self.on_report_card_selected)
