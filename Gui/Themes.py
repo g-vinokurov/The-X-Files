@@ -1,4 +1,6 @@
 
+import sys
+
 from Gui import Colors
 from Gui import Fonts
 
@@ -333,4 +335,16 @@ def set_theme(theme):
     CurrentTheme = Theme
 
 
-set_theme(THEME_DARK)
+if sys.platform == 'win32':
+    import winreg
+    reg = winreg.OpenKey(
+        winreg.HKEY_CURRENT_USER,
+        r"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+    )
+    value, _ = winreg.QueryValueEx(reg, "AppsUseLightTheme")
+    if value == 0:
+        set_theme(THEME_DARK)
+    else:
+        set_theme(THEME_LIGHT)
+else:
+    set_theme(THEME_DARK)

@@ -23,6 +23,8 @@ class ReportsListCurrentPage(QLineEdit):
         font.setPointSize(Themes.CurrentTheme.DashboardReportsListCurrentPageFontSize)
         font.setWeight(Themes.CurrentTheme.DashboardReportsListCurrentPageFontWeight)
         self.setFont(font)
+
+        self.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
         self.setText('1')
         self.setFixedWidth(self.minimumSizeHint().width())
