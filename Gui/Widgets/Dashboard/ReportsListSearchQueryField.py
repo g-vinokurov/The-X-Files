@@ -30,8 +30,8 @@ class ReportsListSearchQueryField(QLineEdit):
                 background: {Themes.CurrentTheme.DashboardReportsListSearchQueryFieldBackgroundColor};
                 color: {Themes.CurrentTheme.DashboardReportsListSearchQueryFieldColor};
                 border: none;
-                border-right: 1px solid {Themes.CurrentTheme.DashboardReportsListSearchQueryFieldBorderColor};
                 border-left: 1px solid {Themes.CurrentTheme.DashboardReportsListSearchQueryFieldBorderColor};
+                border-bottom: 1px solid {Themes.CurrentTheme.DashboardReportsListSearchQueryFieldBorderColor};
                 padding-left: 16px;
                 padding-right: 16px;
                 padding-top: 4px;
