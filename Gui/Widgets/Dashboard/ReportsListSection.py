@@ -20,6 +20,9 @@ from App import app
 class ReportsListSection(QWidget):
     def __init__(self, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
+        self._reports_per_page = 25
+        self._pages = 1
+        self._page = 1
         self.initUI()
 
     def initUI(self):
@@ -43,6 +46,7 @@ class ReportsListSection(QWidget):
         self.setLayout(self._layout)
         
         self.reports = app.state.project.reports
+        self.page = 0
         
         self.restyleUI()
     
@@ -73,7 +77,31 @@ class ReportsListSection(QWidget):
         else:
             self._reports_list_container.show()
             self._no_reports_found.hide()
+
         self._reports_list_container.reports = reports
+
+        if len(reports) != 0:
+            self._pages = (len(reports) - 1) // self._reports_per_page + 1
+        else:
+            self._pages = 0
+        self._tools.total_pages.pages = self._pages
+    
+    @property
+    def page(self):
+        return self._page
+    
+    @page.setter
+    def page(self, page: int):
+        if page < 0 or page > self._pages:
+            return
+        if page == 0 and self._pages:
+            page = 1
+        self._page = page
+        self._tools.curr_page.setText(str(self._page))
+    
+    @property
+    def pages(self):
+        return self._pages
     
     @property
     def reports_list(self):

@@ -26,7 +26,6 @@ class ReportsListCurrentPage(QLineEdit):
 
         self.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
-        self.setText('1')
         self.setFixedWidth(self.minimumSizeHint().width())
         self.restyleUI()
     
@@ -38,8 +37,8 @@ class ReportsListCurrentPage(QLineEdit):
                 border: none;
                 border-left: 1px solid {Themes.CurrentTheme.DashboardReportsListCurrentPageBorderColor};
                 border-bottom: 1px solid {Themes.CurrentTheme.DashboardReportsListCurrentPageBorderColor};
-                padding-left: 16px;
-                padding-right: 16px;
+                padding-left: 4px;
+                padding-right: 4px;
                 padding-top: 4px;
                 padding-bottom: 4px;
             }}

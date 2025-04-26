@@ -13,6 +13,7 @@ from App import app
 class ReportsListTotalPages(QLabel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self._pages = 1
         self.initUI()
 
     def initUI(self):
@@ -27,7 +28,6 @@ class ReportsListTotalPages(QLabel):
         self.setFont(font)
 
         self.adjustHeight()
-        self.setText('of  1000')
         self.restyleUI()
     
     # If word-wrap is True, QLabel does not resize automatically and hide parts of text
@@ -55,3 +55,14 @@ class ReportsListTotalPages(QLabel):
             padding-right: 16px;
             padding-bottom: 4px;
         ''')
+    
+    @property
+    def pages(self):
+        return self._pages
+     
+    @pages.setter
+    def pages(self, pages: int):
+        if pages < 0:
+            return
+        self._pages = pages
+        self.setText(f'of  {pages}')

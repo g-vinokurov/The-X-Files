@@ -84,3 +84,35 @@ class ReportsListTools(QWidget):
         self._curr_page.restyleUI(recursive)
         self._total_pages.restyleUI(recursive)
         self._next_page.restyleUI(recursive)
+    
+    @property
+    def new_report(self):
+        return self._new_report
+    
+    @property
+    def search_query_field(self):
+        return self._search_query_field
+    
+    @property
+    def search(self):
+        return self._search
+    
+    @property
+    def pages_label(self):
+        return self._pages
+    
+    @property
+    def prev_page(self):
+        return self._prev_page
+    
+    @property
+    def curr_page(self):
+        return self._curr_page
+    
+    @property
+    def total_pages(self):
+        return self._total_pages
+    
+    @property
+    def next_page(self):
+        return self._next_page
