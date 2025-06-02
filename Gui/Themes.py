@@ -56,6 +56,7 @@ class Theme:
     DashboardHeaderBackgroundColor = Colors.COLOR_VSC_PRIMARY
     DashboardHeaderBorderColor     = Colors.COLOR_VSC_TERTIARY
     DashboardBodyBackgroundColor   = Colors.COLOR_VSC_PRIMARY
+    DashboardBodyBorderColor       = Colors.COLOR_VSC_TERTIARY
     DashboardFooterBackgroundColor = Colors.COLOR_VSC_PRIMARY
     DashboardFooterBorderColor     = Colors.COLOR_VSC_TERTIARY
 
@@ -246,6 +247,7 @@ class LightTheme(Theme):
     DashboardHeaderBackgroundColor = Colors.COLOR_WHITE
     DashboardHeaderBorderColor     = Colors.COLOR_VSC_LIGHT
     DashboardBodyBackgroundColor   = Colors.COLOR_WHITE
+    DashboardBodyBorderColor       = Colors.COLOR_VSC_LIGHT
     DashboardFooterBackgroundColor = Colors.COLOR_WHITE
     DashboardFooterBorderColor     = Colors.COLOR_VSC_LIGHT
 

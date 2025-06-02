@@ -75,7 +75,7 @@ class Body(QWidget):
         self.setStyleSheet(f'''
             QWidget#dashboard-body {{
                 background-color: {Themes.CurrentTheme.DashboardBodyBackgroundColor};
-                border: none;
+                border-top: 1px solid {Themes.CurrentTheme.DashboardHeaderBorderColor};
                 outline: none;
                 padding: 0px;
             }}
