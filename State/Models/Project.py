@@ -36,4 +36,7 @@ class Project:
             if r.provider and query in r.provider.name.lower():
                 result += [r]
                 continue
+            if r.name and query in r.name.lower():
+                result += [r]
+                continue
         return result

@@ -32,7 +32,7 @@ class ReportsList(QWidget):
         self.setCursor(QCursor(Qt.CursorShape.ArrowCursor))
 
         self._layout = QVBoxLayout()
-        self._layout.setContentsMargins(0, 0, 0, 0)
+        self._layout.setContentsMargins(0, 0, 0, 128)
         self._layout.setSpacing(0)
         self._layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 

@@ -4,7 +4,6 @@ from PyQt5.QtWidgets import QGridLayout
 from PyQt5.QtGui import QCursor
 from PyQt5.QtCore import Qt
 
-from Gui.Widgets.Dashboard.ReportWidgetPropertyEmoji import ReportWidgetPropertyEmoji
 from Gui.Widgets.Dashboard.ReportWidgetPropertyName import ReportWidgetPropertyName
 from Gui.Widgets.Dashboard.ReportWidgetPropertyValue import ReportWidgetPropertyValue
 
@@ -32,39 +31,31 @@ class ReportWidgetProperties(QWidget):
         self._layout.setSpacing(2)
         self._layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
-        # self._report_type_emoji = ReportWidgetPropertyEmoji('🚩', self)
         self._report_type = ReportWidgetPropertyName('Type:', self)
         self._report_type_value = ReportWidgetPropertyValue(self)
 
-        # self._report_level_emoji = ReportWidgetPropertyEmoji('☢️', self)
         self._report_level = ReportWidgetPropertyName('Level:', self)
         self._report_level_value = ReportWidgetPropertyValue(self)
 
-        # self._report_tags_emoji = ReportWidgetPropertyEmoji('🌵', self)
         self._report_tags = ReportWidgetPropertyName('Tags:', self)
         self._report_tags_value = ReportWidgetPropertyValue(self)
 
-        # self._report_date_emoji = ReportWidgetPropertyEmoji('☄️', self)
         self._report_date = ReportWidgetPropertyName('Date:', self)
         self._report_date_value = ReportWidgetPropertyValue(self)
 
-        # self._layout.addWidget(self._report_type_emoji, 0, 0)
-        self._layout.addWidget(self._report_type, 0, 1)
-        self._layout.addWidget(self._report_type_value, 0, 2)
+        self._layout.addWidget(self._report_type, 0, 0)
+        self._layout.addWidget(self._report_type_value, 0, 1)
 
-        # self._layout.addWidget(self._report_level_emoji, 1, 0)
-        self._layout.addWidget(self._report_level, 1, 1)
-        self._layout.addWidget(self._report_level_value, 1, 2)
+        self._layout.addWidget(self._report_level, 1, 0)
+        self._layout.addWidget(self._report_level_value, 1, 1)
 
-        # self._layout.addWidget(self._report_tags_emoji, 2, 0)
-        self._layout.addWidget(self._report_tags, 2, 1)
-        self._layout.addWidget(self._report_tags_value, 2, 2)
+        self._layout.addWidget(self._report_tags, 2, 0)
+        self._layout.addWidget(self._report_tags_value, 2, 1)
 
-        # self._layout.addWidget(self._report_date_emoji, 3, 0)
-        self._layout.addWidget(self._report_date, 3, 1)
-        self._layout.addWidget(self._report_date_value, 3, 2)
+        self._layout.addWidget(self._report_date, 3, 0)
+        self._layout.addWidget(self._report_date_value, 3, 1)
 
-        self._layout.setColumnStretch(2, 1)
+        self._layout.setColumnStretch(1, 1)
 
         self.setLayout(self._layout)
 
@@ -81,16 +72,12 @@ class ReportWidgetProperties(QWidget):
         ''')
         if not recursive:
             return
-        # self._report_type_emoji.restyleUI(recursive)
         self._report_type.restyleUI(recursive)
         self._report_type_value.restyleUI(recursive)
-        # self._report_level_emoji.restyleUI(recursive)
         self._report_level.restyleUI(recursive)
         self._report_level_value.restyleUI(recursive)
-        # self._report_tags_emoji.restyleUI(recursive)
         self._report_tags.restyleUI(recursive)
         self._report_tags_value.restyleUI(recursive)
-        # self._report_date_emoji.restyleUI(recursive)
         self._report_date.restyleUI(recursive)
         self._report_date_value.restyleUI(recursive)
     

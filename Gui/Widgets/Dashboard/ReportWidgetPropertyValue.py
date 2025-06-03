@@ -1,6 +1,7 @@
 
 from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QCursor
 
 from Gui.Fonts import Font
 import Gui.Themes as Themes
@@ -20,6 +21,8 @@ class ReportWidgetPropertyValue(QLabel):
         self.setContentsMargins(0, 0, 0, 0)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
+        self.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
+        self.setCursor(QCursor(Qt.CursorShape.IBeamCursor))
 
         font = Font(Themes.CurrentTheme.DashboardReportWidgetPropertyValueFont)
         font.setPointSize(Themes.CurrentTheme.DashboardReportWidgetPropertyValueFontSize)

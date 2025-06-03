@@ -4,7 +4,6 @@ from PyQt5.QtWidgets import QGridLayout
 from PyQt5.QtGui import QCursor
 from PyQt5.QtCore import Qt
 
-from Gui.Widgets.Dashboard.ReportCardPropertyEmoji import ReportCardPropertyEmoji
 from Gui.Widgets.Dashboard.ReportCardPropertyName import ReportCardPropertyName
 from Gui.Widgets.Dashboard.ReportCardPropertyValue import ReportCardPropertyValue
 
@@ -32,39 +31,31 @@ class ReportCardProperties(QWidget):
         self._layout.setSpacing(2)
         self._layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
-        # self._report_type_emoji = ReportCardPropertyEmoji('🚩', self)
         self._report_type = ReportCardPropertyName('Type:', self)
         self._report_type_value = ReportCardPropertyValue(self)
 
-        # self._report_level_emoji = ReportCardPropertyEmoji('☢️', self)
         self._report_level = ReportCardPropertyName('Level:', self)
         self._report_level_value = ReportCardPropertyValue(self)
 
-        # self._report_tags_emoji = ReportCardPropertyEmoji('🌵', self)
         self._report_tags = ReportCardPropertyName('Tags:', self)
         self._report_tags_value = ReportCardPropertyValue(self)
 
-        # self._report_date_emoji = ReportCardPropertyEmoji('☄️', self)
         self._report_date = ReportCardPropertyName('Date:', self)
         self._report_date_value = ReportCardPropertyValue(self)
 
-        # self._layout.addWidget(self._report_type_emoji, 0, 0)
-        self._layout.addWidget(self._report_type, 0, 1)
-        self._layout.addWidget(self._report_type_value, 0, 2)
+        self._layout.addWidget(self._report_type, 0, 0)
+        self._layout.addWidget(self._report_type_value, 0, 1)
 
-        # self._layout.addWidget(self._report_level_emoji, 1, 0)
-        self._layout.addWidget(self._report_level, 1, 1)
-        self._layout.addWidget(self._report_level_value, 1, 2)
+        self._layout.addWidget(self._report_level, 1, 0)
+        self._layout.addWidget(self._report_level_value, 1, 1)
 
-        # self._layout.addWidget(self._report_tags_emoji, 2, 0)
-        self._layout.addWidget(self._report_tags, 2, 1)
-        self._layout.addWidget(self._report_tags_value, 2, 2)
+        self._layout.addWidget(self._report_tags, 2, 0)
+        self._layout.addWidget(self._report_tags_value, 2, 1)
 
-        # self._layout.addWidget(self._report_date_emoji, 3, 0)
-        self._layout.addWidget(self._report_date, 3, 1)
-        self._layout.addWidget(self._report_date_value, 3, 2)
+        self._layout.addWidget(self._report_date, 3, 0)
+        self._layout.addWidget(self._report_date_value, 3, 1)
 
-        self._layout.setColumnStretch(2, 1)
+        self._layout.setColumnStretch(1, 1)
 
         self.setLayout(self._layout)
         self.restyleUI()
@@ -103,15 +94,11 @@ class ReportCardProperties(QWidget):
         ''')
         if not recursive:
             return
-        # self._report_type_emoji.restyleUI(recursive)
         self._report_type.restyleUI(recursive)
         self._report_type_value.restyleUI(recursive)
-        # self._report_level_emoji.restyleUI(recursive)
         self._report_level.restyleUI(recursive)
         self._report_level_value.restyleUI(recursive)
-        # self._report_tags_emoji.restyleUI(recursive)
         self._report_tags.restyleUI(recursive)
         self._report_tags_value.restyleUI(recursive)
-        # self._report_date_emoji.restyleUI(recursive)
         self._report_date.restyleUI(recursive)
         self._report_date_value.restyleUI(recursive)
