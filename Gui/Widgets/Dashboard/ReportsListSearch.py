@@ -36,11 +36,12 @@ class ReportsListSearch(QPushButton):
                 background: {Themes.CurrentTheme.DashboardReportsListSearchBackgroundColor};
                 border: none;
                 border-left: 1px solid {Themes.CurrentTheme.DashboardReportsListSearchBorderColor};
+                border-bottom: 1px solid {Themes.CurrentTheme.DashboardReportsListSearchBorderColor};
                 outline: none;
                 padding-left: 16px;
                 padding-right: 16px;
-                padding-top: 4px;
-                padding-bottom: 4px;
+                padding-top: 6px;
+                padding-bottom: 6px;
             }}
 
             QPushButton#dashboard-reports-list-search:hover {{

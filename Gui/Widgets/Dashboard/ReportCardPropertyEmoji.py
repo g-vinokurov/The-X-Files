@@ -16,6 +16,12 @@ class ReportCardPropertyEmoji(QLabel):
 
     def initUI(self):
         self.setObjectName('dashboard-report-card-property-emoji')
+        self.setStyleSheet(f'''
+            background: none;
+            border: none;
+            outline: none;
+            padding: 0px;
+        ''')
         
         self.setAlignment(Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignTop)
 

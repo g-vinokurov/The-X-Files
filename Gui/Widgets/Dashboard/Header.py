@@ -23,16 +23,16 @@ class Header(QWidget):
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
 
-        # self._reload_project = ReloadProject('Reload Project', self)
-        # self._switch_theme = SwitchTheme(self)
+        self._reload_project = ReloadProject('Reload Project', self)
+        self._switch_theme = SwitchTheme(self)
 
         self._layout = QHBoxLayout()
         self._layout.setContentsMargins(16, 16, 16, 16)
         self._layout.setSpacing(32)
         self._layout.setAlignment(Qt.AlignmentFlag.AlignRight)
 
-        # self._layout.addWidget(self._reload_project)
-        # self._layout.addWidget(self._switch_theme)
+        self._layout.addWidget(self._reload_project)
+        self._layout.addWidget(self._switch_theme)
 
         self.setLayout(self._layout)
         self.restyleUI()
@@ -55,5 +55,5 @@ class Header(QWidget):
         ''')
         if not recursive:
             return
-        # self._reload_project.restyleUI(recursive)
-        # self._switch_theme.restyleUI(recursive)
+        self._reload_project.restyleUI(recursive)
+        self._switch_theme.restyleUI(recursive)

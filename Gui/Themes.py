@@ -12,18 +12,18 @@ THEME_LIGHT = 'Light'
 class Theme:
     NAME = THEME_DEFAULT
 
-    SplitterBackgroundColor = Colors.COLOR_VSC_SECONDARY
+    SplitterBackgroundColor = Colors.COLOR_VSC_TERTIARY
 
-    ScrollHorizontalBackgroundColor       = Colors.COLOR_VSC_PRIMARY
+    ScrollHorizontalBackgroundColor       = Colors.COLOR_VSC_SECONDARY
     ScrollHorizontalHandleBackgroundColor = Colors.COLOR_VSC_LIGHT
-    ScrollHorizontalBorderColor           = Colors.COLOR_VSC_SECONDARY
+    ScrollHorizontalBorderColor           = Colors.COLOR_VSC_TERTIARY
     ScrollHorizontalBorderRadius          = 0
     ScrollHorizontalHandleBorderRadius    = 0
     ScrollHorizontalMinWidth              = 128
     ScrollHorizontalHeight                = 20
-    ScrollVerticalBackgroundColor         = Colors.COLOR_VSC_PRIMARY
+    ScrollVerticalBackgroundColor         = Colors.COLOR_VSC_SECONDARY
     ScrollVerticalHandleBackgroundColor   = Colors.COLOR_VSC_LIGHT
-    ScrollVerticalBorderColor             = Colors.COLOR_VSC_SECONDARY
+    ScrollVerticalBorderColor             = Colors.COLOR_VSC_TERTIARY
     ScrollVerticalBorderRadius            = 0
     ScrollVerticalHandleBorderRadius      = 0
     ScrollVerticalMinHeight               = 128
@@ -42,14 +42,14 @@ class Theme:
     ScrollPreVerticalMinHeight               = 16
     ScrollPreVerticalWidth                   = 16
 
-    WelcomeLogoFont       = Fonts.FONT_GEOLOGICA_BLACK
-    WelcomeLogoFontWeight = Fonts.Font.Black
-    WelcomeLogoFontSize   = 48
+    WelcomeLogoFont       = Fonts.FONT_BLENDER_PRO_BOLD
+    WelcomeLogoFontWeight = Fonts.Font.Bold
+    WelcomeLogoFontSize   = 64
     WelcomeLogoColor      = Colors.COLOR_BS_LIGHT
 
-    WelcomeOpenProjectFont       = Fonts.FONT_GEOLOGICA_BLACK
-    WelcomeOpenProjectFontWeight = Fonts.Font.Black
-    WelcomeOpenProjectFontSize   = 18
+    WelcomeOpenProjectFont       = Fonts.FONT_BLENDER_PRO_BOLD
+    WelcomeOpenProjectFontWeight = Fonts.Font.Bold
+    WelcomeOpenProjectFontSize   = 24
     WelcomeOpenProjectColor      = Colors.COLOR_BS_LIGHT
 
     DashboardScreenBackgroundColor = Colors.COLOR_VSC_PRIMARY
@@ -60,18 +60,18 @@ class Theme:
     DashboardFooterBackgroundColor = Colors.COLOR_VSC_PRIMARY
     DashboardFooterBorderColor     = Colors.COLOR_VSC_TERTIARY
 
-    DashboardReloadProjectFont                 = Fonts.FONT_GEOLOGICA_BLACK
-    DashboardReloadProjectFontWeight           = Fonts.Font.Black
-    DashboardReloadProjectFontSize             = 13
+    DashboardReloadProjectFont                 = Fonts.FONT_BLENDER_PRO_BOLD
+    DashboardReloadProjectFontWeight           = Fonts.Font.Bold
+    DashboardReloadProjectFontSize             = 18
     DashboardReloadProjectColor                = Colors.COLOR_VSC_LIGHT
     DashboardReloadProjectHoverColor           = Colors.COLOR_VSC_LIGHT
     DashboardReloadProjectBackgroundColor      = Colors.COLOR_VSC_SECONDARY
     DashboardReloadProjectHoverBackgroundColor = Colors.COLOR_VSC_TERTIARY
     DashboardReloadProjectBorderColor          = Colors.COLOR_VSC_SECONDARY
 
-    DashboardSwitchThemeFont                 = Fonts.FONT_GEOLOGICA_BLACK
-    DashboardSwitchThemeFontWeight           = Fonts.Font.Black
-    DashboardSwitchThemeFontSize             = 13
+    DashboardSwitchThemeFont                 = Fonts.FONT_BLENDER_PRO_BOLD
+    DashboardSwitchThemeFontWeight           = Fonts.Font.Bold
+    DashboardSwitchThemeFontSize             = 18
     DashboardSwitchThemeColor                = Colors.COLOR_VSC_LIGHT
     DashboardSwitchThemeHoverColor           = Colors.COLOR_VSC_LIGHT
     DashboardSwitchThemeBackgroundColor      = Colors.COLOR_VSC_SECONDARY
@@ -81,137 +81,137 @@ class Theme:
     DashboardReportsListSectionBackgroundColor = Colors.COLOR_VSC_PRIMARY
     DashboardReportSectionBackgroundColor      = Colors.COLOR_VSC_SECONDARY
     
-    DashboardNoReportSelectedFont       = Fonts.FONT_GEOLOGICA_BLACK
-    DashboardNoReportSelectedFontWeight = Fonts.Font.Black
-    DashboardNoReportSelectedFontSize   = 16
+    DashboardNoReportSelectedFont       = Fonts.FONT_BLENDER_PRO_BOLD
+    DashboardNoReportSelectedFontWeight = Fonts.Font.Bold
+    DashboardNoReportSelectedFontSize   = 20
     DashboardNoReportSelectedColor      = Colors.COLOR_VSC_LIGHT
 
-    DashboardNoReportsFoundFont       = Fonts.FONT_GEOLOGICA_BLACK
-    DashboardNoReportsFoundFontWeight = Fonts.Font.Black
-    DashboardNoReportsFoundFontSize   = 16
+    DashboardNoReportsFoundFont       = Fonts.FONT_BLENDER_PRO_BOLD
+    DashboardNoReportsFoundFontWeight = Fonts.Font.Bold
+    DashboardNoReportsFoundFontSize   = 20
     DashboardNoReportsFoundColor      = Colors.COLOR_VSC_LIGHT
 
-    DashboardReportsListToolsBorderColor = Colors.COLOR_VSC_SECONDARY
+    DashboardReportsListToolsBorderColor = Colors.COLOR_VSC_TERTIARY
 
-    DashboardReportsListSearchQueryFieldFont            = Fonts.FONT_GEOLOGICA_BLACK
-    DashboardReportsListSearchQueryFieldFontWeight      = Fonts.Font.Black
-    DashboardReportsListSearchQueryFieldFontSize        = 12
+    DashboardReportsListSearchQueryFieldFont            = Fonts.FONT_BLENDER_PRO_BOLD
+    DashboardReportsListSearchQueryFieldFontWeight      = Fonts.Font.Bold
+    DashboardReportsListSearchQueryFieldFontSize        = 15
     DashboardReportsListSearchQueryFieldColor           = Colors.COLOR_VSC_LIGHT
     DashboardReportsListSearchQueryFieldBackgroundColor = Colors.COLOR_VSC_PRIMARY
-    DashboardReportsListSearchQueryFieldBorderColor     = Colors.COLOR_VSC_SECONDARY
+    DashboardReportsListSearchQueryFieldBorderColor     = Colors.COLOR_VSC_TERTIARY
 
-    DashboardReportsListCurrentPageFont            = Fonts.FONT_GEOLOGICA_BLACK
-    DashboardReportsListCurrentPageFontWeight      = Fonts.Font.Black
-    DashboardReportsListCurrentPageFontSize        = 12
+    DashboardReportsListCurrentPageFont            = Fonts.FONT_BLENDER_PRO_BOLD
+    DashboardReportsListCurrentPageFontWeight      = Fonts.Font.Bold
+    DashboardReportsListCurrentPageFontSize        = 15
     DashboardReportsListCurrentPageColor           = Colors.COLOR_VSC_LIGHT
     DashboardReportsListCurrentPageBackgroundColor = Colors.COLOR_VSC_PRIMARY
-    DashboardReportsListCurrentPageBorderColor     = Colors.COLOR_VSC_SECONDARY
+    DashboardReportsListCurrentPageBorderColor     = Colors.COLOR_VSC_TERTIARY
 
-    DashboardReportsListPageControlFont                 = Fonts.FONT_GEOLOGICA_BLACK
-    DashboardReportsListPageControlFontWeight           = Fonts.Font.Black
-    DashboardReportsListPageControlFontSize             = 12
+    DashboardReportsListPageControlFont                 = Fonts.FONT_BLENDER_PRO_BOLD
+    DashboardReportsListPageControlFontWeight           = Fonts.Font.Bold
+    DashboardReportsListPageControlFontSize             = 15
     DashboardReportsListPageControlColor                = Colors.COLOR_VSC_LIGHT
     DashboardReportsListPageControlHoverColor           = Colors.COLOR_VSC_LIGHT
     DashboardReportsListPageControlBackgroundColor      = Colors.COLOR_VSC_PRIMARY
     DashboardReportsListPageControlHoverBackgroundColor = Colors.COLOR_VSC_SECONDARY
-    DashboardReportsListPageControlBorderColor          = Colors.COLOR_VSC_SECONDARY
+    DashboardReportsListPageControlBorderColor          = Colors.COLOR_VSC_TERTIARY
 
-    DashboardReportsListTotalPagesFont        = Fonts.FONT_GEOLOGICA_BLACK
-    DashboardReportsListTotalPagesFontWeight  = Fonts.Font.Black
-    DashboardReportsListTotalPagesFontSize    = 12
+    DashboardReportsListTotalPagesFont        = Fonts.FONT_BLENDER_PRO_BOLD
+    DashboardReportsListTotalPagesFontWeight  = Fonts.Font.Bold
+    DashboardReportsListTotalPagesFontSize    = 15
     DashboardReportsListTotalPagesColor       = Colors.COLOR_VSC_LIGHT
-    DashboardReportsListTotalPagesBorderColor = Colors.COLOR_VSC_SECONDARY
+    DashboardReportsListTotalPagesBorderColor = Colors.COLOR_VSC_TERTIARY
 
-    DashboardReportsListPagesLabelFont        = Fonts.FONT_GEOLOGICA_BLACK
-    DashboardReportsListPagesLabelFontWeight  = Fonts.Font.Black
-    DashboardReportsListPagesLabelFontSize    = 12
+    DashboardReportsListPagesLabelFont        = Fonts.FONT_BLENDER_PRO_BOLD
+    DashboardReportsListPagesLabelFontWeight  = Fonts.Font.Bold
+    DashboardReportsListPagesLabelFontSize    = 15
     DashboardReportsListPagesLabelColor       = Colors.COLOR_VSC_LIGHT
-    DashboardReportsListPagesLabelBorderColor = Colors.COLOR_VSC_SECONDARY
+    DashboardReportsListPagesLabelBorderColor = Colors.COLOR_VSC_TERTIARY
 
-    DashboardReportsListOfPagesLabelFont        = Fonts.FONT_GEOLOGICA_BLACK
-    DashboardReportsListOfPagesLabelFontWeight  = Fonts.Font.Black
-    DashboardReportsListOfPagesLabelFontSize    = 12
+    DashboardReportsListOfPagesLabelFont        = Fonts.FONT_BLENDER_PRO_BOLD
+    DashboardReportsListOfPagesLabelFontWeight  = Fonts.Font.Bold
+    DashboardReportsListOfPagesLabelFontSize    = 15
     DashboardReportsListOfPagesLabelColor       = Colors.COLOR_VSC_LIGHT
-    DashboardReportsListOfPagesLabelBorderColor = Colors.COLOR_VSC_SECONDARY
+    DashboardReportsListOfPagesLabelBorderColor = Colors.COLOR_VSC_TERTIARY
 
-    DashboardReportsListSearchFont                 = Fonts.FONT_GEOLOGICA_BLACK
-    DashboardReportsListSearchFontWeight           = Fonts.Font.Black
-    DashboardReportsListSearchFontSize             = 12
+    DashboardReportsListSearchFont                 = Fonts.FONT_BLENDER_PRO_BOLD
+    DashboardReportsListSearchFontWeight           = Fonts.Font.Bold
+    DashboardReportsListSearchFontSize             = 15
     DashboardReportsListSearchColor                = Colors.COLOR_VSC_LIGHT
     DashboardReportsListSearchHoverColor           = Colors.COLOR_VSC_LIGHT
     DashboardReportsListSearchBackgroundColor      = Colors.COLOR_VSC_PRIMARY
     DashboardReportsListSearchHoverBackgroundColor = Colors.COLOR_VSC_SECONDARY
-    DashboardReportsListSearchBorderColor          = Colors.COLOR_VSC_SECONDARY
+    DashboardReportsListSearchBorderColor          = Colors.COLOR_VSC_TERTIARY
 
-    DashboardReportsListNewReportFont                 = Fonts.FONT_GEOLOGICA_BLACK
-    DashboardReportsListNewReportFontWeight           = Fonts.Font.Black
-    DashboardReportsListNewReportFontSize             = 12
+    DashboardReportsListNewReportFont                 = Fonts.FONT_BLENDER_PRO_BOLD
+    DashboardReportsListNewReportFontWeight           = Fonts.Font.Bold
+    DashboardReportsListNewReportFontSize             = 15
     DashboardReportsListNewReportColor                = Colors.COLOR_VSC_LIGHT
     DashboardReportsListNewReportHoverColor           = Colors.COLOR_VSC_LIGHT
     DashboardReportsListNewReportBackgroundColor      = Colors.COLOR_VSC_PRIMARY
     DashboardReportsListNewReportHoverBackgroundColor = Colors.COLOR_VSC_SECONDARY
-    DashboardReportsListNewReportBorderColor          = Colors.COLOR_VSC_SECONDARY
+    DashboardReportsListNewReportBorderColor          = Colors.COLOR_VSC_TERTIARY
 
     DashboardReportCardBackgroundColor        = Colors.COLOR_VSC_PRIMARY
     DashboardReportCardBorderColor            = Colors.COLOR_VSC_TERTIARY
     DashboardReportCardHoveredBackgroundColor = Colors.COLOR_VSC_SECONDARY
 
-    DashboardReportCardTitleFont       = Fonts.FONT_GEOLOGICA_BLACK
-    DashboardReportCardTitleFontWeight = Fonts.Font.Black
-    DashboardReportCardTitleFontSize   = 11
+    DashboardReportCardTitleFont       = Fonts.FONT_BLENDER_PRO_BOLD
+    DashboardReportCardTitleFontWeight = Fonts.Font.Bold
+    DashboardReportCardTitleFontSize   = 14
     DashboardReportCardTitleColor      = Colors.COLOR_VSC_LIGHT
 
-    DashboardReportCardIdFont       = Fonts.FONT_GEOLOGICA_EXTRA_LIGHT
-    DashboardReportCardIdFontWeight = Fonts.Font.ExtraLight
-    DashboardReportCardIdFontSize   = 9
+    DashboardReportCardIdFont       = Fonts.FONT_BLENDER_PRO_THIN
+    DashboardReportCardIdFontWeight = Fonts.Font.Thin
+    DashboardReportCardIdFontSize   = 12
     DashboardReportCardIdColor      = Colors.COLOR_VSC_QUATERNARY
     
     DashboardReportCardPropertyEmojiFont     = Fonts.FONT_SEGOE_UI_EMOJI
     DashboardReportCardPropertyEmojiFontSize = 12
 
-    DashboardReportCardPropertyNameFont       = Fonts.FONT_GEOLOGICA_BLACK
-    DashboardReportCardPropertyNameFontWeight = Fonts.Font.Black
-    DashboardReportCardPropertyNameFontSize   = 10
+    DashboardReportCardPropertyNameFont       = Fonts.FONT_BLENDER_PRO_BOLD
+    DashboardReportCardPropertyNameFontWeight = Fonts.Font.Bold
+    DashboardReportCardPropertyNameFontSize   = 14
     DashboardReportCardPropertyNameColor      = Colors.COLOR_VSC_LIGHT
 
-    DashboardReportCardPropertyValueFont       = Fonts.FONT_GEOLOGICA_EXTRA_LIGHT
-    DashboardReportCardPropertyValueFontWeight = Fonts.Font.ExtraLight
-    DashboardReportCardPropertyValueFontSize   = 10
+    DashboardReportCardPropertyValueFont       = Fonts.FONT_BLENDER_PRO_THIN
+    DashboardReportCardPropertyValueFontWeight = Fonts.Font.Thin
+    DashboardReportCardPropertyValueFontSize   = 14
     DashboardReportCardPropertyValueColor      = Colors.COLOR_VSC_LIGHT
 
     DashboardReportWidgetMargins = (64, 32, 64, 32)
 
-    DashboardReportWidgetTitleFont       = Fonts.FONT_GEOLOGICA_BLACK
-    DashboardReportWidgetTitleFontWeight = Fonts.Font.Black
-    DashboardReportWidgetTitleFontSize   = 13
+    DashboardReportWidgetTitleFont       = Fonts.FONT_BLENDER_PRO_BOLD
+    DashboardReportWidgetTitleFontWeight = Fonts.Font.Bold
+    DashboardReportWidgetTitleFontSize   = 18
     DashboardReportWidgetTitleColor      = Colors.COLOR_VSC_LIGHT
 
-    DashboardReportWidgetIdFont       = Fonts.FONT_GEOLOGICA_EXTRA_LIGHT
-    DashboardReportWidgetIdFontWeight = Fonts.Font.ExtraLight
-    DashboardReportWidgetIdFontSize   = 10
+    DashboardReportWidgetIdFont       = Fonts.FONT_BLENDER_PRO_THIN
+    DashboardReportWidgetIdFontWeight = Fonts.Font.Thin
+    DashboardReportWidgetIdFontSize   = 14
     DashboardReportWidgetIdColor      = Colors.COLOR_VSC_QUATERNARY
 
     DashboardReportWidgetPropertyEmojiFont     = Fonts.FONT_SEGOE_UI_EMOJI
     DashboardReportWidgetPropertyEmojiFontSize = 12
 
-    DashboardReportWidgetPropertyNameFont       = Fonts.FONT_GEOLOGICA_BLACK
-    DashboardReportWidgetPropertyNameFontWeight = Fonts.Font.Black
-    DashboardReportWidgetPropertyNameFontSize   = 11
+    DashboardReportWidgetPropertyNameFont       = Fonts.FONT_BLENDER_PRO_BOLD
+    DashboardReportWidgetPropertyNameFontWeight = Fonts.Font.Bold
+    DashboardReportWidgetPropertyNameFontSize   = 14
     DashboardReportWidgetPropertyNameColor      = Colors.COLOR_VSC_LIGHT
 
-    DashboardReportWidgetPropertyValueFont       = Fonts.FONT_GEOLOGICA_EXTRA_LIGHT
-    DashboardReportWidgetPropertyValueFontWeight = Fonts.Font.ExtraLight
-    DashboardReportWidgetPropertyValueFontSize   = 11
+    DashboardReportWidgetPropertyValueFont       = Fonts.FONT_BLENDER_PRO_THIN
+    DashboardReportWidgetPropertyValueFontWeight = Fonts.Font.Thin
+    DashboardReportWidgetPropertyValueFontSize   = 14
     DashboardReportWidgetPropertyValueColor      = Colors.COLOR_VSC_LIGHT
 
-    DashboardReportWidgetSubtitleFont       = Fonts.FONT_GEOLOGICA_BLACK
-    DashboardReportWidgetSubtitleFontWeight = Fonts.Font.Black
-    DashboardReportWidgetSubtitleFontSize   = 11
+    DashboardReportWidgetSubtitleFont       = Fonts.FONT_BLENDER_PRO_BOLD
+    DashboardReportWidgetSubtitleFontWeight = Fonts.Font.Bold
+    DashboardReportWidgetSubtitleFontSize   = 16
     DashboardReportWidgetSubtitleColor      = Colors.COLOR_VSC_LIGHT
 
-    DashboardReportItemPFont       = Fonts.FONT_GEOLOGICA_EXTRA_LIGHT
-    DashboardReportItemPFontWeight = Fonts.Font.ExtraLight
-    DashboardReportItemPFontSize   = 11
+    DashboardReportItemPFont       = Fonts.FONT_BLENDER_PRO_BOOK
+    DashboardReportItemPFontWeight = Fonts.Font.Regular
+    DashboardReportItemPFontSize   = 14
     DashboardReportItemPColor      = Colors.COLOR_VSC_LIGHT
 
     DashboardReportItemPreBackgroundColor = Colors.COLOR_VSC_PRIMARY

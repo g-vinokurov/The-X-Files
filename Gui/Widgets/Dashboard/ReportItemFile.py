@@ -34,13 +34,13 @@ class ReportItemFile(QWidget):
         self._layout.setSpacing(8)
         self._layout.setAlignment(Qt.AlignmentFlag.AlignLeft)
 
-        self._report_file_emoji = ReportWidgetPropertyEmoji('📌', self)
+        # self._report_file_emoji = ReportWidgetPropertyEmoji('📌', self)
         self._report_file_name = ReportWidgetPropertyName(self)
         self._report_file_value = ReportWidgetPropertyValue(self)
 
         self.restyleUI()
 
-        self._layout.addWidget(self._report_file_emoji)
+        # self._layout.addWidget(self._report_file_emoji)
         self._layout.addWidget(self._report_file_name)
         self._layout.addWidget(self._report_file_value)
 
@@ -59,7 +59,7 @@ class ReportItemFile(QWidget):
         ''')
         if not recursive:
             return
-        self._report_file_emoji.restyleUI(recursive)
+        # self._report_file_emoji.restyleUI(recursive)
         self._report_file_name.restyleUI(recursive)
         self._report_file_value.restyleUI(recursive)
     

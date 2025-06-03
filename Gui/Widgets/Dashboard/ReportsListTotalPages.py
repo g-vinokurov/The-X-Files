@@ -51,9 +51,9 @@ class ReportsListTotalPages(QLabel):
             border-left: 1px solid {Themes.CurrentTheme.DashboardReportsListTotalPagesBorderColor};
             outline: none;
             padding-left: 32px;
-            padding-top: 4px;
+            padding-top: 0px;
             padding-right: 32px;
-            padding-bottom: 4px;
+            padding-bottom: 0px;
         ''')
     
     @property

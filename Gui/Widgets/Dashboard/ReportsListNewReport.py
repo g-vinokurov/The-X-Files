@@ -26,7 +26,7 @@ class ReportsListNewReport(QPushButton):
         font.setWeight(Themes.CurrentTheme.DashboardReportsListNewReportFontWeight)
         self.setFont(font)
         
-        self.setText('+')
+        self.setText('+ New')
         self.clicked.connect(self._on_clicked)
         self.restyleUI()
     
@@ -39,8 +39,8 @@ class ReportsListNewReport(QPushButton):
                 outline: none;
                 padding-left: 20px;
                 padding-right: 20px;
-                padding-top: 4px;
-                padding-bottom: 4px;
+                padding-top: 6px;
+                padding-bottom: 6spx;
             }}
 
             QPushButton#dashboard-reports-list-new-report:hover {{

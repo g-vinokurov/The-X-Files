@@ -38,8 +38,8 @@ class ReportsListPageControl(QPushButton):
                 outline: none;
                 padding-left: 20px;
                 padding-right: 20px;
-                padding-top: 4px;
-                padding-bottom: 4px;
+                padding-top: 7px;
+                padding-bottom: 7px;
             }}
 
             QPushButton#dashboard-reports-list-page-control:hover {{

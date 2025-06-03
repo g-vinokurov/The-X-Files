@@ -19,7 +19,7 @@ class ReportWidgetSubtitle(QLabel):
     def initUI(self):
         self.setObjectName('dashboard-report-widget-subtitle')
 
-        self.setContentsMargins(0, 0, 0, 0)
+        self.setContentsMargins(0, 0, 0, 8)
         self.setWordWrap(True)
         self.setAlignment(Qt.AlignmentFlag.AlignLeft)
         self.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
