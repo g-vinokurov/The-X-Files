@@ -1,5 +1,6 @@
 
 import sys
+import datetime
 
 from Gui import Colors
 from Gui import Fonts
@@ -95,62 +96,19 @@ class Theme:
 
     DashboardReportsListSearchQueryFieldFont            = Fonts.FONT_BLENDER_PRO_BOLD
     DashboardReportsListSearchQueryFieldFontWeight      = Fonts.Font.Bold
-    DashboardReportsListSearchQueryFieldFontSize        = 15
+    DashboardReportsListSearchQueryFieldFontSize        = 16
     DashboardReportsListSearchQueryFieldColor           = Colors.COLOR_VSC_LIGHT
     DashboardReportsListSearchQueryFieldBackgroundColor = Colors.COLOR_VSC_PRIMARY
     DashboardReportsListSearchQueryFieldBorderColor     = Colors.COLOR_VSC_TERTIARY
 
-    DashboardReportsListCurrentPageFont            = Fonts.FONT_BLENDER_PRO_BOLD
-    DashboardReportsListCurrentPageFontWeight      = Fonts.Font.Bold
-    DashboardReportsListCurrentPageFontSize        = 15
-    DashboardReportsListCurrentPageColor           = Colors.COLOR_VSC_LIGHT
-    DashboardReportsListCurrentPageBackgroundColor = Colors.COLOR_VSC_PRIMARY
-    DashboardReportsListCurrentPageBorderColor     = Colors.COLOR_VSC_TERTIARY
-
-    DashboardReportsListPageControlFont                 = Fonts.FONT_BLENDER_PRO_BOLD
-    DashboardReportsListPageControlFontWeight           = Fonts.Font.Bold
-    DashboardReportsListPageControlFontSize             = 15
-    DashboardReportsListPageControlColor                = Colors.COLOR_VSC_LIGHT
-    DashboardReportsListPageControlHoverColor           = Colors.COLOR_VSC_LIGHT
-    DashboardReportsListPageControlBackgroundColor      = Colors.COLOR_VSC_PRIMARY
-    DashboardReportsListPageControlHoverBackgroundColor = Colors.COLOR_VSC_SECONDARY
-    DashboardReportsListPageControlBorderColor          = Colors.COLOR_VSC_TERTIARY
-
-    DashboardReportsListTotalPagesFont        = Fonts.FONT_BLENDER_PRO_BOLD
-    DashboardReportsListTotalPagesFontWeight  = Fonts.Font.Bold
-    DashboardReportsListTotalPagesFontSize    = 15
-    DashboardReportsListTotalPagesColor       = Colors.COLOR_VSC_LIGHT
-    DashboardReportsListTotalPagesBorderColor = Colors.COLOR_VSC_TERTIARY
-
-    DashboardReportsListPagesLabelFont        = Fonts.FONT_BLENDER_PRO_BOLD
-    DashboardReportsListPagesLabelFontWeight  = Fonts.Font.Bold
-    DashboardReportsListPagesLabelFontSize    = 15
-    DashboardReportsListPagesLabelColor       = Colors.COLOR_VSC_LIGHT
-    DashboardReportsListPagesLabelBorderColor = Colors.COLOR_VSC_TERTIARY
-
-    DashboardReportsListOfPagesLabelFont        = Fonts.FONT_BLENDER_PRO_BOLD
-    DashboardReportsListOfPagesLabelFontWeight  = Fonts.Font.Bold
-    DashboardReportsListOfPagesLabelFontSize    = 15
-    DashboardReportsListOfPagesLabelColor       = Colors.COLOR_VSC_LIGHT
-    DashboardReportsListOfPagesLabelBorderColor = Colors.COLOR_VSC_TERTIARY
-
     DashboardReportsListSearchFont                 = Fonts.FONT_BLENDER_PRO_BOLD
     DashboardReportsListSearchFontWeight           = Fonts.Font.Bold
-    DashboardReportsListSearchFontSize             = 15
+    DashboardReportsListSearchFontSize             = 16
     DashboardReportsListSearchColor                = Colors.COLOR_VSC_LIGHT
     DashboardReportsListSearchHoverColor           = Colors.COLOR_VSC_LIGHT
     DashboardReportsListSearchBackgroundColor      = Colors.COLOR_VSC_PRIMARY
     DashboardReportsListSearchHoverBackgroundColor = Colors.COLOR_VSC_SECONDARY
     DashboardReportsListSearchBorderColor          = Colors.COLOR_VSC_TERTIARY
-
-    DashboardReportsListNewReportFont                 = Fonts.FONT_BLENDER_PRO_BOLD
-    DashboardReportsListNewReportFontWeight           = Fonts.Font.Bold
-    DashboardReportsListNewReportFontSize             = 15
-    DashboardReportsListNewReportColor                = Colors.COLOR_VSC_LIGHT
-    DashboardReportsListNewReportHoverColor           = Colors.COLOR_VSC_LIGHT
-    DashboardReportsListNewReportBackgroundColor      = Colors.COLOR_VSC_PRIMARY
-    DashboardReportsListNewReportHoverBackgroundColor = Colors.COLOR_VSC_SECONDARY
-    DashboardReportsListNewReportBorderColor          = Colors.COLOR_VSC_TERTIARY
 
     DashboardReportCardBackgroundColor        = Colors.COLOR_VSC_PRIMARY
     DashboardReportCardBorderColor            = Colors.COLOR_VSC_TERTIARY
@@ -165,9 +123,6 @@ class Theme:
     DashboardReportCardIdFontWeight = Fonts.Font.Thin
     DashboardReportCardIdFontSize   = 12
     DashboardReportCardIdColor      = Colors.COLOR_VSC_QUATERNARY
-    
-    DashboardReportCardPropertyEmojiFont     = Fonts.FONT_SEGOE_UI_EMOJI
-    DashboardReportCardPropertyEmojiFontSize = 12
 
     DashboardReportCardPropertyNameFont       = Fonts.FONT_BLENDER_PRO_BOLD
     DashboardReportCardPropertyNameFontWeight = Fonts.Font.Bold
@@ -190,9 +145,6 @@ class Theme:
     DashboardReportWidgetIdFontWeight = Fonts.Font.Thin
     DashboardReportWidgetIdFontSize   = 14
     DashboardReportWidgetIdColor      = Colors.COLOR_VSC_QUATERNARY
-
-    DashboardReportWidgetPropertyEmojiFont     = Fonts.FONT_SEGOE_UI_EMOJI
-    DashboardReportWidgetPropertyEmojiFontSize = 12
 
     DashboardReportWidgetPropertyNameFont       = Fonts.FONT_BLENDER_PRO_BOLD
     DashboardReportWidgetPropertyNameFontWeight = Fonts.Font.Bold
@@ -275,36 +227,11 @@ class LightTheme(Theme):
     DashboardReportsListSearchQueryFieldBackgroundColor = Colors.COLOR_WHITE
     DashboardReportsListSearchQueryFieldBorderColor     = Colors.COLOR_VSC_LIGHT
 
-    DashboardReportsListCurrentPageColor                = Colors.COLOR_BS_DARK
-    DashboardReportsListCurrentPageBackgroundColor      = Colors.COLOR_WHITE
-    DashboardReportsListCurrentPageBorderColor          = Colors.COLOR_VSC_LIGHT
-
-    DashboardReportsListTotalPagesColor                 = Colors.COLOR_BS_DARK
-    DashboardReportsListTotalPagesBorderColor           = Colors.COLOR_VSC_LIGHT
-
-    DashboardReportsListPagesLabelColor                 = Colors.COLOR_BS_DARK
-    DashboardReportsListPagesLabelBorderColor           = Colors.COLOR_VSC_LIGHT
-
-    DashboardReportsListOfPagesLabelColor                 = Colors.COLOR_BS_DARK
-    DashboardReportsListOfPagesLabelBorderColor           = Colors.COLOR_VSC_LIGHT
-
-    DashboardReportsListPageControlColor                = Colors.COLOR_BS_DARK
-    DashboardReportsListPageControlHoverColor           = Colors.COLOR_BS_DARK
-    DashboardReportsListPageControlBackgroundColor      = Colors.COLOR_WHITE
-    DashboardReportsListPageControlHoverBackgroundColor = Colors.COLOR_BS_LIGHT
-    DashboardReportsListPageControlBorderColor          = Colors.COLOR_VSC_LIGHT
-
     DashboardReportsListSearchColor                = Colors.COLOR_BS_DARK
     DashboardReportsListSearchHoverColor           = Colors.COLOR_BS_DARK
     DashboardReportsListSearchBackgroundColor      = Colors.COLOR_WHITE
     DashboardReportsListSearchHoverBackgroundColor = Colors.COLOR_BS_LIGHT
     DashboardReportsListSearchBorderColor          = Colors.COLOR_VSC_LIGHT
-
-    DashboardReportsListNewReportColor                = Colors.COLOR_BS_DARK
-    DashboardReportsListNewReportHoverColor           = Colors.COLOR_BS_DARK
-    DashboardReportsListNewReportBackgroundColor      = Colors.COLOR_WHITE
-    DashboardReportsListNewReportHoverBackgroundColor = Colors.COLOR_BS_LIGHT
-    DashboardReportsListNewReportBorderColor          = Colors.COLOR_VSC_LIGHT
 
     DashboardReportCardBackgroundColor        = Colors.COLOR_WHITE
     DashboardReportCardBorderColor            = Colors.COLOR_VSC_LIGHT
@@ -346,16 +273,21 @@ def set_theme(theme):
     CurrentTheme = Theme
 
 
-if sys.platform == 'win32':
-    import winreg
-    reg = winreg.OpenKey(
-        winreg.HKEY_CURRENT_USER,
-        r"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
-    )
-    value, _ = winreg.QueryValueEx(reg, "AppsUseLightTheme")
-    if value == 0:
-        set_theme(THEME_DARK)
-    else:
-        set_theme(THEME_LIGHT)
+# if sys.platform == 'win32':
+#     import winreg
+#     reg = winreg.OpenKey(
+#         winreg.HKEY_CURRENT_USER,
+#         r"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+#     )
+#     value, _ = winreg.QueryValueEx(reg, "AppsUseLightTheme")
+#     if value == 0:
+#         set_theme(THEME_DARK)
+#     else:
+#         set_theme(THEME_LIGHT)
+# else:
+#     set_theme(THEME_DARK)
+
+if 6 <= datetime.datetime.now().hour < 19:
+    set_theme(THEME_LIGHT)
 else:
     set_theme(THEME_DARK)
