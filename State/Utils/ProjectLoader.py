@@ -20,17 +20,10 @@ class ProjectLoader:
             msg = f'Path {project_dir} not found'
             log.error(msg)
             raise FileNotFoundError(msg)
-        
-        path_to_reports = project_dir / 'Reports'
-
-        if not path_to_reports.exists():
-            msg = f'Path {path_to_reports} not found'
-            log.error(msg)
-            raise FileNotFoundError(msg)
 
         reports = []
         
-        for path in path_to_reports.iterdir():
+        for path in project_dir.iterdir():
             if not path.is_dir():
                 continue
             try:
