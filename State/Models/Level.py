@@ -2,12 +2,12 @@
 import enum
 
 
-class Level(enum.Enum):
-    Baby = 1
-    Easy = 2
-    Middle = 3
-    Hard = 4
-    Insane = 5
+class Level(str, enum.Enum):
+    Baby = 'Baby'
+    Easy = 'Easy'
+    Middle = 'Middle'
+    Hard = 'Hard'
+    Insane = 'Insane'
 
     def __str__(self):
         return self.name

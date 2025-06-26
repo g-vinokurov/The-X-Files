@@ -2,10 +2,11 @@
 import enum
 
 
-class Type(enum.Enum):
-    Jeopardy = 0
-    Quest = 1
-    Machine = 2
+class Type(str, enum.Enum):
+    
+    Jeopardy = 'Jeopardy'  # Standard CTF task in Jeopardy format
+    Lab = 'Lab'            # Task where you have to do sth step by step
+    Pentest = 'Pentest'    # Pentest
 
     def __str__(self):
         return self.name
